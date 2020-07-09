@@ -1,0 +1,162 @@
+/*!
+ * Start Bootstrap - Simple Sidebar (https://startbootstrap.com/template-overviews/simple-sidebar)
+ * Copyright 2013-2019 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-simple-sidebar/blob/master/LICENSE)
+ */
+body {
+  overflow-x: hidden;
+  
+}
+
+#sidebar-wrapper {
+  min-height: 100vh;
+  margin-left: -15rem;
+  -webkit-transition: margin .25s ease-out;
+  -moz-transition: margin .25s ease-out;
+  -o-transition: margin .25s ease-out;
+  transition: margin .25s ease-out;
+  
+}
+
+#sidebar-wrapper .sidebar-heading {
+  padding: 3px 15px;
+  font-size: 20.3pt;
+  background-color:#5F5F5F;
+  color:#fff;
+
+}
+
+#sidebar-wrapper .list-group {
+  width: 15rem;
+}
+
+#page-content-wrapper {
+  min-width: 100vw;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+  margin-left: 0;
+  
+}
+
+@media (min-width: 768px) {
+  #sidebar-wrapper {
+    margin-left: 0;
+  }
+
+  #page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+  }
+
+  #wrapper.toggled #sidebar-wrapper {
+    margin-left: -15rem;
+  }
+}
+
+.btn-primary {
+	background-color:#4CAF50;
+}
+
+.list-group-item {
+  position: relative;
+  display: block;
+  padding: 1px 15px;
+  color:#000;
+  margin-bottom: -1px;
+  
+   border: none;
+}
+
+.list-group-header {
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+  color:#000;
+  margin-bottom: -1px;
+  
+  border: none;
+  font-size:15pt;
+}
+
+
+.navbar {
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 3px 15px;
+  
+}
+
+#navbarSupportedContent .nav-link {
+	color:#fff !important;
+}
+
+.vertical-line-green {
+	border-left: 6px solid #4CAF50;
+	padding:10px;
+	background-color:#DDFFDD;
+	width:100%;
+	margin-top:10px;
+	margin-bottom:10px;
+}
+
+.vertical-line-yellow {
+	border-left: 6px solid #FAEBCC;
+	padding:10px;
+	background-color:#FCF8E3;
+	width:100%;
+	margin-top:10px;
+	margin-bottom:10px;
+}
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+
+.explaination {
+	border-bottom: 1px dotted GREEN;
+}
+
+/* override bs4 tooltip*/
+.tooltip-inner {
+     max-width:1000px !important;
+}

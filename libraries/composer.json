@@ -1,0 +1,5 @@
+{
+    "require": {
+        "bitwasp/bitcoin": "^1.0"
+    }
+}

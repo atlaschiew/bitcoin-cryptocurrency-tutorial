@@ -1,0 +1,29 @@
+{
+  "name": "bitwasp/bech32",
+  "description": "Pure (no dependencies) implementation of bech32",
+  "type": "library",
+  "homepage": "https://github.com/bit-wasp/bech32",
+  "license": "Unlicense",
+  "authors": [
+    {
+      "name": "Thomas Kerin",
+      "homepage": "https://thomaskerin.io",
+      "role": "Author"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "BitWasp\\Bech32\\": "src/"
+    },
+    "files": ["src/bech32.php"]
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "BitWasp\\Test\\Bech32\\": "test/"
+    }
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^5.4.0",
+    "squizlabs/php_codesniffer": "^2.0.0"
+  }
+}

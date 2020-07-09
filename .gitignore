@@ -1,0 +1,15 @@
+# Ignore everything:
+*
+
+# Except for these
+!bitwasp/
+!blockchain/
+!media/
+!libraries/
+!.gitignore
+!common.php.sample
+!html_footer.php
+!html_header.php
+!index.php
+!verificationimage.php
+!README.md

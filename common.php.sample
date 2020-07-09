@@ -1,0 +1,315 @@
+<?php
+use BitWasp\Bitcoin\Network\NetworkFactory;
+
+$token = 'someBlockcypherToken';
+
+date_default_timezone_set('UTC');
+
+session_start();
+
+$_BITCOINCLI_CONFIG = ['bitcoincli_rpc_user' => "someRPCuser", 'bitcoincli_rpc_pwd' => "someRPCpassword", 'bitcoincli_rpc_host' => "127.0.0.1"];
+
+$_ELECTRUM_CONFIG = ['electrum_rpc_user' => "someRPCuser",'electrum_rpc_pwd' => "someRPCpassword", 'electrum_rpc_host' => "127.0.0.1"];
+
+function safe_bitcoincli_source($source) {
+	return str_replace(
+		['$bitcoincli_rpc_user = "someRPCuser"', '$bitcoincli_rpc_pwd = "someRPCpassword"', '$bitcoincli_rpc_host = "127.0.0.1"'],
+		['$bitcoincli_rpc_user = "someRPCuser"','$bitcoincli_rpc_pwd = "someRPCpassword"','$bitcoincli_rpc_host = "127.0.0.1"'],
+		$source
+	);
+}
+
+function safe_electrum_source($source) {
+	return str_replace(
+		['$electrum_rpc_user = "someRPCuser"', '$electrum_rpc_pwd = "someRPCpassword"', '$electrum_rpc_host = "127.0.0.1"'],
+		['$electrum_rpc_user = "someRPCuser"','$electrum_rpc_pwd = "someRPCpassword"','$electrum_rpc_host = "127.0.0.1"'],
+		$source
+	);
+}
+function display_capture($content, $sections) {
+	$manylines = [];
+	foreach($sections as $section) {
+		$lines = capture($content,$section);
+		$manylines = array_merge($manylines, $lines);
+	}
+	
+	foreach($manylines as $k=>$manyline) {
+		$manylines[$k] = ltrim($manyline, "");
+	}
+	
+	return htmlentities("<?php \n" . implode("\n", $manylines));
+}
+
+function getNetworkClass($key=null, $network_method = null) {
+	
+	$main_array = array(
+		"btc.main" => array("label"=>"Bitcoin", "class"=>"Bitcoin"), 
+		"bcy.test" => array("label"=>"Blockcypher", "class"=>"Blockcypher"), 
+		"btc.test3"=> array("label"=>"BitcoinTestNet","class"=>"BitcoinTestNet")
+	);
+	
+	if ($network_method) {
+		foreach($main_array as $k=>$network) {
+			$network_class = $network['class'];
+			$network_obj = NetworkFactory::$network_class();
+			
+			$result = call_user_func_array(array($network_obj, $network_method), []);
+			
+			
+			$main_array[$k]['label'] = $network['label'] . " ({$result})";
+		}
+	}
+	
+	
+	return isset($main_array[$key]) ? $main_array[$key] : $main_array;
+}
+
+function capture($content, $blockid=0) {
+	$lines = explode("\n", $content);
+	$valid_lines = [];
+	if (@count($lines)) {
+		
+		$start = false;
+		
+		$open_tag = "//<capture{$blockid}>";
+		$close_tag = "//</capture{$blockid}>";
+		$remove_comment = ['//use BitWasp\\'];
+		foreach($lines as $line) {
+			$line_content = trim($line);
+			
+			if ($line_content == $close_tag OR strstr($line_content, $close_tag)!==false) {
+				$start = false;
+			}
+			
+			if ($start == true)  {
+				
+				if (strpos($line_content, '//use BitWasp')!==false) {
+					$line = substr($line, 2);
+				}
+				
+				$valid_lines[] = $line;
+			}
+			
+			if ($line_content == $open_tag  OR strstr($line_content, $open_tag)!==false) {
+				$start = true;
+			}
+		}
+	}
+	
+	return $valid_lines;
+}
+
+function debug($var) {
+	echo "<Pre>";	
+		print_r($var);
+	echo "</Pre>";
+}
+
+function swapEndianness($hex) {
+    return implode('', array_reverse(str_split($hex, 2)));
+}
+
+function format_1byte_hex($str) {
+	return str_pad($str, 2, "0" , STR_PAD_LEFT);
+}
+
+function http_call( $url, $params = null, $method = 'get' )
+{
+	$user_agent='Mozilla/5.0 (Windows NT 6.1; rv:8.0) Gecko/20100101 Firefox/8.0';
+	
+	if ($method == 'get') {
+		$CURLOPT_CUSTOMREQUEST = 'GET';
+		$CURLOPT_POST = false;
+	} else {
+		$CURLOPT_CUSTOMREQUEST = 'POST';
+		$CURLOPT_POST = true;
+	}
+	
+	//set the content type to application/json
+
+	$options = array(
+
+		CURLOPT_CUSTOMREQUEST  =>$CURLOPT_CUSTOMREQUEST,        //set request type post or get
+		CURLOPT_POST           =>$CURLOPT_POST,        //set to GET
+		CURLOPT_USERAGENT      => $user_agent, //set user agent
+		CURLOPT_RETURNTRANSFER => true,     // return web page
+		CURLOPT_HEADER         => false,    // don't return headers
+		CURLOPT_FOLLOWLOCATION => true,     // follow redirects
+		CURLOPT_ENCODING       => "",       // handle all encodings
+		CURLOPT_AUTOREFERER    => true,     // set referer on redirect
+		CURLOPT_CONNECTTIMEOUT => 120,      // timeout on connect
+		CURLOPT_TIMEOUT        => 120,      // timeout on response
+		CURLOPT_MAXREDIRS      => 10,       // stop after 10 redirects
+	);
+	
+	$has_params = ((is_array($params) AND count($params) > 0) OR (is_string($params) AND strlen($params) > 0));
+	
+	if ($has_params) {
+		
+		$options[ CURLOPT_HTTPHEADER ] = array('Content-Type:application/json');
+		
+		if (is_array($params)) {
+			$payload = json_encode($params);
+		} else {
+			$payload = $params;
+		}
+		$options[CURLOPT_POSTFIELDS ] = $payload;
+		
+	}
+	
+	$ch      = curl_init( $url );
+	curl_setopt_array( $ch, $options );
+	$content = curl_exec( $ch );
+	$err     = curl_errno( $ch );
+	$errmsg  = curl_error( $ch );
+	$header  = curl_getinfo( $ch );
+	curl_close( $ch );
+
+	$header['errno']   = $err;
+	$header['errmsg']  = $errmsg;
+	$header['content'] = $content;
+	return $header;
+}
+
+class DB {
+	public static $conn = null;
+	
+	public static function connect($host, $user, $pass, $dbname = null) {
+		
+		if (@mysqli_ping(self::$conn)) {
+			return array("status"=>true, "errmsg"=>"");
+		}
+		
+		self::$conn = mysqli_connect($host, $user, $pass, $dbname);
+		if (mysqli_connect_errno()) {
+			$errmsg .= ("Failed to connect to MySQL: " . mysqli_connect_error());
+		} else if (!mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT)) {
+			$errmsg .= ("Failed to set mysqli report");
+		} else if (!mysqli_query(self::$conn,"/*master*/ SET autocommit=1")) {
+			$errmsg .= ("Failed to set mysqli autocommit");
+		} else if (!mysqli_query(self::$conn,"/*master*/ SET NAMES 'utf8' COLLATE 'utf8_general_ci'")) {
+			$errmsg .= ("Failed to set charset");
+		}
+		$status = $errmsg ? false : true;
+		return array("status"=>$status, "errmsg"=>$errmsg);
+	}
+	
+	public static function close() {
+		mysqli_close(self::$conn);
+	}
+	
+	public static function result($res,$row=0,$col=0){ 
+		
+		$numrows = mysqli_num_rows($res); 
+		if ($numrows && $row <= ($numrows-1) && $row >=0){
+			mysqli_data_seek($res,$row);
+			$resrow = (is_numeric($col)) ? mysqli_fetch_row($res) : mysqli_fetch_assoc($res);
+			if (isset($resrow[$col])){
+				return $resrow[$col];
+			}
+		}
+		return false;
+	}
+	
+	public static function esc($str) {
+		return mysqli_real_escape_string(self::$conn,$str);
+	}
+	
+	public static function error($sql) {
+		$err = mysqli_error(self::$conn);;
+		if ($err) {
+			return "{$sql}, Error: {$err}";
+		} else {
+			return "";
+		}
+	}
+	
+	public static function beginTransaction() {
+		$result = mysqli_begin_transaction(self::$conn);
+		
+		if (!$result) {
+			throw new mysqli_sql_exception("Unknown reason: begintransaction failure");
+		}
+	}
+	
+	public static function rollback() {
+		$result = mysqli_rollback(self::$conn);
+		if (!$result) {
+			throw new mysqli_sql_exception("Unknown reason: rollback failure");
+		}
+	}
+	
+	public static function commit() {
+		$result = mysqli_commit(self::$conn);
+		if (!$result) {
+			throw new mysqli_sql_exception("Unknown reason: commit failure");
+		}
+	}
+	
+	public static function query($sql) {
+		
+		$r = mysqli_query(self::$conn,$sql);
+		
+		return $r;
+	}
+	
+	public static function insertID() {
+		$insert_id = mysqli_insert_id(self::$conn);
+
+		return $insert_id;
+	}
+	
+	public static function safeIn($arr) {
+		
+		foreach ($arr as &$v) {
+			$v = "'" . self::esc($v) . "'";
+		}
+		
+		return @implode(",", $arr);
+	}
+}
+
+try {
+	$conn_result = DB::connect('localhost', 'someMysqlUser', 'someMysqlPass','someMysqlDb');
+	
+	if (!$conn_result['status']) {
+		die($conn_result['errmsg']);
+	}
+} catch(mysqli_sql_exception $e) {
+	die($e->getMessage());
+}
+
+$r = DB::query("SELECT * FROM explaination");
+$explaination = [];
+while($row = mysqli_fetch_assoc($r)) {
+	$explaination[ $row['explain_keywords'] ] = $row['explain_description'];
+}
+
+$r = DB::query("SELECT * FROM settings");
+$settings = [];
+while($row = mysqli_fetch_assoc($r)) {
+	$settings[ $row['set_k'] ] = $row['set_v'];
+}
+
+header('Content-Type: text/html; charset=utf-8');
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+	if ($_GET['action'] == 'reportus') {
+		try {
+			
+			if(md5($_POST['captcha']) != $_SESSION['CAPTCHA_REPORTUS']){
+				throw new Exception("CAPTCHA verification failed.");
+			} else if (!filter_var($_POST['sender_email'], FILTER_VALIDATE_EMAIL)) {
+				throw new Exception("Sender email is not valid.");
+			} else if (!preg_match('@\/[A-Za-z0-9_]+\.php$@', $_POST['target'])) {
+				throw new Exception("Target is not valid.");
+			} else if (empty(trim($_POST['message']))) {
+				throw new Exception("Message should not be blank.");
+			} 
+			
+			DB::query("INSERT INTO reportus SET report_message='".DB::esc($_POST['message'])."',report_target='".DB::esc($_POST['target'])."',report_cdate='".DB::esc(date("Y-m-d H:i:s", time() + (8 * 3600)))."',report_sender_email='".DB::esc($_POST['sender_email'])."'");
+		} catch (Exception $e) {
+			$errmsg .= "Report Failure. " . $e->getMessage();
+		}
+	}
+}

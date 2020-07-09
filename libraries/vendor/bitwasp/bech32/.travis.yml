@@ -1,0 +1,46 @@
+
+language: php
+
+# only build master branch (and PRs)
+branches:
+  only:
+    - "master"
+
+php:
+  - 5.6
+  - 7.0
+  - 7.1
+  - 7.2
+  - nightly
+
+env:
+  - PHPUNIT=true
+
+dist: trusty
+
+matrix:
+  exclude:
+      # dont want coverage on all runs, will include runs with just PHPUNIT
+    - php: 5.6
+      env: PHPUNIT=true
+
+  include:
+      # add tests without coverage
+      # add extra test runs for php7: coverage, codestyle
+    - php: 5.6
+      env: PHPUNIT=true COVERAGE=true
+    - php: 7.0
+      env: CODE_STYLE=true
+
+install:
+    - composer update
+
+before_script:
+  - if [ "${COVERAGE}" != "true" ] && [ "$TRAVIS_PHP_VERSION" != "nightly" ]; then phpenv config-rm xdebug.ini && echo "xdebug disabled"; fi
+
+script:
+  - if [ "$PHPUNIT" = "true" ]; then vendor/bin/phpunit; fi
+  - if [ "$CODE_STYLE" = "true" ]; then vendor/bin/phpcs -n --standard=PSR1,PSR2 src test && echo "Code style OK"; fi
+
+after_script:
+  - if [ "${COVERAGE}" = "true" ]; then wget https://scrutinizer-ci.com/ocular.phar && php ocular.phar code-coverage:upload --format=php-clover build/coverage.clover; fi
