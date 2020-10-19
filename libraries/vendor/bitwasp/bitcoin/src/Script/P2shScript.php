@@ -34,7 +34,6 @@ class P2shScript extends Script
     public function __construct(ScriptInterface $script, Opcodes $opcodes = null)
     {
         if ($script instanceof WitnessScript) {
-			
             $script = $script->getOutputScript();
         } else if ($script instanceof self) {
             throw new P2shScriptException("Cannot nest P2SH scripts.");

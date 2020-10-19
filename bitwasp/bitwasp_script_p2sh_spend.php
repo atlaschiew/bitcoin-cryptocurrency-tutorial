@@ -231,7 +231,7 @@ if ($errmsg) {
 							<?php echo 
 							array_reduce(
 								array_keys($_POST),
-								function($carry, $key) use ($_POST) { 
+								function($carry, $key) { 
 									if (preg_match('/^utxo_amount_/', $key)) {
 										return $carry + (int)$_POST[$key];
 									} else {					

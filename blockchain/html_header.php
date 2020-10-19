@@ -25,12 +25,13 @@
     <div class="bg-light " id="sidebar-wrapper">
 		<div class="sidebar-heading" onmouseover="this.style.cursor='pointer'" onclick="document.location='<?php echo $_SERVER['HTTPS'] ? 'https' : 'http'?>://<?php echo $_SERVER['HTTP_HOST']?>';">btcschools.net</div>
 	  
-		<div class="list-group-header">Blockchain Intro</div>
+		<div class="list-group-header">Bitcoin Chain Intro</div>
 		<div class="list-group list-group-flush">
 			<a href="blockchain_start_blockchain.php" class="list-group-item list-group-item-action bg-light">Blockchain</a>
-			<a href="blockchain_start_key.php" class="list-group-item list-group-item-action bg-light">Key & Definition</a>
+			<a href="blockchain_start_key.php" class="list-group-item list-group-item-action bg-light">Private/Public Key</a>
+			<a href="blockchain_merkle_root.php" class="list-group-item list-group-item-action bg-light">Merkle Root</a>
 		</div>
-		<div class="list-group-header">Blockchain Tools</div>
+		<div class="list-group-header">Bitcoin Chain Tools</div>
 		<div class="list-group list-group-flush">
 			<a href="blockchain_tool_utxo.php" class="list-group-item list-group-item-action bg-light">Blockchain Get UTXO</a>
 			<a href="blockchain_tool_txhex.php" class="list-group-item list-group-item-action bg-light">Blockchain Get Tx Hex</a>

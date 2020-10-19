@@ -26,11 +26,22 @@
     <div class="bg-light " id="sidebar-wrapper">
 		<div class="sidebar-heading" onmouseover="this.style.cursor='pointer'" onclick="document.location='<?php echo $_SERVER['HTTPS'] ? 'https' : 'http'?>://<?php echo $_SERVER['HTTP_HOST']?>';">btcschools.net</div>
 	  
-		<div class="list-group-header">PHP</div>
+		<div class="list-group-header">PHP Bitcoin</div>
 		<div class="list-group list-group-flush">
-			<a href="/blockchain" class="list-group-item list-group-item-action bg-light">Learn Blockchain</a>
+			<a href="/blockchain" class="list-group-item list-group-item-action bg-light">Learn Bitcoin Chain</a>
 			<a href="/bitwasp" class="list-group-item list-group-item-action bg-light">Learn Bitwasp</a>
-			<a href="/blockchain" class="list-group-item list-group-item-action bg-light">Blockchain Tools</a>
+			<a href="/blockchain" class="list-group-item list-group-item-action bg-light">Bitcoin Chain Tools</a>
+			
+		</div>
+		
+		
+		<div class="list-group-header">PHP Ethereum</div>
+		<div class="list-group list-group-flush">
+			
+			<a href="/ethereum" class="list-group-item list-group-item-action bg-light">Learn Ethereum</a>
+			<?php if(0) {?><a href="/blockchain" class="list-group-item list-group-item-action bg-light">Ethereum Chain Tools</a><?php } ?>
+			
+			<a href="/eth_smartcontract" class="list-group-item list-group-item-action bg-light">Learn Smart Contract</a>
 		</div>
     </div>
     <!-- /#sidebar-wrapper -->
@@ -48,7 +59,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent" >
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
 			<li class="nav-item">
-              <a class="nav-link" href="/blockchain">Blockchain</a>
+              <a class="nav-link" href="/blockchain">Bitcoin Chain</a>
             </li>
             <li class="nav-item active">
               <a class="nav-link" href="/bitwasp">Bitwasp</a>

@@ -198,8 +198,6 @@ class ScriptCreator
      */
     public function getScript(): ScriptInterface
     {
-		$bf = new Buffer($this->script);
-		
         return new Script(new Buffer($this->script), $this->opcodes);
     }
 }

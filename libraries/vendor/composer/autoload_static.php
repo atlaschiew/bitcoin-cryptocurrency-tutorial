@@ -7,6 +7,7 @@ namespace Composer\Autoload;
 class ComposerStaticInit71c689a9972c0c641f5573ef10d7c2df
 {
     public static $files = array (
+        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         'a626201e4406003b96eee958a069f504' => __DIR__ . '/..' . '/bitwasp/bech32/src/bech32.php',
         '7cfce27594bbc1dd0dbf7e3eb5cd4911' => __DIR__ . '/..' . '/bitwasp/bitcoin/src/Script/functions.php',
     );
@@ -16,13 +17,34 @@ class ComposerStaticInit71c689a9972c0c641f5573ef10d7c2df
         array (
             'lastguest\\' => 10,
         ),
+        'k' => 
+        array (
+            'kornrunner\\' => 11,
+        ),
+        'W' => 
+        array (
+            'Web3p\\RLP\\' => 10,
+        ),
+        'S' => 
+        array (
+            'Symfony\\Polyfill\\Mbstring\\' => 26,
+        ),
         'M' => 
         array (
             'Mdanter\\Ecc\\' => 12,
         ),
+        'H' => 
+        array (
+            'HttpClient\\' => 11,
+        ),
         'F' => 
         array (
             'FG\\' => 3,
+        ),
+        'E' => 
+        array (
+            'EthereumRPC\\' => 12,
+            'ERC20\\' => 6,
         ),
         'C' => 
         array (
@@ -41,13 +63,39 @@ class ComposerStaticInit71c689a9972c0c641f5573ef10d7c2df
         array (
             0 => __DIR__ . '/..' . '/lastguest/murmurhash/src/lastguest',
         ),
+        'kornrunner\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kornrunner/ethereum-offline-raw-tx/src',
+            1 => __DIR__ . '/..' . '/kornrunner/keccak/src',
+            2 => __DIR__ . '/..' . '/kornrunner/secp256k1/src',
+        ),
+        'Web3p\\RLP\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/web3p/rlp/src',
+        ),
+        'Symfony\\Polyfill\\Mbstring\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
+        ),
         'Mdanter\\Ecc\\' => 
         array (
             0 => __DIR__ . '/..' . '/mdanter/ecc/src',
         ),
+        'HttpClient\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/furqansiddiqui/http-client/src',
+        ),
         'FG\\' => 
         array (
             0 => __DIR__ . '/..' . '/fgrosse/phpasn1/lib',
+        ),
+        'EthereumRPC\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/furqansiddiqui/ethereum-rpc/src',
+        ),
+        'ERC20\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/furqansiddiqui/erc20-php/src',
         ),
         'Composer\\Semver\\' => 
         array (

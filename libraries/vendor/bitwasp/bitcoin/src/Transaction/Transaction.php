@@ -94,7 +94,6 @@ class Transaction extends Serializable implements TransactionInterface
     public function getTxHash(): BufferInterface
     {
         if (null === $this->hash) {
-			
             $this->hash = Hash::sha256d($this->getBaseSerialization());
         }
         return $this->hash;

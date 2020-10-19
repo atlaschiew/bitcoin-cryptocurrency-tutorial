@@ -183,7 +183,7 @@ class Parser
 
     /**
      * Take an array containing serializable objects.
-     * @param SerializableInterface[]|BufferInterface[] $serializable
+     * @param array<mixed|SerializableInterface|BufferInterface> $serializable
      * @return Parser
      */
     public function writeArray(array $serializable): Parser

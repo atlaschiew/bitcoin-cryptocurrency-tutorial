@@ -32,7 +32,6 @@ class Checker extends CheckerBase
                 $hasher = new V1Hasher($this->transaction, $this->amount);
             } else {
                 $hasher = new Hasher($this->transaction);
-				
             }
 
             $hash = $hasher->calculate($script, $this->nInput, $sigHashType);

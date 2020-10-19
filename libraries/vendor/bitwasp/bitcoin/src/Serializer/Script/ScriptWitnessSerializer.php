@@ -27,8 +27,6 @@ class ScriptWitnessSerializer
     {
         $this->varstring = Types::varstring();
         $this->varint = Types::varint();
-		
-		
     }
 
     /**
@@ -42,7 +40,7 @@ class ScriptWitnessSerializer
         for ($j = 0; $j < $size; $j++) {
             $entries[] = $this->varstring->read($parser);
         }
-		
+
         return new ScriptWitness(...$entries);
     }
 

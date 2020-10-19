@@ -1,23 +1,29 @@
-language: php
-
-php:
-  - 7
-  - 7.1
-  - 7.2
-  - 7.3
-  - 7.4snapshot
-
 dist: trusty
+
+jobs:
+  include:
+    - language: php
+      php: 7
+    - language: php
+      php: 7.1
+    - language: php
+      php: 7.2
+    - language: php
+      php: 7.3
+    - language: php
+      php: 7.4snapshot
+      env: PHPSTAN=true
 
 before_install:
   - composer selfupdate
 
 install:
   - composer install --prefer-source --dev
+  - sh -c 'if [ "$PHPSTAN" != "" ]; then composer require phpstan/phpstan v0.11.x; fi;'
 
 script:
   - php vendor/bin/phpunit
-  - vendor/bin/phpstan analyze -l 4 src tests examples
+  - sh -c 'if [ "$PHPSTAN" != "" ]; then vendor/bin/phpstan analyze -l 4 src tests examples; fi;'
   - php vendor/bin/phpcs -n --standard=PSR1,PSR2 --report=full src/ tests/ examples/
   - ./validate_examples.sh
 

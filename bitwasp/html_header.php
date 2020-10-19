@@ -47,6 +47,10 @@
 			<a href="bitwasp_script_p2sh_locktime.php" class="list-group-item list-group-item-action bg-light">Bitwasp P2SH.LOCKTIME</a>
 		</div>
 		
+		<div class="list-group-header">Bitwasp HD Wallet</div>
+		<div class="list-group list-group-flush">
+			<a href="bitwasp_hd_mnemonic_code.php" class="list-group-item list-group-item-action bg-light">Bitwasp Mnemonic Code</a>
+		</div>
 		
 		<div class="list-group-header">Bitwasp Tools</div>
 		<div class="list-group list-group-flush">
@@ -62,13 +66,15 @@
 			
 		</div>
 	  
-	  
+		<div class="list-group-header">Bitwasp Others</div>
+		<div class="list-group list-group-flush">
+			<a href="bitwasp_cancel_tx.php" class="list-group-item list-group-item-action bg-light">Bitwasp Cancel Tx (RBF)</a>
+		</div>
+		
 		<div class="list-group-header">Blockchain Tools</div>
 		<div class="list-group list-group-flush">
 			<a href="../blockchain/blockchain_tool_utxo.php" class="list-group-item list-group-item-action bg-light">Blockchain Get UTXO</a>
-			
 			<a href="../blockchain/blockchain_tool_txhex.php" class="list-group-item list-group-item-action bg-light">Blockchain Get Tx Hex</a>
-			
 			<a href="../blockchain/blockchain_tool_mtp.php" class="list-group-item list-group-item-action bg-light">Blockchain Median Time Past</a>
 		</div>
 				

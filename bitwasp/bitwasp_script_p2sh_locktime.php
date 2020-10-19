@@ -8,7 +8,13 @@ include_once("html_header.php");
 ?>
 <h2 class="mt-3">Bitwasp P2SH.LOCKTIME</h2>
 <hr/>
-A script level locktime mechanism aims to restrict spending of bitcoin until condition reach future time or block height. Today, it is commonly applied in Hash Time-Locked Contracts (HTLC).
+	<p>
+	A script level locktime mechanism aims to restrict spending of bitcoin until condition reach future time or block height. Today, it is commonly applied in Hash Time-Locked Contracts (HTLC).
+	</p>
+	
+	<p>
+	CLTV and CSV are script level timelocks, unlike nLocktime and nSequence which are transaction and input level timelocks. CLTV or CSV are specified in the output locking script, and when spending those outputs, the user must set the nLocktime or the nSequence value to satisfy the locking condition.
+	</p>
 <hr/>
 
 P2SH.CheckLockTimeVerify (CLTV)
@@ -40,7 +46,7 @@ P2SH.CheckSequenceVerify (CSV)
 	<table>
 		
 		<tr>
-			<td>ScriptPubKey</td><td>: <?php echo htmlentities("<expiry time> OP_CHECKLOCKTIMEVERIFY OP_DROP OP_DUP OP_HASH160 <pubKeyHash> OP_EQUALVERIFY OP_CHECKSIG");?></td>
+			<td>ScriptPubKey</td><td>: <?php echo htmlentities("<expiry time> OP_CHECKSEQUENCEVERIFY OP_DROP OP_DUP OP_HASH160 <pubKeyHash> OP_EQUALVERIFY OP_CHECKSIG");?></td>
 		</tr>
 		<tr>
 			<td>ScriptSig</td><td>: <?php echo htmlentities("<Signature> <PublicKey>")?></td>

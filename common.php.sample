@@ -292,24 +292,3 @@ while($row = mysqli_fetch_assoc($r)) {
 }
 
 header('Content-Type: text/html; charset=utf-8');
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-	if ($_GET['action'] == 'reportus') {
-		try {
-			
-			if(md5($_POST['captcha']) != $_SESSION['CAPTCHA_REPORTUS']){
-				throw new Exception("CAPTCHA verification failed.");
-			} else if (!filter_var($_POST['sender_email'], FILTER_VALIDATE_EMAIL)) {
-				throw new Exception("Sender email is not valid.");
-			} else if (!preg_match('@\/[A-Za-z0-9_]+\.php$@', $_POST['target'])) {
-				throw new Exception("Target is not valid.");
-			} else if (empty(trim($_POST['message']))) {
-				throw new Exception("Message should not be blank.");
-			} 
-			
-			DB::query("INSERT INTO reportus SET report_message='".DB::esc($_POST['message'])."',report_target='".DB::esc($_POST['target'])."',report_cdate='".DB::esc(date("Y-m-d H:i:s", time() + (8 * 3600)))."',report_sender_email='".DB::esc($_POST['sender_email'])."'");
-		} catch (Exception $e) {
-			$errmsg .= "Report Failure. " . $e->getMessage();
-		}
-	}
-}

@@ -30,6 +30,7 @@ include_once("html_iframe_header.php");
 	<h6 class="mt-3">To success spend of OP_CLTV, following requirements must meet:</h6>
 	
 	<ul>
+		<li>nLocktime is required</li>
 		<li>if nLockTime typed datetime detected, then value must satisfy &lt; chain's MTP.</li>
 		<li>if nLockTime typed block height detected, then value must satisfy &lt; chain's block height + 1.</li>	
 		<li>if OP_CLTV detected, then its time parameter must satisfy &gt;= nLockTime.</li>
@@ -286,7 +287,7 @@ if ($errmsg) {
 							<?php echo 
 							array_reduce(
 								array_keys($_POST),
-								function($carry, $key) use ($_POST) { 
+								function($carry, $key) { 
 									if (preg_match('/^utxo_amount_/', $key)) {
 										return $carry + (int)$_POST[$key];
 									} else {                    

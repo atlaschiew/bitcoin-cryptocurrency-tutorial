@@ -7,8 +7,14 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'lastguest\\' => array($vendorDir . '/lastguest/murmurhash/src/lastguest'),
+    'kornrunner\\' => array($vendorDir . '/kornrunner/ethereum-offline-raw-tx/src', $vendorDir . '/kornrunner/keccak/src', $vendorDir . '/kornrunner/secp256k1/src'),
+    'Web3p\\RLP\\' => array($vendorDir . '/web3p/rlp/src'),
+    'Symfony\\Polyfill\\Mbstring\\' => array($vendorDir . '/symfony/polyfill-mbstring'),
     'Mdanter\\Ecc\\' => array($vendorDir . '/mdanter/ecc/src'),
+    'HttpClient\\' => array($vendorDir . '/furqansiddiqui/http-client/src'),
     'FG\\' => array($vendorDir . '/fgrosse/phpasn1/lib'),
+    'EthereumRPC\\' => array($vendorDir . '/furqansiddiqui/ethereum-rpc/src'),
+    'ERC20\\' => array($vendorDir . '/furqansiddiqui/erc20-php/src'),
     'Composer\\Semver\\' => array($vendorDir . '/composer/semver/src'),
     'BitWasp\\Buffertools\\' => array($vendorDir . '/bitwasp/buffertools/src/Buffertools'),
     'BitWasp\\Bitcoin\\' => array($vendorDir . '/bitwasp/bitcoin/src'),

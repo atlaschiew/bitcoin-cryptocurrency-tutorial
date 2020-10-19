@@ -835,7 +835,7 @@ class InputSigner implements InputSignerInterface
         if (!$this->signatureChecker->isDefinedHashtype($sigHashType)) {
             throw new SignerException('Invalid sigHashType requested');
         }
-		
+
         return $this->signatureChecker->getSigHash($scriptCode, $sigHashType, $sigVersion);
     }
 
@@ -863,9 +863,7 @@ class InputSigner implements InputSignerInterface
      */
     private function calculateSignature(PrivateKeyInterface $key, ScriptInterface $scriptCode, int $sigHashType, int $sigVersion)
     {
-		
         $hash = $this->calculateSigHashUnsafe($scriptCode, $sigHashType, $sigVersion);
-		
         return new TransactionSignature($this->ecAdapter, $key->sign($hash), $sigHashType);
     }
 
@@ -949,7 +947,6 @@ class InputSigner implements InputSignerInterface
      */
     public function signStep(int $stepIdx, PrivateKeyInterface $privateKey, int $sigHashType = SigHash::ALL)
     {
-			
         if (!array_key_exists($stepIdx, $this->steps)) {
             throw new \RuntimeException("Unknown step index");
         }
@@ -968,8 +965,6 @@ class InputSigner implements InputSignerInterface
         }
 
         $signScript = $this->fqs->signScript()->getScript();
-		
-		
         if ($checksig->getType() === ScriptType::P2PK) {
             if (!$this->pubKeySerializer->serialize($privateKey->getPublicKey())->equals($checksig->getSolution())) {
                 throw new \RuntimeException('Signing with the wrong private key');
@@ -977,8 +972,6 @@ class InputSigner implements InputSignerInterface
 
             if (!$checksig->hasSignature(0)) {
                 $signature = $this->calculateSignature($privateKey, $signScript, $sigHashType, $this->fqs->sigVersion());
-				
-				
                 $checksig->setSignature(0, $signature);
             }
         } else if ($checksig->getType() === ScriptType::P2PKH) {
@@ -988,10 +981,7 @@ class InputSigner implements InputSignerInterface
             }
 
             if (!$checksig->hasSignature(0)) {
-                $signature = $this->calculateSignature($privateKey, $signScript,
-				$sigHashType, $this->fqs->sigVersion());
-				
-				
+                $signature = $this->calculateSignature($privateKey, $signScript, $sigHashType, $this->fqs->sigVersion());
                 $checksig->setSignature(0, $signature);
             }
 
@@ -1000,7 +990,6 @@ class InputSigner implements InputSignerInterface
             }
         } else if ($checksig->getType() === ScriptType::MULTISIG) {
             $signed = false;
-			
             foreach ($checksig->getKeys() as $keyIdx => $publicKey) {
                 if (!$checksig->hasSignature($keyIdx)) {
                     if ($publicKey instanceof PublicKeyInterface && $privateKey->getPublicKey()->equals($publicKey)) {
@@ -1031,7 +1020,6 @@ class InputSigner implements InputSignerInterface
      */
     public function sign(PrivateKeyInterface $privateKey, int $sigHashType = SigHash::ALL)
     {
-		
         return $this->signStep(0, $privateKey, $sigHashType);
     }
 
@@ -1055,7 +1043,7 @@ class InputSigner implements InputSignerInterface
         }
 
         $sig = $this->serializeSignatures();
-		
+
         // Take serialized signatures, and use mutator to add this inputs sig data
         $mutator = TransactionFactory::mutate($this->tx);
         $mutator->inputsMutator()[$this->nInput]->script($sig->getScriptSig());
@@ -1073,7 +1061,6 @@ class InputSigner implements InputSignerInterface
             $mutator->witness($witness);
         }
 
-		
         return $consensus->verify($mutator->done(), $this->txOut->getScript(), $flags, $this->nInput, $this->txOut->getValue());
     }
 
@@ -1085,19 +1072,16 @@ class InputSigner implements InputSignerInterface
         $results = [];
         for ($i = 0, $n = count($this->steps); $i < $n; $i++) {
             $step = $this->steps[$i];
-			
+
             if ($step instanceof Conditional) {
-				
                 $results[] = $step->serialize();
             } else if ($step instanceof Checksig) {
-				
                 if ($step->isRequired()) {
                     if (count($step->getSignatures()) === 0) {
                         break;
                     }
                 }
 
-				
                 $results[] = $step->serialize($this->txSigSerializer, $this->pubKeySerializer);
 
                 if (!$step->isFullySigned()) {
@@ -1112,7 +1096,7 @@ class InputSigner implements InputSignerInterface
                 $values[] = $value;
             }
         }
-		
+
         return new Stack($values);
     }
 
@@ -1123,7 +1107,6 @@ class InputSigner implements InputSignerInterface
      */
     public function serializeSignatures(): SigValues
     {
-		
         return $this->fqs->encodeStack($this->serializeSteps());
     }
 

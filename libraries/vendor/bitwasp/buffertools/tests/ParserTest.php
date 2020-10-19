@@ -103,8 +103,7 @@ class ParserTest extends TestCase
         // and length is zero.
 
         $parser = new Parser();
-        $data = $parser->readBytes(0);
-        $this->assertFalse(!!$data);
+        $parser->readBytes(0);
     }
     /**
      * @expectedException \BitWasp\Buffertools\Exceptions\ParserOutOfRange

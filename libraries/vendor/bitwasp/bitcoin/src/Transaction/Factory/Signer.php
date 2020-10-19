@@ -76,8 +76,6 @@ class Signer
         $this->tx = $tx;
         $this->ecAdapter = $ecAdapter ?: Bitcoin::getEcAdapter();
         $this->sigSerializer = new TransactionSignatureSerializer(EcSerializer::getSerializer(DerSignatureSerializerInterface::class, true, $this->ecAdapter));
-		
-		
         $this->pubKeySerializer = EcSerializer::getSerializer(PublicKeySerializerInterface::class, true, $this->ecAdapter);
         $this->checkerCreator = new CheckerCreator($this->ecAdapter, $this->sigSerializer, $this->pubKeySerializer);
     }
@@ -158,24 +156,16 @@ class Signer
         }
 
         if (!isset($this->signatureCreator[$nIn])) {
-		
-			
             $checker = $this->checkerCreator->create($this->tx, $nIn, $txOut);
-			
-			
             $input = new InputSigner($this->ecAdapter, $this->tx, $nIn, $txOut, $signData, $checker, $this->sigSerializer, $this->pubKeySerializer);
-			
-			
-			
             $input->padUnsignedMultisigs($this->padUnsignedMultisigs);
             $input->tolerateInvalidPublicKey($this->tolerateInvalidPublicKey);
             $input->allowComplexScripts($this->allowComplexScripts);
             $input->extract();
 
-			
             $this->signatureCreator[$nIn] = $input;
         }
-		
+
         return $this->signatureCreator[$nIn];
     }
 
@@ -189,8 +179,6 @@ class Signer
         foreach ($mutable->inputsMutator() as $idx => $input) {
             if (isset($this->signatureCreator[$idx])) {
                 $sig = $this->signatureCreator[$idx]->serializeSignatures();
-				
-				
                 $input->script($sig->getScriptSig());
                 $witnesses[$idx] = $sig->getScriptWitness();
             }

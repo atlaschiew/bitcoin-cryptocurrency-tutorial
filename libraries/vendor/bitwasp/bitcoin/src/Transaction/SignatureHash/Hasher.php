@@ -40,7 +40,6 @@ class Hasher extends SigHash
 
         $serializer = new TxSigHashSerializer($this->tx, $txOutScript, $inputToSign, $sighashType);
         $sigHashData = new Buffer($serializer->serializeTransaction() . pack('V', $sighashType));
-		
         return Hash::sha256d($sigHashData);
     }
 }

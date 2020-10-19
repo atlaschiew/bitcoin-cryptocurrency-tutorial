@@ -14,15 +14,6 @@ class NetworkFactory
     {
         return new Networks\Bitcoin();
     }
-	
-	/**
-     * @return NetworkInterface
-     * @throws \Exception
-     */
-    public static function blockcypher(): NetworkInterface
-    {
-        return new Networks\Blockcypher();
-    }
 
     /**
      * @return NetworkInterface

@@ -40,7 +40,6 @@ class ScriptHashAddress extends Base58Address
      */
     public function getScriptPubKey(): ScriptInterface
     {
-		
         return ScriptFactory::scriptPubKey()->payToScriptHash($this->getHash());
     }
 }

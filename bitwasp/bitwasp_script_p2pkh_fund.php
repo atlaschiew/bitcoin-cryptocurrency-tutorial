@@ -95,7 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			
 			//chiew continue here tmr
 			$input = $signer->input($nIn, $txOutput);
-			var_dump($input->verify());
+			
 		}
 		
 		

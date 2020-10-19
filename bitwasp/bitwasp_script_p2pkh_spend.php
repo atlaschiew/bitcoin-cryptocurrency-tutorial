@@ -16,6 +16,7 @@ include_once "../libraries/vendor/autoload.php";
 $no_of_inputs = 10;
 $no_of_outputs = 10;
 
+
 if ($_SERVER['REQUEST_METHOD'] == 'GET' AND $_GET['ajax'] == '1') {
 	$data = [];
 	if (!ctype_xdigit($_GET['utx'])) {
@@ -255,7 +256,7 @@ if ($errmsg) {
 							<?php echo 
 							array_reduce(
 								array_keys($_POST),
-								function($carry, $key) use ($_POST) { 
+								function($carry, $key) { 
 									if (preg_match('/^utxo_amount_/', $key)) {
 										return $carry + (int)$_POST[$key];
 									} else {                    
