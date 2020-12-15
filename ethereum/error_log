@@ -62,3 +62,15 @@ Stack trace:
 #1 {main}
   thrown in /home/unblockathonmadx/public_html/libraries/vendor/web3p/rlp/src/Buffer.php on line 138
 [15-Oct-2020 06:46:22 UTC] PHP Warning:  file_get_contents(eth_contract_address_form.php): failed to open stream: No such file or directory in /home/unblockathonmadx/public_html/ethereum/eth_address.php on line 71
+[27-Nov-2020 06:20:10 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getPublicKey() on null in /home/unblockathonmadx/public_html/ethereum/eth_address_form.php:29
+Stack trace:
+#0 {main}
+  thrown in /home/unblockathonmadx/public_html/ethereum/eth_address_form.php on line 29
+[27-Nov-2020 11:39:42 UTC] PHP Warning:  Illegal string offset 'type' in /home/unblockathonmadx/public_html/ethereum/eth_abi_data_encoding_form.php on line 205
+[27-Nov-2020 11:39:42 UTC] PHP Warning:  Illegal string offset 'type' in /home/unblockathonmadx/public_html/ethereum/eth_abi_data_encoding_form.php on line 205
+[27-Nov-2020 11:39:47 UTC] PHP Warning:  Illegal string offset 'type' in /home/unblockathonmadx/public_html/ethereum/eth_abi_data_encoding_form.php on line 205
+[27-Nov-2020 11:39:47 UTC] PHP Warning:  Illegal string offset 'type' in /home/unblockathonmadx/public_html/ethereum/eth_abi_data_encoding_form.php on line 205
+[07-Dec-2020 08:37:07 UTC] PHP Parse error:  syntax error, unexpected '(', expecting variable (T_VARIABLE) or '{' or '$' in /home/unblockathonmadx/public_html/ethereum/eth_abi_data_encoding_form.php on line 446
+[07-Dec-2020 08:37:08 UTC] PHP Parse error:  syntax error, unexpected '(', expecting variable (T_VARIABLE) or '{' or '$' in /home/unblockathonmadx/public_html/ethereum/eth_abi_data_encoding_form.php on line 446
+[07-Dec-2020 08:37:10 UTC] PHP Parse error:  syntax error, unexpected '(', expecting variable (T_VARIABLE) or '{' or '$' in /home/unblockathonmadx/public_html/ethereum/eth_abi_data_encoding_form.php on line 446
+[07-Dec-2020 08:37:12 UTC] PHP Parse error:  syntax error, unexpected '(', expecting variable (T_VARIABLE) or '{' or '$' in /home/unblockathonmadx/public_html/ethereum/eth_abi_data_encoding_form.php on line 446

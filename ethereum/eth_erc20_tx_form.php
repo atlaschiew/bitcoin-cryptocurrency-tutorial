@@ -1,20 +1,34 @@
 <?php 
 use kornrunner\Ethereum\Transaction;
 use EthereumRPC\Contracts;
+use kornrunner\Keccak;
 
 include_once "../libraries/vendor/autoload.php";
 include_once("html_iframe_header.php");
 
 define("GWEI_TO_WEI",'1000000000');
 
+function bcdechex($dec) {
+
+	$last = bcmod($dec, 16);
+	$remain = bcdiv(bcsub($dec, $last), 16);
+
+	if($remain == 0) {
+		return dechex($last);
+	} else {
+		return bcdechex($remain).dechex($last);
+	}
+	
+}
+
 $support_chains = ['1'=>"Ethereum Mainnet", '3'=>"Ethereum Testnet Ropsten"];
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     try {
 		
-		$nonce = dechex($_POST['nonce']);
-		$gasPrice = dechex(bcmul($_POST['gas_price'],GWEI_TO_WEI, 18));
-		$gasLimit = dechex($_POST['gas_limit']);
+		$nonce = bcdechex($_POST['nonce']);
+		$gasPrice = bcdechex(bcmul($_POST['gas_price'],GWEI_TO_WEI, 18));
+		$gasLimit = bcdechex($_POST['gas_limit']);
 		$to = $_POST['contract_addr'];
 		$amount = "0";
 		
@@ -28,6 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		
 		$transaction = new Transaction ($nonce, $gasPrice, $gasLimit, $to, $amount,$data);
 		$rawTx = $transaction->getRaw($_POST['privkey'], $_POST['chain']);
+		$txHash = Keccak::hash(hex2bin($rawTx), 256);
     ?>
        <div class="alert alert-success">
 			<h6 class="mt-3">Final TX Hex</h6>
@@ -52,6 +67,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			<h6 class="mt-3">Data (Hex)</h6>
 			<textarea class="form-control" rows="5" id="comment" readonly><?php echo $data;?></textarea>
 			
+			<h6 class="mt-3">TX Hash</h6>
+			<input class="form-control" readonly value="<?php echo $txHash?>"/>
 		</div>
 <?php 
     } catch (Exception $e) {

@@ -282,6 +282,7 @@ if ($errmsg) {
 }
 
 ?>
+
 <form id='this_form' action='?action=submit' method='post'>
 
 	<div class="form-group">
@@ -290,7 +291,7 @@ if ($errmsg) {
 				var self = $(this);
 				var form = self.closest('form');
 				$('p#args_panel',form).empty();
-				
+				$('p#args_panel',form).html('');
 				$.ajax({
 					url: '?ajax=1&action=get_args', 
 					type: 'post',
@@ -359,22 +360,7 @@ if ($errmsg) {
 	<div class="form-group">
         <label for="args">Function Arguments:</label>
 		<p id='args_panel'>
-			<?php
 			
-			if ($_GET['action'] == 'submit') {
-				if (@count($ajaxData['args']) > 0) {
-					foreach($ajaxData['args'] as $k=>$arg) {
-					?>
-						<div class='form-group'><?php echo $arg?> :<input class='form-control' type='text' name='args[]' value='<?php echo $_POST['args'][$k]?>'/></div>
-					<?php
-					}
-				} else {
-					echo "&nbsp;&nbsp;&nbsp;&nbsp;No arguments";
-				}
-			} else {
-				echo "&nbsp;&nbsp;&nbsp;&nbsp;Please select a function above ...";
-			}
-			?>
 		</p>
     </div>
 	
@@ -446,5 +432,23 @@ if ($errmsg) {
 	
     <input type='submit' class="btn btn-success btn-block"/>
 </form>
+<script>
+<?php
+
+if ($_GET['action'] == 'submit') {
+	if (@count($ajaxData['args']) > 0) {
+		foreach($ajaxData['args'] as $k=>$arg) {
+		?>
+			$('p#args_panel').append('<div class=\'form-group\'><?php echo $arg?>:<input class=\'form-control\' type=\'text\' name=\'args[]\' value=\'<?php echo $_POST['args'][$k]?>\'/></div>');
+		<?php
+		}
+	} else {
+	?>
+		$('p#args_panel').html('&nbsp;&nbsp;&nbsp;&nbsp;No arguments');
+	<?php
+	}
+} 
+?>
+</script>
 <?php
 include_once("html_iframe_footer.php");

@@ -34,7 +34,6 @@
 			
 		</div>
 		
-		
 		<div class="list-group-header">PHP Ethereum</div>
 		<div class="list-group list-group-flush">
 			
@@ -42,6 +41,13 @@
 			<?php if(0) {?><a href="/blockchain" class="list-group-item list-group-item-action bg-light">Ethereum Chain Tools</a><?php } ?>
 			
 			<a href="/eth_smartcontract" class="list-group-item list-group-item-action bg-light">Learn Smart Contract</a>
+		</div>
+		
+		<div class="list-group-header">PHP Tron</div>
+		<div class="list-group list-group-flush">
+			
+			<a href="/tron" class="list-group-item list-group-item-action bg-light">Learn Tron</a>
+	
 		</div>
     </div>
     <!-- /#sidebar-wrapper -->

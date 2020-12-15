@@ -51,6 +51,9 @@
 		<div class="list-group list-group-flush">
 			<a href="bitwasp_hd_mnemonic_code.php" class="list-group-item list-group-item-action bg-light">Bitwasp Mnemonic Code</a>
 		</div>
+		<div class="list-group list-group-flush">
+			<a href="bitwasp_hd_derivation_path.php" class="list-group-item list-group-item-action bg-light">Bitwasp Derivation Paths</a>
+		</div>
 		
 		<div class="list-group-header">Bitwasp Tools</div>
 		<div class="list-group list-group-flush">

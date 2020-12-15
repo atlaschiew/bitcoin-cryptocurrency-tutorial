@@ -11,7 +11,7 @@
 					<div class="row">
 						<div class="col-sm-3"><h5>Tutorials</h5></div>
 						<div class="col-sm-3"><h5>About Us</h5>
-							<small>Contents have been open source in <a target="_blank" href="https://github.com/atlaschiew/btcschools">GITHUB</a>.</small>
+							<small>Contents have been open source in <a target="_blank" href="https://github.com/atlaschiew/btcschools">GITHUB</a>. Please give me a &#x2B50; if you found this helpful :)</small>
 						</div>
 						<div class="col-sm-3"><h5>Community</h5>
 							<small>Problem? Raise me a <a href="https://github.com/atlaschiew/btcschools/issues/new">new issue</a>.</small>
@@ -20,7 +20,7 @@
 						<div class="col-sm-3">
 							<h5>Support Us</h5>
 						
-							<small>if you found this useful, please support us some coins.</small>
+							<small>Buy me a coffee. so i can spend more nights for this :)</small>
 							
 							<div class="row">
 								<div class="col-sm-6">

@@ -1,11 +1,25 @@
 <?php 
 use kornrunner\Ethereum\Transaction;
+use kornrunner\Keccak;
 
 include_once "../libraries/vendor/autoload.php";
 include_once("html_iframe_header.php");
 
 define("GWEI_TO_WEI",'1000000000');
 define("ETH_TO_WEI",'1000000000000000000');
+
+function bcdechex($dec) {
+
+	$last = bcmod($dec, 16);
+	$remain = bcdiv(bcsub($dec, $last), 16);
+
+	if($remain == 0) {
+		return dechex($last);
+	} else {
+		return bcdechex($remain).dechex($last);
+	}
+	
+}
 
 $support_chains = ['1'=>"Ethereum Mainnet", '3'=>"Ethereum Testnet Ropsten"];
 
@@ -23,11 +37,11 @@ foreach($_REQUEST as $k=>$v) {
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     try {
 		
-		$nonce = dechex($_REQUEST['nonce']);
-		$gasPrice = dechex(bcmul($_REQUEST['gas_price'],GWEI_TO_WEI, 18));
-		$gasLimit = dechex($_REQUEST['gas_limit']);
+		$nonce = bcdechex($_REQUEST['nonce']);
+		$gasPrice = bcdechex(bcmul($_REQUEST['gas_price'],GWEI_TO_WEI, 18));
+		$gasLimit = bcdechex($_REQUEST['gas_limit']);
 		$to = $_REQUEST['to'];
-		$value = dechex(bcmul($_REQUEST['value'],ETH_TO_WEI, 18));
+		$value = bcdechex(bcmul($_REQUEST['value'],ETH_TO_WEI, 18));
 		
 		if (strlen(trim($_REQUEST['data']))) {
 			$data = trim($_REQUEST['data']);
@@ -37,6 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		
 		$transaction = new Transaction ($nonce, $gasPrice, $gasLimit, $to, $value,$data);
 		$rawTx = $transaction->getRaw($_REQUEST['privkey'], $_REQUEST['chain']);
+		$txHash = Keccak::hash(hex2bin($rawTx), 256);
     ?>
        <div class="alert alert-success">
 			<h6 class="mt-3">Final TX Hex</h6>
@@ -58,6 +73,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			?>
 			</p>
 			
+			<h6 class="mt-3">TX Hash</h6>
+			<input class="form-control" readonly value="<?php echo $txHash?>"/>
 		</div>
 <?php 
     } catch (Exception $e) {

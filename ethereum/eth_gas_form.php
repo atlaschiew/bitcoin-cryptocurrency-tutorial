@@ -6,6 +6,19 @@ $support_chains = ['1'=>"Ethereum Mainnet", '3'=>"Ethereum Testnet Ropsten"];
 define("GWEI_TO_WEI",'1000000000');
 define("ETH_TO_WEI",'1000000000000000000');
 
+function bcdechex($dec) {
+
+	$last = bcmod($dec, 16);
+	$remain = bcdiv(bcsub($dec, $last), 16);
+
+	if($remain == 0) {
+		return dechex($last);
+	} else {
+		return bcdechex($remain).dechex($last);
+	}
+	
+}
+
 include_once("html_iframe_header.php");
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	try {
@@ -14,12 +27,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			throw new Exception("Please provide valid INFURA full URL with project ID.");
 		}
 		
-		$gasPrice = "0x".dechex(bcmul($_POST['gas_price'],GWEI_TO_WEI, 18));
-		$gasLimit = "0x".dechex($_POST['gas_limit']);
+		$gasPrice = "0x".bcdechex(bcmul($_POST['gas_price'],GWEI_TO_WEI, 18));
+		$gasLimit = "0x".bcdechex($_POST['gas_limit']);
 		$to = $_POST['to'];
 		$from = $_POST['from'];
 		$data = $_POST['data'];
-		$value = "0x".dechex(bcmul($_POST['value'],ETH_TO_WEI, 18));
+		$value = "0x".bcdechex(bcmul($_POST['value'],ETH_TO_WEI, 18));
 		
 		$ch = curl_init();
 		

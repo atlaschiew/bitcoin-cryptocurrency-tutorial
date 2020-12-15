@@ -4,6 +4,9 @@
 		"kornrunner/keccak": "1.0.3",
 		"furqansiddiqui/erc20-php": "0.1.4",
         "kornrunner/ethereum-offline-raw-tx": "0.2.3",
-		"web3p/rlp": "0.3.2"
+		"web3p/rlp": "^0.2",
+		"iexbase/tron-api": "3.0",
+		"google/protobuf": "4.0.0RC2"
+		
     }
 }

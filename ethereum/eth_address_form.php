@@ -6,8 +6,6 @@ use BitWasp\Bitcoin\Crypto\Random\Random;
 include_once "../libraries/vendor/autoload.php";
 include_once("html_iframe_header.php");
 
-$support_chains = ['1'=>"Ethereum Mainnet", '3'=>"Ethereum Testnet Ropsten"];
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     try {
        
