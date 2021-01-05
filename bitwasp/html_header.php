@@ -26,7 +26,7 @@
 
     <!-- Sidebar -->
     <div class="bg-light " id="sidebar-wrapper">
-		<div class="sidebar-heading" onmouseover="this.style.cursor='pointer'" onclick="document.location='<?php echo $_SERVER['HTTPS'] ? 'https' : 'http'?>://<?php echo $_SERVER['HTTP_HOST']?>';">btcschools.net</div>
+		<div class="sidebar-heading"><a style='color:white;text-decoration:none;' href="<?php echo $_SERVER['HTTPS'] ? 'https' : 'http'?>://<?php echo $_SERVER['HTTP_HOST']?>">btcschools.net</a></div>
 	  
 		<div class="list-group-header">Bitwasp Get Started</div>
 		<div class="list-group list-group-flush">
@@ -74,11 +74,11 @@
 			<a href="bitwasp_cancel_tx.php" class="list-group-item list-group-item-action bg-light">Bitwasp Cancel Tx (RBF)</a>
 		</div>
 		
-		<div class="list-group-header">Blockchain Tools</div>
+		<div class="list-group-header">Bitcoin Tools</div>
 		<div class="list-group list-group-flush">
-			<a href="../blockchain/blockchain_tool_utxo.php" class="list-group-item list-group-item-action bg-light">Blockchain Get UTXO</a>
-			<a href="../blockchain/blockchain_tool_txhex.php" class="list-group-item list-group-item-action bg-light">Blockchain Get Tx Hex</a>
-			<a href="../blockchain/blockchain_tool_mtp.php" class="list-group-item list-group-item-action bg-light">Blockchain Median Time Past</a>
+			<a href="../bitcoin/bitcoin_tool_utxo.php" class="list-group-item list-group-item-action bg-light">Bitcoin Get UTXO</a>
+			<a href="../bitcoin/bitcoin_tool_txhex.php" class="list-group-item list-group-item-action bg-light">Bitcoin Get Tx Hex</a>
+			<a href="../bitcoin/bitcoin_tool_mtp.php" class="list-group-item list-group-item-action bg-light">Bitcoin Median Time Past</a>
 		</div>
 				
     </div>
@@ -98,7 +98,7 @@
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
 		  
 			<li class="nav-item">
-              <a class="nav-link" href="../blockchain">Blockchain</a>
+              <a class="nav-link" href="../bitcoin">Bitcoin</a>
             </li>
             <li class="nav-item active">
               <a class="nav-link" href="../bitwasp">Bitwasp</a>

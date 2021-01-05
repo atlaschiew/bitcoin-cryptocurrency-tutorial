@@ -137,7 +137,7 @@ if ($errmsg) {
 ?>
 <form action='' method='post'>
 	<div class="form-group">
-		<label for="network">Network:</label> <a href="../blockchain/blockchain_tool_mtp.php" target="_blank">Check Height & Median Time Past (MTP).</a>
+		<label for="network">Network:</label> <a href="../bitcoin/bitcoin_tool_mtp.php" target="_blank">Check Height & Median Time Past (MTP).</a>
 		<select id="network" name="network" class="form-control" >
 			<?php
 			$networks = get_class_methods(new NetworkFactory());

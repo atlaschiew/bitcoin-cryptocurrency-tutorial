@@ -1,7 +1,7 @@
 <?php 
 
 include_once "../libraries/vendor/autoload.php";
-$support_chains = ['1'=>"Ethereum Mainnet", '3'=>"Ethereum Testnet Ropsten"];
+$supportChains = ['1'=>"Ethereum Mainnet", '3'=>"Ethereum Testnet Ropsten"];
 
 include_once("html_iframe_header.php");
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -76,7 +76,7 @@ if ($errmsg) {
 		<label for="chain">Chain:</label>
 		<select id="chain" name="chain" class="form-control" >
 			<?php
-			foreach($support_chains as $k=>$v) {
+			foreach($supportChains as $k=>$v) {
 				echo "<option value='{$k}'".($k == $_POST['chain'] ? " selected": "").">{$v}</option>";
 			}
 			?>

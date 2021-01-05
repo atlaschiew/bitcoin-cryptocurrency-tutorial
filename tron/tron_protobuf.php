@@ -75,7 +75,7 @@ $ ls wallet-cli/src/main/protos/core
 <ol>
 	
 	<li>
-		Compile all required *.proto and output to desired path. Absolute path applied for ease of maintenance.
+		Compile all required *.proto and output to desired path. Absolute path here applied for ease of maintenance.
 <Pre data-enlighter-linenumbers="false" data-enlighter-theme="eclipse" style="background-color:#ccc;">		
 #compile Discover.proto
 $ /home/btcschools/protoc/bin/protoc --proto_path='/home/btcschools/wallet-cli/src/main/protos' --php_out='/home/btcschools/public_html/tron/protobuf/core' core/Discover.proto

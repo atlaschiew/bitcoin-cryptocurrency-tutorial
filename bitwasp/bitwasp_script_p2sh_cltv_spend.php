@@ -405,7 +405,7 @@ if ($errmsg) {
 		
 		<input class="form-control" type='text' name='nlocktime' id='nlocktime' value='<?php echo $_POST['nlocktime']?>' placeholder="<?php echo $placeholder['locktypevalue'][ $_POST['lock_type']?$_POST['lock_type']:'default' ]?>">
 		
-		<a href="../blockchain/blockchain_tool_mtp.php" target="_blank">To spend immediately, you just got to fill in current chain's HEIGHT or MTP.</a>
+		<a href="../bitcoin/bitcoin_tool_mtp.php" target="_blank">To spend immediately, you just got to fill in current chain's HEIGHT or MTP.</a>
 	</div>
 	
 	<input type='submit' class="btn btn-success btn-block"/>

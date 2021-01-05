@@ -12,7 +12,7 @@ ScriptPubKey must contains OP_RETURN which is used to end script execution, ther
 <hr/>
 <ul>
 	<li>ScriptPubKey must contains OP_RETURN.</li>
-	<li>Aims to embed user own defined data in the blockchain.</li>
+	<li>Aims to embed user own defined data in the bitcoin.</li>
 	<li>Data size limit is 40 bytes.</li>	
 	
 </ul>

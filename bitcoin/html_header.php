@@ -23,19 +23,26 @@
 
     <!-- Sidebar -->
     <div class="bg-light " id="sidebar-wrapper">
-		<div class="sidebar-heading" onmouseover="this.style.cursor='pointer'" onclick="document.location='<?php echo $_SERVER['HTTPS'] ? 'https' : 'http'?>://<?php echo $_SERVER['HTTP_HOST']?>';">btcschools.net</div>
+		<div class="sidebar-heading"><a style='color:white;text-decoration:none;' href="<?php echo $_SERVER['HTTPS'] ? 'https' : 'http'?>://<?php echo $_SERVER['HTTP_HOST']?>">btcschools.net</a></div>
 	  
-		<div class="list-group-header">Bitcoin Chain Intro</div>
+		<div class="list-group-header">Bitcoin Intro</div>
 		<div class="list-group list-group-flush">
-			<a href="blockchain_start_blockchain.php" class="list-group-item list-group-item-action bg-light">Blockchain</a>
-			<a href="blockchain_start_key.php" class="list-group-item list-group-item-action bg-light">Private/Public Key</a>
-			<a href="blockchain_merkle_root.php" class="list-group-item list-group-item-action bg-light">Merkle Root</a>
+			<a href="bitcoin_start_blockchain.php" class="list-group-item list-group-item-action bg-light">Bitcoin Blockchain</a>
+			<a href="bitcoin_start_key.php" class="list-group-item list-group-item-action bg-light">Private/Public Key</a>
+			<a href="bitcoin_merkle_root.php" class="list-group-item list-group-item-action bg-light">Merkle Root</a>
 		</div>
-		<div class="list-group-header">Bitcoin Chain Tools</div>
+		
+		<div class="list-group-header">Bitcoin Client</div>
 		<div class="list-group list-group-flush">
-			<a href="blockchain_tool_utxo.php" class="list-group-item list-group-item-action bg-light">Blockchain Get UTXO</a>
-			<a href="blockchain_tool_txhex.php" class="list-group-item list-group-item-action bg-light">Blockchain Get Tx Hex</a>
-			<a href="blockchain_tool_mtp.php" class="list-group-item list-group-item-action bg-light">Blockchain Median Time Past</a>
+			<a href="bitcoin_client_electrum.php" class="list-group-item list-group-item-action bg-light">Electrum</a>
+			
+		</div>
+		
+		<div class="list-group-header">Bitcoin Tools</div>
+		<div class="list-group list-group-flush">
+			<a href="bitcoin_tool_utxo.php" class="list-group-item list-group-item-action bg-light">Bitcoin Get UTXO</a>
+			<a href="bitcoin_tool_txhex.php" class="list-group-item list-group-item-action bg-light">Bitcoin Get Tx Hex</a>
+			<a href="bitcoin_tool_mtp.php" class="list-group-item list-group-item-action bg-light">Bitcoin Median Time Past</a>
 		</div>
     </div>
     <!-- /#sidebar-wrapper -->
@@ -44,7 +51,7 @@
     <div id="page-content-wrapper" >
 		
       <nav class="navbar navbar-expand-lg navbar-light border-bottom" style='background-color:#5F5F5F;'>
-        <button class="btn btn-success" id="menu-toggle">Blockchain Menu</button>
+        <button class="btn btn-success" id="menu-toggle">Bitcoin Menu</button>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -53,24 +60,12 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent" >
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
             <li class="nav-item">
-              <a class="nav-link" href="../blockchain">Blockchain</a>
+              <a class="nav-link" href="../bitcoin">Bitcoin</a>
             </li>
             <li class="nav-item active">
               <a class="nav-link" href="../bitwasp">Bitwasp</a>
             </li>
-			<?php if(0) {?>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Dropdown
-              </a>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Something else here</a>
-              </div>
-            </li>
-			<?php }?>
+			
           </ul>
         </div>
       </nav>

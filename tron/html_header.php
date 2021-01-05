@@ -26,7 +26,7 @@
 
     <!-- Sidebar -->
     <div class="bg-light " id="sidebar-wrapper">
-		<div class="sidebar-heading" onmouseover="this.style.cursor='pointer'" onclick="document.location='<?php echo $_SERVER['HTTPS'] ? 'https' : 'http'?>://<?php echo $_SERVER['HTTP_HOST']?>';">btcschools.net</div>
+		<div class="sidebar-heading"><a style='color:white;text-decoration:none;' href="<?php echo $_SERVER['HTTPS'] ? 'https' : 'http'?>://<?php echo $_SERVER['HTTP_HOST']?>">btcschools.net</a></div>
 	  
 		<div class="list-group-header">Tron Menu</div>
 		<div class="list-group list-group-flush">
@@ -34,8 +34,33 @@
 			<a href="tron_start_install.php" class="list-group-item list-group-item-action bg-light">Installation</a>
 			<a href="tron_address.php" class="list-group-item list-group-item-action bg-light">Tron Address</a>
 			<a href="tron_protobuf.php" class="list-group-item list-group-item-action bg-light">Tron Protobuf</a>
+			
+			
 		</div>
 
+		<div class="list-group-header">Tron Resources</div>
+		<div class="list-group list-group-flush">
+			<a href="tron_station.php" class="list-group-item list-group-item-action bg-light">Tron Station</a>
+			<a href="tron_account_resources.php" class="list-group-item list-group-item-action bg-light">Tron Account Resources</a>
+			<a href="tron_fee_limit.php" class="list-group-item list-group-item-action bg-light">Tron Fee Limit</a>
+		</div>
+			
+		<div class="list-group-header">Tron System Contract</div>
+		<div class="list-group list-group-flush">
+			<a href="tron_sysc_intro.php" class="list-group-item list-group-item-action bg-light">Intro</a>
+			<a href="tron_sysc_accountcreate.php" class="list-group-item list-group-item-action bg-light">Account Create Contract</a>
+			<a href="tron_sysc_transfercontract.php" class="list-group-item list-group-item-action bg-light">Transfer Contract</a>
+			<a href="tron_sysc_triggersmartcontract.php" class="list-group-item list-group-item-action bg-light">Trigger Smart Contract</a>
+		</div>
+		
+		<div class="list-group-header">Tron Transaction</div>
+		<div class="list-group list-group-flush">
+			<a href="tron_create_tx.php" class="list-group-item list-group-item-action bg-light">Create Raw Transaction</a>
+			<a href="tron_broadcast_tx.php" class="list-group-item list-group-item-action bg-light">Broadcast Raw Tx</a>
+			<a href="tron_create_trc20_tx.php" class="list-group-item list-group-item-action bg-light">Create Send TRC20 Tx</a>
+			<a href="tron_sign_raw_data.php" class="list-group-item list-group-item-action bg-light">Sign Raw Data</a>
+			<a href="tron_get_tx_info.php" class="list-group-item list-group-item-action bg-light">Get Transaction Info</a>
+		</div>
 		
 		<div class="list-group-header">Tron Tool</div>
 		<div class="list-group list-group-flush">

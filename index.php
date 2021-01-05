@@ -15,12 +15,11 @@ PHP is dynamically typed scripting which is not suit for blockchain application 
 <ul>
 	<li>PHP initially created for web environment.</li>
 	<li>PHP is not able to interact directly with low level functionalities without C extension.</li>
-	<li>PHP </li>
 </ul>
 However, PHP definitely play a well role as Bitcoin client and that's why we are here to introduce you.
 <ul>
-	<li><a href="/blockchain">Learn Blockchain</a></li>
-	<li><a href="/bitwasp">Learn Bitwasp</a></li>
+	<li><a href="/bitcoin">Learn Bitcoin</a></li>
+	<li><a href="/bitwasp">Learn Bitwasp (Bitcoin's PHP Library)</a></li>
 </ul>
 <?php
 include_once("html_footer.php");

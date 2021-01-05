@@ -189,7 +189,7 @@ if ($total_blocks = @count($display_raw_results) > 0) {
 			
 			<div class='card-footer'>
 				<h6>Body:</h6>
-				Total <a href='blockchain_start_block.php?block_hash=<?php echo $block['hash']?>'><?php echo $block['nTx']?></a> Transaction(s)
+				Total <a href='bitcoin_start_block.php?block_hash=<?php echo $block['hash']?>'><?php echo $block['nTx']?></a> Transaction(s)
 			</div>
 		</div>
 		<img src='../media/images/link.png'/>

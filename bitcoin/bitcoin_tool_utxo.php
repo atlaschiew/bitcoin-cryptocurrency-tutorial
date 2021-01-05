@@ -1,23 +1,19 @@
 <?php
 
-$_HTML['title'] = 'Blockchain';
-$_HTML['meta']['keywords'] = "Blockchain,Bitcoin CLI,Blocks";
+$_HTML['title'] = 'Bitcoin UTXO';
+$_HTML['meta']['keywords'] = "Bitcoin,UTXO,Unspent Transaction Output,PHP";
 
 include_once "../common.php";
 include_once("html_header.php");
 
 ?>
-<h2 class="mt-3">Blockchain</h2>
+<h2 class="mt-3">Bitcoin UTXO</h2>
 <hr/>
-	Blockhain is type of distributed database that store number of blocks to form a chain.
-<hr/>
-<ul>
-	<li>Distributed database.</li>
-	<li>Consists number of blocks, each block stores number of data.</li>
-	<li>Blocks linked up each other by hash.</li>
-</ul>
 
-<h3 class="mt-3" id='hashtag3'>Bitcoin-CLI Find Blockchain Stats</h3>
+	Unspent transaction outputs (UTXOs) is created when new transaction is stored in blockchain and as its name mean to, these outputs are haven't spent. To spend, UTXO is required and must fill in as input of new transaction, once new transaction stores in blockchain, this fill in UTXO will be removed from database and new UTXO will be created. From block to block, transaction to transaction, this process starts over and over again.
+
+<hr/>
+<h3 class="mt-3" id='hashtag3'>Blockcypher Find UTXO</h3>
 <ul class="nav nav-tabs">
 	<li class="nav-item">
 		<a data-toggle="tab" class="nav-link active" href="#form1_tabitem1">Visual</a>
@@ -29,16 +25,18 @@ include_once("html_header.php");
 
 <div class="tab-content">
 	<div id="form1_tabitem1" class="tab-pane fade show active">
-		<iframe src="blockchain_statform_bitcoincli.php" width="100%" scrolling="no" frameborder="no"></iframe>
+		<iframe src="bitcoin_tool_utxo_form.php" width="100%" scrolling="no" frameborder="no"></iframe>
 	</div>
 	<div id="form1_tabitem2" class="tab-pane fade">
 		<pre style='border-radius:none;'><?php
-			echo htmlentities(safe_bitcoincli_source(file_get_contents("blockchain_statform_bitcoincli.php")));
+			echo htmlentities(file_get_contents("bitcoin_tool_utxo_form.php"));
 		?>
 		</pre> 		
 	</div>
 </div>
-<h3 class="mt-3" id='hashtag3'>Bitcoin-CLI Find Blockchain</h3>
+
+
+<h3 class="mt-3" id='hashtag3'>Electrum Find UTXO</h3>
 <ul class="nav nav-tabs">
 	<li class="nav-item">
 		<a data-toggle="tab" class="nav-link active" href="#form2_tabitem1">Visual</a>
@@ -50,11 +48,11 @@ include_once("html_header.php");
 
 <div class="tab-content">
 	<div id="form2_tabitem1" class="tab-pane fade show active">
-		<iframe src="blockchain_form_bitcoincli.php" width="100%" scrolling="no" frameborder="no"></iframe>
+		<iframe src="bitcoin_tool_utxo_form_electrum.php" width="100%" scrolling="no" frameborder="no"></iframe>
 	</div>
 	<div id="form2_tabitem2" class="tab-pane fade">
 		<pre style='border-radius:none;'><?php
-			echo htmlentities(safe_bitcoincli_source(file_get_contents("blockchain_form_bitcoincli.php")));
+			echo htmlentities(safe_electrum_source(file_get_contents("bitcoin_tool_utxo_form_electrum.php")));
 		?>
 		</pre> 		
 	</div>

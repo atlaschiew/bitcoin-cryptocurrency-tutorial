@@ -21,7 +21,7 @@ function bcdechex($dec) {
 	
 }
 
-$support_chains = ['1'=>"Ethereum Mainnet", '3'=>"Ethereum Testnet Ropsten"];
+$supportChains = ['1'=>"Ethereum Mainnet", '3'=>"Ethereum Testnet Ropsten"];
 
 unset($_REQUEST);
 $_REQUEST = array("chain"=>"","nonce"=>"","gas_price"=>"","gas_limit"=>"","to"=>"","data"=>"","value"=>"","privkey"=>"");
@@ -99,7 +99,7 @@ if ($errmsg) {
 		<label for="chain">Chain:</label>
 		<select id="chain" name="chain" class="form-control"<?php echo in_array("chain", $disableFields) ? " readonly" : ""?>>
 			<?php
-			foreach($support_chains as $k=>$v) {
+			foreach($supportChains as $k=>$v) {
 				echo "<option value='{$k}'".($k == $_REQUEST['chain'] ? " selected": "").">{$v}</option>";
 			}
 			?>

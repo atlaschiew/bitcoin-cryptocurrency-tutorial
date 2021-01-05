@@ -39,9 +39,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     ?>
         <div class="table-responsive">
             <table border=0 class='table'>
-                <tr style='background-color:#f0f0f0'><td>Address</td><td><?php echo $tronAddress?></td></tr>
-                <tr><td>Private Key Hex</td><td><?php echo $privateKey->getHex()?></td></tr>               
-                <tr style='background-color:#f0f0f0'><td>Public Key Hex</td><td><?php echo $publicKey->getHex()?></td></tr>
+                <tr style='background-color:#f0f0f0'><td>Base58 Address</td><td><?php echo $tronAddress?></td></tr>
+				<tr><td>Hex Address</td><td><?php echo $bf->getHex();?></td></tr>
+                <tr style='background-color:#f0f0f0'><td>Private Key Hex</td><td><?php echo $privateKey->getHex()?></td></tr>               
+                <tr><td>Public Key Hex</td><td><?php echo $publicKey->getHex()?></td></tr>
             </table>
         </div>
 <?php 

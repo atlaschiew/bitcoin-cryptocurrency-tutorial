@@ -1,5 +1,17 @@
 <?php 
 
+function getChainParamValue($chainParams, $key) {
+	if (is_array($chainParams)) {
+		foreach($chainParams as $chainParam) {
+			if ($chainParam['key'] == $key) {
+				return $chainParam['value'];
+			}
+		}
+	}
+	
+	return false;
+}
+
 function base58_encode($string)
 {
 	$alphabet = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz';

@@ -1,7 +1,7 @@
 <?php 
 
 include_once "../libraries/vendor/autoload.php";
-$support_chains = ['1'=>"Ethereum Mainnet", '3'=>"Ethereum Testnet Ropsten"];
+$supportChains = ['1'=>"Ethereum Mainnet", '3'=>"Ethereum Testnet Ropsten"];
 
 define("GWEI_TO_WEI",'1000000000');
 define("ETH_TO_WEI",'1000000000000000000');
@@ -88,7 +88,7 @@ if ($errmsg) {
 		<label for="chain">Chain:</label>
 		<select id="chain" name="chain" class="form-control" >
 			<?php
-			foreach($support_chains as $k=>$v) {
+			foreach($supportChains as $k=>$v) {
 				
 				echo "<option value='{$k}'".($k == $_POST['chain'] ? " selected": "").">{$v}</option>";
 			}

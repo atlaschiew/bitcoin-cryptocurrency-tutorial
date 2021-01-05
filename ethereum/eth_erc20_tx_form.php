@@ -21,7 +21,7 @@ function bcdechex($dec) {
 	
 }
 
-$support_chains = ['1'=>"Ethereum Mainnet", '3'=>"Ethereum Testnet Ropsten"];
+$supportChains = ['1'=>"Ethereum Mainnet", '3'=>"Ethereum Testnet Ropsten"];
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     try {
@@ -92,7 +92,7 @@ if ($errmsg) {
 		<label for="chain">Chain:</label>
 		<select id="chain" name="chain" class="form-control" >
 			<?php
-			foreach($support_chains as $k=>$v) {
+			foreach($supportChains as $k=>$v) {
 				echo "<option value='{$k}'".($k == $_POST['chain'] ? " selected": "").">{$v}</option>";
 			}
 			?>

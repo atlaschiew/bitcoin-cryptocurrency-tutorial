@@ -24,13 +24,13 @@
 
     <!-- Sidebar -->
     <div class="bg-light " id="sidebar-wrapper">
-		<div class="sidebar-heading" onmouseover="this.style.cursor='pointer'" onclick="document.location='<?php echo $_SERVER['HTTPS'] ? 'https' : 'http'?>://<?php echo $_SERVER['HTTP_HOST']?>';">btcschools.net</div>
+		<div class="sidebar-heading"><a style='color:white;text-decoration:none;' href="<?php echo $_SERVER['HTTPS'] ? 'https' : 'http'?>://<?php echo $_SERVER['HTTP_HOST']?>">btcschools.net</a></div>
 	  
 		<div class="list-group-header">PHP Bitcoin</div>
 		<div class="list-group list-group-flush">
-			<a href="/blockchain" class="list-group-item list-group-item-action bg-light">Learn Bitcoin Chain</a>
+			<a href="/bitcoin" class="list-group-item list-group-item-action bg-light">Learn Bitcoin</a>
 			<a href="/bitwasp" class="list-group-item list-group-item-action bg-light">Learn Bitwasp</a>
-			<a href="/blockchain" class="list-group-item list-group-item-action bg-light">Bitcoin Chain Tools</a>
+			<a href="/bitcoin" class="list-group-item list-group-item-action bg-light">Bitcoin Tools</a>
 			
 		</div>
 		
@@ -38,7 +38,7 @@
 		<div class="list-group list-group-flush">
 			
 			<a href="/ethereum" class="list-group-item list-group-item-action bg-light">Learn Ethereum</a>
-			<?php if(0) {?><a href="/blockchain" class="list-group-item list-group-item-action bg-light">Ethereum Chain Tools</a><?php } ?>
+			<?php if(0) {?><a href="/bitcoin" class="list-group-item list-group-item-action bg-light">Ethereum Chain Tools</a><?php } ?>
 			
 			<a href="/eth_smartcontract" class="list-group-item list-group-item-action bg-light">Learn Smart Contract</a>
 		</div>
@@ -65,7 +65,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent" >
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
 			<li class="nav-item">
-              <a class="nav-link" href="/blockchain">Bitcoin Chain</a>
+              <a class="nav-link" href="/bitcoin">Bitcoin Chain</a>
             </li>
             <li class="nav-item active">
               <a class="nav-link" href="/bitwasp">Bitwasp</a>

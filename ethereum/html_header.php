@@ -26,7 +26,7 @@
 
     <!-- Sidebar -->
     <div class="bg-light " id="sidebar-wrapper">
-		<div class="sidebar-heading" onmouseover="this.style.cursor='pointer'" onclick="document.location='<?php echo $_SERVER['HTTPS'] ? 'https' : 'http'?>://<?php echo $_SERVER['HTTP_HOST']?>';">btcschools.net</div>
+		<div class="sidebar-heading"><a style='color:white;text-decoration:none;' href="<?php echo $_SERVER['HTTPS'] ? 'https' : 'http'?>://<?php echo $_SERVER['HTTP_HOST']?>">btcschools.net</a></div>
 	  
 		<div class="list-group-header">Ethereum Menu</div>
 		<div class="list-group list-group-flush">

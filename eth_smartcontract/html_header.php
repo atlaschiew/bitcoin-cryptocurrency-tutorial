@@ -26,20 +26,24 @@
 
     <!-- Sidebar -->
     <div class="bg-light " id="sidebar-wrapper">
-		<div class="sidebar-heading" onmouseover="this.style.cursor='pointer'" onclick="document.location='<?php echo $_SERVER['HTTPS'] ? 'https' : 'http'?>://<?php echo $_SERVER['HTTP_HOST']?>';">btcschools.net</div>
+		<div class="sidebar-heading"><a style='color:white;text-decoration:none;' href="<?php echo $_SERVER['HTTPS'] ? 'https' : 'http'?>://<?php echo $_SERVER['HTTP_HOST']?>">btcschools.net</a></div>
 	  
 		<div class="list-group-header">Smart Contract (SC)</div>
-		<a href="eth_sc_start.php" class="list-group-item list-group-item-action bg-light">SC Intro</a>
+		<div class="list-group list-group-flush">
+			<a href="eth_sc_start.php" class="list-group-item list-group-item-action bg-light">SC Intro</a>
+			<a href="eth_sc_deploy_contract.php?disable_fields=to" class="list-group-item list-group-item-action bg-light">Deploy Contract</a>
+		</div>
 		
-		<a href="eth_sc_deploy_contract.php?disable_fields=to" class="list-group-item list-group-item-action bg-light">Deploy Contract</a>
+		<div class="list-group-header">Development Tools</div>
+		<div class="list-group list-group-flush">
+			<a href="eth_sc_win_devtools.php" class="list-group-item list-group-item-action bg-light">Window Platform</a>
+		</div>
 		
 		<div class="list-group-header">Useful Contracts</div>
 		<div class="list-group list-group-flush">
 			<a href="eth_sc_multi_send_eth.php" class="list-group-item list-group-item-action bg-light">Multi Send ETH</a>
 			<a href="eth_sc_multi_send_erc20.php" class="list-group-item list-group-item-action bg-light">Multi Send ERC20</a>
-		</div>
-
-	  
+		</div>	  
     </div>
     <!-- /#sidebar-wrapper -->
 
