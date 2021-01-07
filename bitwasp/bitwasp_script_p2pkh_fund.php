@@ -17,8 +17,8 @@ include_once "../libraries/vendor/autoload.php";
 
 include_once("html_iframe_header.php");
 
-$no_of_inputs = 10;
-$no_of_outputs = 10;
+$noOfInputs = 10;
+$noOfOutputs = 10;
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	try {
@@ -40,39 +40,38 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			throw new Exception("Error in 'no_of_inputs' or 'no_of_outputs'.");
 		}
 			
-		foreach(range(1,$_POST['no_of_inputs']) as $this_input) {
-			$utxo_hash = trim($_POST["utxo_hash_{$this_input}"]);
-			$utxo_n_output = trim($_POST["utxo_n_{$this_input}"]);
-			$privkeyhex = trim($_POST["privkey_{$this_input}"]);
-			$utxo_script = trim($_POST["utxo_script_{$this_input}"]);
+		foreach(range(1,$_POST['no_of_inputs']) as $thisInput) {
+			$utxoHash = trim($_POST["utxo_hash_{$thisInput}"]);
+			$utxoNOutput = trim($_POST["utxo_n_{$thisInput}"]);
+			$privkeyhex = trim($_POST["privkey_{$thisInput}"]);
+			$utxoScript = trim($_POST["utxo_script_{$thisInput}"]);
 			
-			if (strlen($utxo_hash)>0 AND strlen($utxo_n_output) > 0 AND strlen($privkeyhex) > 0) {
-				$spendTx = $spendTx->input($utxo_hash, $utxo_n_output);
-				$signItems[] = [$privkeyhex, $utxo_script];
+			if (strlen($utxoHash)>0 AND strlen($utxoNOutput) > 0 AND strlen($privkeyhex) > 0) {
+				$spendTx = $spendTx->input($utxoHash, $utxoNOutput);
+				$signItems[] = [$privkeyhex, $utxoScript];
 			} else {
-				throw new Exception("Error in 'input#{$this_input}'.");
+				throw new Exception("Error in 'input#{$thisInput}'.");
 			}
 		}
 		
-		foreach(range(1,$_POST['no_of_outputs']) as $this_output) {
+		foreach(range(1,$_POST['no_of_outputs']) as $thisOutput) {
 			
-			$address = trim($_POST["address_{$this_output}"]);
-			
-			$amount = trim($_POST["amount_{$this_output}"]);
+			$address = trim($_POST["address_{$thisOutput}"]);
+			$amount = trim($_POST["amount_{$thisOutput}"]);
 			$recipient = $addrCreator->fromString($address);
 			
 			if (!strlen($address) or !strlen($amount)) {
-				throw new Exception("Error in 'output#{$this_output}'.");
+				throw new Exception("Error in 'output#{$thisOutput}'.");
 			}
 			
 			if (!$recipient instanceof Base58AddressInterface) {
-				throw new Exception("Invalid P2PKH address in 'output#{$this_output}' (Check base58Address).");
+				throw new Exception("Invalid P2PKH address in 'output#{$thisOutput}' (Check base58Address).");
 			} 
 			
 			$decodeScript = (new OutputClassifier())->decode($recipient->getScriptPubKey());
 			
 			if ($decodeScript->getType() != ScriptType::P2PKH) {
-				throw new Exception("Invalid P2PKH address in 'output#{$this_output}' (Check scriptPubKey).");
+				throw new Exception("Invalid P2PKH address in 'output#{$thisOutput}' (Check scriptPubKey).");
 			}
 			
 			$spendTx = $spendTx->payToAddress($amount, $recipient);
@@ -92,8 +91,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			$txOutput = new TransactionOutput(0, $scriptPubKey );
 			$signer = $signer->sign($nIn, $privateKey, $txOutput);
 			
-			
-			//chiew continue here tmr
 			$input = $signer->input($nIn, $txOutput);
 			
 		}
@@ -150,8 +147,8 @@ if ($errmsg) {
 					}
 					">
 						<?php
-						foreach(range(1,$no_of_inputs) as $this_input) {
-							echo "<option value='{$this_input}'".($this_input == $_POST['no_of_inputs'] ? " selected": "").">{$this_input}</option>";
+						foreach(range(1,$noOfInputs) as $thisInput) {
+							echo "<option value='{$thisInput}'".($thisInput == $_POST['no_of_inputs'] ? " selected": "").">{$thisInput}</option>";
 						}
 						?>
 					</select>
@@ -159,29 +156,29 @@ if ($errmsg) {
 			</div>
 			
 			<?php
-			$selected_n_inputs = is_numeric($_POST['no_of_inputs']) ? $_POST['no_of_inputs'] : 1;
+			$selectedNInputs = is_numeric($_POST['no_of_inputs']) ? $_POST['no_of_inputs'] : 1;
 			
-			foreach(range(1,$no_of_inputs) as $this_input) {
+			foreach(range(1,$noOfInputs) as $thisInput) {
 			?>
 			
-				<div class="form-row" id='row_input_<?php echo $this_input?>' style="<?php echo ($this_input > $selected_n_inputs) ? "display:none" : "display:;"?>">
+				<div class="form-row" id='row_input_<?php echo $thisInput?>' style="<?php echo ($thisInput > $selectedNInputs) ? "display:none" : "display:;"?>">
 				
 					<div class="form-group  col-sm-1">
-						#<?php echo $this_input?> 
+						#<?php echo $thisInput?> 
 					</div>
 					<div class="form-group  col-sm-3">
 						
-						<input class="form-control" title="UTXO Tx Hash" placeholder='UTXO Tx Hash' type='text' name='utxo_hash_<?php echo $this_input?>' value='<?php echo $_POST["utxo_hash_{$this_input}"]?>'>
+						<input class="form-control" title="UTXO Tx Hash" placeholder='UTXO Tx Hash' type='text' name='utxo_hash_<?php echo $thisInput?>' value='<?php echo $_POST["utxo_hash_{$thisInput}"]?>'>
 					</div>
 					<div class="form-group  col-sm-1">
-						<input class="form-control" title="UTXO N Output" placeholder='N' type='text' name='utxo_n_<?php echo $this_input?>' value='<?php echo $_POST["utxo_n_{$this_input}"]?>'>
+						<input class="form-control" title="UTXO N Output" placeholder='N' type='text' name='utxo_n_<?php echo $thisInput?>' value='<?php echo $_POST["utxo_n_{$thisInput}"]?>'>
 					</div>
 					
 					<div class="form-group  col-sm-3">
-						<input class="form-control" title="UTXO ScriptPubKey" placeholder='UTXO ScriptPubKey' type='text' name='utxo_script_<?php echo $this_input?>' value='<?php echo $_POST["utxo_script_{$this_input}"]?>'>
+						<input class="form-control" title="UTXO ScriptPubKey" placeholder='UTXO ScriptPubKey' type='text' name='utxo_script_<?php echo $thisInput?>' value='<?php echo $_POST["utxo_script_{$thisInput}"]?>'>
 					</div>
 					<div class="form-group  col-sm-4">
-						<input class="form-control" title="Private Key Hex, for signing purpose." placeholder='Private Key Hex' type='text' name='privkey_<?php echo $this_input?>' value='<?php echo $_POST["privkey_{$this_input}"]?>'>
+						<input class="form-control" title="Private Key Hex, for signing purpose." placeholder='Private Key Hex' type='text' name='privkey_<?php echo $thisInput?>' value='<?php echo $_POST["privkey_{$thisInput}"]?>'>
 					</div>
 				</div>
 			<?php
@@ -201,29 +198,28 @@ if ($errmsg) {
 					}
 					">
 						<?php
-						foreach(range(1,$no_of_outputs) as $this_output) {
-							echo "<option value='{$this_output}'".($this_output == $_POST['no_of_outputs'] ? " selected": "").">{$this_output}</option>";
+						foreach(range(1,$noOfOutputs) as $thisOutput) {
+							echo "<option value='{$thisOutput}'".($thisOutput == $_POST['no_of_outputs'] ? " selected": "").">{$thisOutput}</option>";
 						}
 						?>
 					</select>
 				</div>
 			</div>
 			<?php
-			$selected_n_outputs = is_numeric($_POST['no_of_outputs']) ? $_POST['no_of_outputs'] : 1;
-			
-			
-			foreach(range(1,$no_of_outputs) as $this_output) {
+			$selectedNOutputs = is_numeric($_POST['no_of_outputs']) ? $_POST['no_of_outputs'] : 1;
+
+			foreach(range(1,$noOfOutputs) as $thisOutput) {
 			?>
-				<div class="form-row" id='row_output_<?php echo $this_output?>' style="<?php echo ($this_output > $selected_n_outputs) ? "display:none" : "display:;"?>">
+				<div class="form-row" id='row_output_<?php echo $thisOutput?>' style="<?php echo ($thisOutput > $selectedNOutputs) ? "display:none" : "display:;"?>">
 					<div class="form-group col-sm-1">
-						#<?php echo $this_output?> 
+						#<?php echo $thisOutput?> 
 					</div>
 					
 					<div class="form-group col-sm-6">
-						<input class="form-control" placeholder='P2PKH Address' type='text' name='address_<?php echo $this_output?>' value='<?php echo $_POST["address_{$this_output}"]?>'>
+						<input class="form-control" placeholder='P2PKH Address' type='text' name='address_<?php echo $thisOutput?>' value='<?php echo $_POST["address_{$thisOutput}"]?>'>
 					</div>
 					<div class="form-group col-sm-5">
-						<input class="form-control" placeholder='Amount' type='text' name='amount_<?php echo $this_output?>' value='<?php echo $_POST["amount_{$this_output}"]?>'>
+						<input class="form-control" placeholder='Amount' type='text' name='amount_<?php echo $thisOutput?>' value='<?php echo $_POST["amount_{$thisOutput}"]?>'>
 					</div>
 				</div>
 	<?php

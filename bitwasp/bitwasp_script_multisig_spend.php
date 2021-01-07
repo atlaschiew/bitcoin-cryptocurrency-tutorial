@@ -18,8 +18,8 @@ use BitWasp\Bitcoin\Script\P2shScript;
     
 include_once "../libraries/vendor/autoload.php";
 
-$no_of_inputs = 10;
-$no_of_outputs = 1;
+$noOfInputs = 10;
+$noOfOutputs = 1;
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET' AND $_GET['ajax'] == '1') {
 	
@@ -147,16 +147,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			}
 		}
 		
-		foreach(range(1,$_POST['no_of_outputs']) as $this_output) {
+		foreach(range(1,$_POST['no_of_outputs']) as $thisOutput) {
 			
-			$address = trim($_POST["address_{$this_output}"]);
-			$amount = trim($_POST["amount_{$this_output}"]);
+			$address = trim($_POST["address_{$thisOutput}"]);
+			$amount = trim($_POST["amount_{$thisOutput}"]);
 			
 			if (strlen($address)>0 AND strlen($amount)>0) {
 				$recipient = $addrCreator->fromString($address);
 				$spendTx = $spendTx->payToAddress($amount, $recipient);
 			} else {
-				throw new Exception("Error in 'output#{$this_output}'.");
+				throw new Exception("Error in 'output#{$thisOutput}'.");
 			}
 			
 		}
@@ -356,34 +356,34 @@ if ($errmsg) {
 			<?php
 			$selected_n_inputs = is_numeric($_POST['no_of_inputs']) ? $_POST['no_of_inputs'] : 0;
 			
-			foreach(range(1,$no_of_inputs) as $this_input) {
+			foreach(range(1,$noOfInputs) as $thisInput) {
 			?>
 			
-				<div class="form-row" id='row_input_<?php echo $this_input?>' style="<?php echo ($this_input > $selected_n_inputs) ? "display:none" : "display:;"?>">
-					<input type='hidden' name='utxo_amount_<?php echo $this_input?>' value='<?php echo $_POST["utxo_amount_{$this_input}"]?>'/>
+				<div class="form-row" id='row_input_<?php echo $thisInput?>' style="<?php echo ($thisInput > $selected_n_inputs) ? "display:none" : "display:;"?>">
+					<input type='hidden' name='utxo_amount_<?php echo $thisInput?>' value='<?php echo $_POST["utxo_amount_{$thisInput}"]?>'/>
 					
 					<div class="form-group  col-sm-1">
-						#<?php echo $this_input?> 
+						#<?php echo $thisInput?> 
 					</div>
 					<div class="form-group  col-sm-3">    
-						<input class="form-control" title="UTXO Tx Hash" placeholder='UTXO Tx Hash' type='text' name='utxo_hash_<?php echo $this_input?>' value='<?php echo $_POST["utxo_hash_{$this_input}"]?>' readonly>
+						<input class="form-control" title="UTXO Tx Hash" placeholder='UTXO Tx Hash' type='text' name='utxo_hash_<?php echo $thisInput?>' value='<?php echo $_POST["utxo_hash_{$thisInput}"]?>' readonly>
 					</div>
 					<div class="form-group  col-sm-1">
-						<input class="form-control" title="UTXO N Output" placeholder='N' type='text' name='utxo_n_<?php echo $this_input?>' value='<?php echo $_POST["utxo_n_{$this_input}"]?>' readonly>
+						<input class="form-control" title="UTXO N Output" placeholder='N' type='text' name='utxo_n_<?php echo $thisInput?>' value='<?php echo $_POST["utxo_n_{$thisInput}"]?>' readonly>
 					</div>
 					<div class="form-group  col-sm-3">
-						<input class="form-control" title="UTXO ScriptPubKey" placeholder='UTXO ScriptPubKey' type='text' name='utxo_script_<?php echo $this_input?>' value='<?php echo $_POST["utxo_script_{$this_input}"]?>' readonly>
+						<input class="form-control" title="UTXO ScriptPubKey" placeholder='UTXO ScriptPubKey' type='text' name='utxo_script_<?php echo $thisInput?>' value='<?php echo $_POST["utxo_script_{$thisInput}"]?>' readonly>
 					</div>
 					<div class="form-group  col-sm-4">
 						
 						<?php
 						
-						$count = count($_POST["privkey_{$this_input}"]);
+						$count = count($_POST["privkey_{$thisInput}"]);
 						$count = $count > 0 ? $count : 1;
 						
 						foreach(range(0, $count-1) as $arrayIdx) {
 						?>
-						<input class="form-control" title="Private Key Hex, for signing purpose." placeholder='Private Key Hex' type='text' name='privkey_<?php echo $this_input?>[]' value='<?php echo $_POST["privkey_{$this_input}"][$arrayIdx]?>'>
+						<input class="form-control" title="Private Key Hex, for signing purpose." placeholder='Private Key Hex' type='text' name='privkey_<?php echo $thisInput?>[]' value='<?php echo $_POST["privkey_{$thisInput}"][$arrayIdx]?>'>
 						<?php
 						}
 						?>
@@ -394,7 +394,7 @@ if ($errmsg) {
 					</div>
 					<div class="form-group  col-sm-11">
 						<div class="input-group mb-3">
-							<input class="form-control" title="Enter Redeem Script to reveal number of required signature." placeholder='Enter Redeem Script to reveal number of required signature.' type='text' name='redeemscript_<?php echo $this_input?>' value='<?php echo $_POST["redeemscript_{$this_input}"]?>'/>
+							<input class="form-control" title="Enter Redeem Script to reveal number of required signature." placeholder='Enter Redeem Script to reveal number of required signature.' type='text' name='redeemscript_<?php echo $thisInput?>' value='<?php echo $_POST["redeemscript_{$thisInput}"]?>'/>
 							<div class="input-group-append">
 								<input class="btn btn-success" type="button" value="" onclick="
 									var self = $(this);
@@ -468,8 +468,8 @@ if ($errmsg) {
 					}
 					">
 						<?php
-						foreach(range(1,$no_of_outputs) as $this_output) {
-							echo "<option value='{$this_output}'".($this_output == $_POST['no_of_outputs'] ? " selected": "").">{$this_output}</option>";
+						foreach(range(1,$noOfOutputs) as $thisOutput) {
+							echo "<option value='{$thisOutput}'".($thisOutput == $_POST['no_of_outputs'] ? " selected": "").">{$thisOutput}</option>";
 						}
 						?>
 					</select>
@@ -479,18 +479,18 @@ if ($errmsg) {
 			$selected_n_outputs = is_numeric($_POST['no_of_outputs']) ? $_POST['no_of_outputs'] : 1;
 			
 			
-			foreach(range(1,$no_of_outputs) as $this_output) {
+			foreach(range(1,$noOfOutputs) as $thisOutput) {
 			?>
-				<div class="form-row" id='row_output_<?php echo $this_output?>' style="<?php echo ($this_output > $selected_n_outputs) ? "display:none" : "display:;"?>">
+				<div class="form-row" id='row_output_<?php echo $thisOutput?>' style="<?php echo ($thisOutput > $selected_n_outputs) ? "display:none" : "display:;"?>">
 					<div class="form-group col-sm-1">
-						#<?php echo $this_output?> 
+						#<?php echo $thisOutput?> 
 					</div>
 					
 					<div class="form-group col-sm-6">
-						<input class="form-control" placeholder='Any Address' type='text' name='address_<?php echo $this_output?>' value='<?php echo $_POST["address_{$this_output}"]?>'>
+						<input class="form-control" placeholder='Any Address' type='text' name='address_<?php echo $thisOutput?>' value='<?php echo $_POST["address_{$thisOutput}"]?>'>
 					</div>
 					<div class="form-group col-sm-5">
-						<input class="form-control" placeholder='Amount' type='text' name='amount_<?php echo $this_output?>' value='<?php echo $_POST["amount_{$this_output}"]?>'>
+						<input class="form-control" placeholder='Amount' type='text' name='amount_<?php echo $thisOutput?>' value='<?php echo $_POST["amount_{$thisOutput}"]?>'>
 					</div>
 				</div>
 	<?php

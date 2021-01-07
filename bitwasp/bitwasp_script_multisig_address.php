@@ -9,7 +9,7 @@ use BitWasp\Bitcoin\Script\Opcodes;
 
 include_once "../libraries/vendor/autoload.php";
 
-$m_n_range = range(1,15);
+$M_N_Range = range(1,15);
 
 include_once("html_iframe_header.php");
 
@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$pubKeys = [];
 		
 		$publicKeyFactory = new PublicKeyFactory();
-		if (!in_array($_POST['reqsig'], $m_n_range)) {
+		if (!in_array($_POST['reqsig'], $M_N_Range)) {
 			throw new Exception("'Required Signature' value is not valid.");
 		} else {
 			foreach($_POST['pubkey'] as $pubkey_hex) {
@@ -62,7 +62,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 						<?php 
 						foreach( $redeemScript->getScriptParser()->decode() as $operation ) {
 							if ($operation->isPush()) {
-								
 								echo htmlentities("<{$operation->getData()->getHex()}> ");
 							} else {
 								echo $opcodes->getOp($operation->getOp()) . " " ;
@@ -79,8 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 					<td>
 						<?php 
 						foreach( $scriptPubKey->getScriptParser()->decode() as $operation ) {
-							if ($operation->isPush()) {
-								
+							if ($operation->isPush()) {								
 								echo htmlentities("<{$operation->getData()->getHex()}> ");
 							} else {
 								echo $opcodes->getOp($operation->getOp()) . " " ;
@@ -156,13 +154,13 @@ if ($errmsg) {
 		</div>
 	</div>
 	<?php
-	$display_publickey = count($_POST['pubkey'])-1;
-	$display_publickey = max(1, $display_publickey);
+	$displayPublickey = count($_POST['pubkey'])-1;
+	$displayPublickey = max(1, $displayPublickey);
 	?>
 	<div id="multisig-pubkey-holder" class="form-group">
 		
 		<?php
-		foreach(range(1, $display_publickey) as $n) {
+		foreach(range(1, $displayPublickey) as $n) {
 		?>
 		<div class="input-group mb-3">
 			<input class="form-control" type='text' name='pubkey[]' value='<?php echo $_POST['pubkey'][$n]?>'>
@@ -187,7 +185,7 @@ if ($errmsg) {
 		<label for="reqsig">Required Signature To Spend:</label>
 		<select id="reqsig" name="reqsig" class="form-control" >
 			<?php
-			foreach($m_n_range as $k) {
+			foreach($M_N_Range as $k) {
 				echo "<option value='{$k}'".($k == $_POST['reqsig'] ? " selected": "").">{$k}</option>";
 			}
 			?>

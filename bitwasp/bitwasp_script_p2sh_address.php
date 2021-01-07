@@ -16,11 +16,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$network        = Bitcoin::getNetwork();
 		
 		if (ctype_xdigit($_POST['redeem_script'])) {
-			$script_pub_key = ScriptFactory::fromHex($_POST['redeem_script']);
-			$opcodes = $script_pub_key->getOpcodes();
+			$scriptPubKey = ScriptFactory::fromHex($_POST['redeem_script']);
+			$opcodes = $scriptPubKey->getOpcodes();
 	
-			$p2sh = new ScriptHashAddress($script_pub_key->getScriptHash());
-			$p2sh_address = $p2sh->getAddress();
+			$p2sh = new ScriptHashAddress($scriptPubKey->getScriptHash());
+			$p2shAddress = $p2sh->getAddress();
 		} else {
 			throw new Exception("Redeem script must be hex.");
 		}
@@ -29,15 +29,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	?>
 		<div class="table-responsive">
 			<table border=0 class='table'>
-				<tr style='background-color:#f0f0f0'><td>Base58 address</td><td><?php echo $p2sh_address;?></td></tr>
-				<tr><td>Redeem Script Hex </td><td><?php echo $script_pub_key->getHex();?></td></tr>
+				<tr style='background-color:#f0f0f0'><td>Base58 address</td><td><?php echo $p2shAddress;?></td></tr>
+				<tr><td>Redeem Script Hex </td><td><?php echo $scriptPubKey->getHex();?></td></tr>
 				<tr><td>Redeem Script Asm</td>
 					<td>
-						<?php echo $script_pub_key->getScriptParser()->getHumanReadable();?>
+						<?php echo $scriptPubKey->getScriptParser()->getHumanReadable();?>
 					</td>
 				</tr>
 				
-				<tr><td>Redeem Script Hash Hex</td><td><?php echo $script_pub_key->getScriptHash()->getHex();?></td></tr>
+				<tr><td>Redeem Script Hash Hex</td><td><?php echo $scriptPubKey->getScriptHash()->getHex();?></td></tr>
 				
 				<tr style='background-color:#f0f0f0'><td>ScriptPubKey Hex </td><td><?php echo $p2sh->getScriptPubKey()->getHex()?></td></tr>
 				<tr style='background-color:#f0f0f0'><td>ScriptPubKey Asm</td>
