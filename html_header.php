@@ -38,8 +38,6 @@
 		<div class="list-group list-group-flush">
 			
 			<a href="/ethereum" class="list-group-item list-group-item-action bg-light">Learn Ethereum</a>
-			<?php if(0) {?><a href="/bitcoin" class="list-group-item list-group-item-action bg-light">Ethereum Chain Tools</a><?php } ?>
-			
 			<a href="/eth_smartcontract" class="list-group-item list-group-item-action bg-light">Learn Smart Contract</a>
 		</div>
 		
@@ -48,6 +46,11 @@
 			
 			<a href="/tron" class="list-group-item list-group-item-action bg-light">Learn Tron</a>
 	
+		</div>
+		
+		<div class="list-group-header">PHP Others</div>
+		<div class="list-group list-group-flush">
+			<a href="/others/qr_code.php" class="list-group-item list-group-item-action bg-light">QR Code Generator</a>
 		</div>
     </div>
     <!-- /#sidebar-wrapper -->
@@ -65,24 +68,12 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent" >
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
 			<li class="nav-item">
-              <a class="nav-link" href="/bitcoin">Bitcoin Chain</a>
+              <a class="nav-link" href="/bitcoin">Bitcoin</a>
             </li>
             <li class="nav-item active">
               <a class="nav-link" href="/bitwasp">Bitwasp</a>
             </li>
-			<?php if(0) {?>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Dropdown
-              </a>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Something else here</a>
-              </div>
-            </li>
-			<?php }?>
+			
           </ul>
         </div>
       </nav>

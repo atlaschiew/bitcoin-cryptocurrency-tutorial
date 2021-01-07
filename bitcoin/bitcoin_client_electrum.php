@@ -11,13 +11,10 @@ include_once("html_header.php");
 	Electrum is a lightweight Bitcoin client, based on a client-server protocol.
 	</p>
 	
-	<p>
-		Steps below is install on Centos7.
-	</p>
 	
 <hr/>
 
-<h3>Steps By Steps</h3>
+<h3>Steps By Steps (CentOS 7)</h3>
 <ol>
 	<li>Open a Terminal and add the repository to your Yum install.		
 		<Pre data-enlighter-linenumbers="false" data-enlighter-theme="eclipse" style="background-color:#ccc;">

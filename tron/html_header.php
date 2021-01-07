@@ -51,14 +51,16 @@
 			<a href="tron_sysc_accountcreate.php" class="list-group-item list-group-item-action bg-light">Account Create Contract</a>
 			<a href="tron_sysc_transfercontract.php" class="list-group-item list-group-item-action bg-light">Transfer Contract</a>
 			<a href="tron_sysc_triggersmartcontract.php" class="list-group-item list-group-item-action bg-light">Trigger Smart Contract</a>
+			<a href="tron_sysc_transferassetcontract.php" class="list-group-item list-group-item-action bg-light">Transfer Asset Contract</a>
 		</div>
 		
 		<div class="list-group-header">Tron Transaction</div>
 		<div class="list-group list-group-flush">
 			<a href="tron_create_tx.php" class="list-group-item list-group-item-action bg-light">Create Raw Transaction</a>
-			<a href="tron_broadcast_tx.php" class="list-group-item list-group-item-action bg-light">Broadcast Raw Tx</a>
 			<a href="tron_create_trc20_tx.php" class="list-group-item list-group-item-action bg-light">Create Send TRC20 Tx</a>
+			<a href="tron_create_trc10_tx.php" class="list-group-item list-group-item-action bg-light">Create Send TRC10 Tx</a>
 			<a href="tron_sign_raw_data.php" class="list-group-item list-group-item-action bg-light">Sign Raw Data</a>
+			<a href="tron_broadcast_tx.php" class="list-group-item list-group-item-action bg-light">Broadcast Raw Tx</a>
 			<a href="tron_get_tx_info.php" class="list-group-item list-group-item-action bg-light">Get Transaction Info</a>
 		</div>
 		

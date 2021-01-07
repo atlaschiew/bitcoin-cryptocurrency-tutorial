@@ -2,30 +2,35 @@
 
 session_start();
 
-$support_coins = ['btc/main'=>"Bitcoin Mainnet", 'btc/test3'=>"Bitcoin Testnet3", 'dash/main'=>"Dash Mainnet", 'doge/main'=>"Dogecoin Mainnet", 'ltc/main'=>"Litecoin Mainnet",'bcy/test'=>"Blockcypher Testnet"];
-$has_result = false;
+$supportCoins = ['btc/main'=>"Bitcoin Mainnet", 'btc/test3'=>"Bitcoin Testnet3", 'dash/main'=>"Dash Mainnet", 'doge/main'=>"Dogecoin Mainnet", 'ltc/main'=>"Litecoin Mainnet",'bcy/test'=>"Blockcypher Testnet"];
+$hasResult = false;
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	
 	try { 
 	
 		if(md5($_POST['captcha']) != $_SESSION['CAPTCHA_FORM1']){
 			throw new Exception("CAPTCHA verification failed.");
-		} else if (!isset($support_coins[$_POST['network']])) {
+		} else if (!isset($supportCoins[$_POST['network']])) {
 			throw new Exception('Network not found.');
 		} else {
-			$network_name = $_POST['network'];
+			$networkName = $_POST['network'];
 		}
 
-		$url = "https://api.blockcypher.com/v1/{$network_name}/addrs/{$_POST['address']}?unspentOnly=true&includeHex=true";
+		$url = "https://api.blockcypher.com/v1/{$networkName}/addrs/{$_POST['address']}?unspentOnly=true&includeHex=true";
 		
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $url);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 
-		$utxos = curl_exec($ch);
-		$utxos = json_decode($utxos,true);
-		$utxos = $utxos['txrefs'];
+		$rawUtxos = curl_exec($ch);
+		$rawUtxos = json_decode($rawUtxos,true);
+		
+		if ($rawUtxos['error']) {
+			throw new Exception("URL: {$url}, Error: {$rawUtxos['error']}.");
+		}
+		
+		$utxos = $rawUtxos['txrefs'];
 		
 		if (!@count($utxos)) {
 			throw new Exception("UTXO not found.");
@@ -34,23 +39,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		curl_close($ch);
 		
 		foreach($utxos as $k=>$utxo) {
-			$url = "https://api.blockcypher.com/v1/{$network_name}/txs/{$utxo['tx_hash']}?outstart={$utxo['tx_output_n']}&instart=99999999&limit=1";
+			$url = "https://api.blockcypher.com/v1/{$networkName}/txs/{$utxo['tx_hash']}?outstart={$utxo['tx_output_n']}&instart=99999999&limit=1";
 
 			$ch = curl_init();
 			curl_setopt($ch, CURLOPT_URL, $url);
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 			curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 
-			$prev_output = curl_exec($ch);
-			$prev_output = json_decode($prev_output,true);
-			$prev_output = $prev_output['outputs'][0];
-
-			$utxos[$k]['script'] = $prev_output['script'];
+			$prevOutput = curl_exec($ch);
+			$prevOutput = json_decode($prevOutput,true);
+			
+			if ($prevOutput['error']) {
+				throw new Exception("URL: {$url}, Error: {$prevOutput['error']}.");
+			}
+		
+			$prevOutput = $prevOutput['outputs'][0];
+			$utxos[$k]['script'] = $prevOutput['script'];
 			
 			curl_close($ch);
 		}
-		
-		$has_result = true;
+
+		$hasResult = true;
 		
 	} catch (Exception $e) {
 		$errmsg .= "Problem found. " . $e->getMessage();
@@ -62,12 +71,12 @@ include_once("html_iframe_header.php");
 if ($errmsg) {
 ?>
 	<div class="alert alert-danger">
-		<strong>Error!</strong> <?php echo $errmsg?>
+		<strong>Error!</strong><br/><?php echo $errmsg?>
 	</div>
 <?php
 }
 
-if ($has_result) {
+if ($hasResult) {
 ?>
 	<div class="table-responsive">
 		<table border=0 class='table'>
@@ -87,7 +96,7 @@ if ($has_result) {
 		<label for="network">Network:</label>
 		<select id="network" name="network" class="form-control" >
 			<?php
-			foreach($support_coins as $k=>$v) {
+			foreach($supportCoins as $k=>$v) {
 				echo "<option value='{$k}'".($k == $_POST['network'] ? " selected": "").">{$v}</option>";
 			}
 			?>
