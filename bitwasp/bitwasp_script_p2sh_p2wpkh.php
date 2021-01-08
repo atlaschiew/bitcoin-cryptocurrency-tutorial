@@ -6,10 +6,14 @@ $_HTML['meta']['keywords'] = "Bitwasp,Pay To Witness Public Key Hash Wrapped In 
 include_once "../common.php";
 include_once("html_header.php");
 
+$var_int = "A var_int is most commonly a 1 byte hexadecimal value.";
 ?>
 <h2 class="mt-3">Bitwasp P2SH.P2WPKH</h2>
 <hr/>
-<?php echo $explaination['segwit']?>
+In 2015, Bitcoin developers came up with major improvements that known as Segregated Witness – SegWit and it has been mainly mentioned in BIP141 & BIP143. This improvement aims to solve 
+<ul>
+<li>Scalability of bitcoin network.</li><li>Malleability transaction for lightning network solution.</li><li>Increase block size limit.</li>
+</ul>
 <hr/>
 <ul>
 	<li>P2SH.P2WPKH stands for "Pay To Witness Public Key Hash Wrapped In P2SH".</li>
@@ -36,14 +40,14 @@ include_once("html_header.php");
 
 <h3 class="mt-3" id='hashtag3'>Witness Structure</h3>
 
-The witness is a serialization of all witness data of the transaction. Each txin is associated with a witness field. A witness field starts with a <span class='explaination' data-toggle='tooltip' title="<?php echo $explaination['var_int']?>">var_int</span> to indicate the number of stack items for the txin. It is followed by stack items, with each item starts with a <span class='explaination' data-toggle='tooltip' title="<?php echo $explaination['var_int']?>">var_int</span> to indicate the length. Witness data is NOT script. See <a href='https://github.com/bitcoin/bips/blob/master/bip-0141.mediawiki' target='_blank'>BIP 141</a>.
+The witness is a serialization of all witness data of the transaction. Each txin is associated with a witness field. A witness field starts with a <span class='explaination' data-toggle='tooltip' title="<?php echo $var_int?>">var_int</span> to indicate the number of stack items for the txin. It is followed by stack items, with each item starts with a <span class='explaination' data-toggle='tooltip' title="<?php echo $var_int?>">var_int</span> to indicate the length. Witness data is NOT script. See <a href='https://github.com/bitcoin/bips/blob/master/bip-0141.mediawiki' target='_blank'>BIP 141</a>.
 <p>
 	<div class="table-responsive">
 		<table class='table'>
 			<tr><td>Witness</td><td>Serialization of Witness Data.</td></tr>
 			<tr><td>Witness Data</td><td>All Witness Fields.</td></tr>
-			<tr><td>Witness Field</td><td>Witness field can refer to its txIn, start with <span class='explaination' data-toggle='tooltip' title="<?php echo $explaination['var_int']?>">var_int</span> to indicate number of stack items.</td></tr>
-			<tr><td>Stack Item</td><td>Starts with a <span class='explaination' data-toggle='tooltip' title="<?php echo $explaination['var_int']?>">var_int</span> to indicate the length.</td></tr>
+			<tr><td>Witness Field</td><td>Witness field can refer to its txIn, start with <span class='explaination' data-toggle='tooltip' title="<?php echo $var_int?>">var_int</span> to indicate number of stack items.</td></tr>
+			<tr><td>Stack Item</td><td>Starts with a <span class='explaination' data-toggle='tooltip' title="<?php echo $var_int?>">var_int</span> to indicate the length.</td></tr>
 		</table>
 	</div>
 </p>

@@ -5,13 +5,14 @@ $_HTML['meta']['keywords'] = "Bitwasp,P2WSH,Pay To Witness Script Hash,PHP";
 include_once "../common.php";
 include_once("html_header.php");
 
-$no_of_inputs = 10;
-$no_of_outputs = 10;
 
 ?>
 <h2 class="mt-3">Bitwasp P2WSH</h2>
 <hr/>
-<?php echo $explaination['segwit']?>
+In 2015, Bitcoin developers came up with major improvements that known as Segregated Witness – SegWit and it has been mainly mentioned in BIP141 & BIP143. This improvement aims to solve 
+<ul>
+<li>Scalability of bitcoin network.</li><li>Malleability transaction for lightning network solution.</li><li>Increase block size limit.</li>
+</ul>
 <hr/>
 <ul>
 	<li>P2WSH stands for "Pay To Witness Script Hash".</li>

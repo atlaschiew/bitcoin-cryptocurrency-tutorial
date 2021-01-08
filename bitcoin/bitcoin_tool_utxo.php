@@ -52,7 +52,7 @@ include_once("html_header.php");
 	</div>
 	<div id="form2_tabitem2" class="tab-pane fade">
 		<pre style='border-radius:none;'><?php
-			echo htmlentities(safe_electrum_source(file_get_contents("bitcoin_tool_utxo_form_electrum.php")));
+			echo htmlentities(safeElectrumSource(file_get_contents("bitcoin_tool_utxo_form_electrum.php")));
 		?>
 		</pre> 		
 	</div>

@@ -1,6 +1,6 @@
 <?php
-$_HTML['title'] = 'Ethereum Transaction';
-$_HTML['meta']['keywords'] = "Ethereum Transaction,Ethereum Transaction in PHP,PHP";
+$_HTML['title'] = 'Ethereum ERC20 Transaction';
+$_HTML['meta']['keywords'] = "Ethereum ERC20 Transaction,Ethereum ERC20 Transaction in PHP,PHP";
 include_once "../common.php";
 include_once("html_header.php");
 

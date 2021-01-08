@@ -24,11 +24,11 @@
 							
 							<div class="row">
 								<div class="col-sm-6">
-									<img id='footer_btc' rel='<?php echo $settings['btc_address']?>' src='data:image/PNG;base64,<?php echo $settings['btc_address_qrcode']?>' style='width:150px;height:150px;display:none;'/>
+									<img id='footer_btc' rel='<?php echo $settings['btc_address']?>' src='<?php echo $settings['btc_address_qrcode']?>' style='width:150px;height:150px;display:none;'/>
 									
-									<img id='footer_eth' rel='<?php echo $settings['eth_address']?>' src='data:image/PNG;base64,<?php echo $settings['eth_address_qrcode']?>' style='width:150px;height:150px;display:none;'/>
+									<img id='footer_eth' rel='<?php echo $settings['eth_address']?>' src='<?php echo $settings['eth_address_qrcode']?>' style='width:150px;height:150px;display:none;'/>
 									
-									<img id='footer_lite' rel='<?php echo $settings['lite_address']?>' src='data:image/PNG;base64,<?php echo $settings['lite_address_qrcode']?>' style='width:150px;height:150px;display:none;'/>
+									<img id='footer_lite' rel='<?php echo $settings['lite_address']?>' src='<?php echo $settings['lite_address_qrcode']?>' style='width:150px;height:150px;display:none;'/>
 								</div>
 								<div class="col-sm-6">
 									<select name='footer_coin' size="6" class="form-control" onchange="

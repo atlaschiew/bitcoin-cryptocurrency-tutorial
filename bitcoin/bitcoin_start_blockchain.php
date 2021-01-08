@@ -33,7 +33,7 @@ include_once("html_header.php");
 	</div>
 	<div id="form1_tabitem2" class="tab-pane fade">
 		<pre style='border-radius:none;'><?php
-			echo htmlentities(safe_bitcoincli_source(file_get_contents("bitcoin_statform_bitcoincli.php")));
+			echo htmlentities(safeBitcoincliSource(file_get_contents("bitcoin_statform_bitcoincli.php")));
 		?>
 		</pre> 		
 	</div>
@@ -54,7 +54,7 @@ include_once("html_header.php");
 	</div>
 	<div id="form2_tabitem2" class="tab-pane fade">
 		<pre style='border-radius:none;'><?php
-			echo htmlentities(safe_bitcoincli_source(file_get_contents("bitcoin_form_bitcoincli.php")));
+			echo htmlentities(safeBitcoincliSource(file_get_contents("bitcoin_form_bitcoincli.php")));
 		?>
 		</pre> 		
 	</div>

@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			$networkName = $_POST['network'];
 		}
 		
-		$updateFields = $dt = [];
+		$dt = [];
 		
 		if (strlen($_POST['height']) > 0) {
 			if (!is_numeric($_POST['height'])) {
@@ -44,57 +44,34 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			}
 			curl_close($ch);
 			
-			$updateFields['network_height'] = $chain['height'];
-			$updateFields['network_data'] = json_encode($chain);
-			$updateFields['network_last_update'] = date("Y-m-d H:i:s");
-			
 			$fromHeight = ($chain['height'] + 1) - 11;		
 			$toHeight = $chain['height'];
 		}
 		
 		foreach(range($fromHeight,$toHeight) as $newHeight) {
-			
-			if (!mysqli_num_rows($r= DB::query("SELECT * FROM block WHERE block_height='".DB::esc($newHeight)."' AND network_name='".DB::esc($networkName)."' LIMIT 1"))) {
-			
-				$url = "https://api.blockcypher.com/v1/{$networkName}/blocks/{$newHeight}?txstart=1&limit=1";
-				
-				$ch = curl_init();
-				curl_setopt($ch, CURLOPT_URL, $url);
-				curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-				curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 
-				$block = curl_exec($ch);
-				$block = json_decode($block,true);
-				
-				if ($block['error']) {
-					throw new Exception("URL: {$url}, Error: {$block['error']}.");
-				}
-				
-				curl_close($ch);
+			$url = "https://api.blockcypher.com/v1/{$networkName}/blocks/{$newHeight}?txstart=1&limit=1";
 			
-				$blockTime =  date("Y-m-d H:i:s", strtotime($block['time']));
-				
-				DB::query("INSERT INTO block SET network_name='".DB::esc($networkName)."', block_height='".DB::esc($block['height'])."', block_time='".DB::esc($blockTime)."', block_data='".DB::esc(json_encode($block))."'");
+			$ch = curl_init();
+			curl_setopt($ch, CURLOPT_URL, $url);
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+			curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+
+			$block = curl_exec($ch);
+			$block = json_decode($block,true);
 			
-			} else {
-				$rBlock = mysqli_fetch_assoc($r);
-				$blockTime = $rBlock['block_time'];
+			if ($block['error']) {
+				throw new Exception("URL: {$url}, Error: {$block['error']}.");
 			}
-	
+			
+			curl_close($ch);
+		
+			$blockTime =  date("Y-m-d H:i:s", strtotime($block['time']));
+			
 			$dt[] = $blockTime;
 		}
 		sort($dt);
 		$mtp = $dt[$median = 5];
-		
-		if (@count($updateFields) > 0) {
-			$updateFields['network_mtp'] = $mtp;
-			$updateQuery = "";
-			foreach($updateFields as $updateField=>$updateValue) {
-				$updateQuery .= "`{$updateField}` = '".DB::esc($updateValue)."', ";
-			}
-			$updateQuery = rtrim($updateQuery, ", ");
-			DB::query("UPDATE network_status SET {$updateQuery} WHERE network_name='".DB::esc($networkName)."'");
-		}
 		
 		$hasResult = true;
 		

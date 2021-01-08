@@ -24,11 +24,11 @@
 							
 							<div class="row">
 								<div class="col-sm-6">
-									<img id='footer_btc' rel='<?php echo $settings['btc_address']?>' src='data:image/PNG;base64,<?php echo $settings['btc_address_qrcode']?>' style='width:150px;height:150px;display:none;'/>
+									<img id='footer_btc' rel='<?php echo $settings['btc_address']?>' src='<?php echo $settings['btc_address_qrcode']?>' style='width:150px;height:150px;display:none;'/>
 									
-									<img id='footer_eth' rel='<?php echo $settings['eth_address']?>' src='data:image/PNG;base64,<?php echo $settings['eth_address_qrcode']?>' style='width:150px;height:150px;display:none;'/>
+									<img id='footer_eth' rel='<?php echo $settings['eth_address']?>' src='<?php echo $settings['eth_address_qrcode']?>' style='width:150px;height:150px;display:none;'/>
 									
-									<img id='footer_lite' rel='<?php echo $settings['lite_address']?>' src='data:image/PNG;base64,<?php echo $settings['lite_address_qrcode']?>' style='width:150px;height:150px;display:none;'/>
+									<img id='footer_lite' rel='<?php echo $settings['lite_address']?>' src='<?php echo $settings['lite_address_qrcode']?>' style='width:150px;height:150px;display:none;'/>
 								</div>
 								<div class="col-sm-6">
 									<select name='footer_coin' size="6" class="form-control" onchange="
@@ -53,7 +53,7 @@
 					<div class="row">
 						<div class="col-sm-12">
 							<small style='color:gray;'>
-								<?php echo $explaination['']?>
+								BTCSCHOOLS would like to present you with more pratical but little theory throughout our tutorials. Pages' content are constantly keep reviewed to avoid mistakes, but we cannot warrant correctness of all contents. While using this site, you agree to accept our terms of use, cookie & privacy policy. Copyright 2019 by BTCSCHOOLS. All Rights Reserved.
 							</small>
 						</div>
 					</div>
