@@ -11,8 +11,7 @@ Btcschools aims to
 
 # Setup
 * To setup one in your hosting. Please rename common.php.sample to common.php and fill in your own details.
-
-* Update libraries, navigate to libraries/ and run the following command
+* Update libraries/ by navigating to libraries/ (directory where the composer.json located) and run the command below
 ```
 $ /usr/local/bin/ea-php70 composer.phar update
 ```
