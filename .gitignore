@@ -2,12 +2,15 @@
 *
 
 # Except for these
-!ethereum/
-!eth_smartcontract/
+!bitcoin/
 !bitwasp/
-!blockchain/
-!media/
+!eth_smartcontract/
+!ethereum/
 !libraries/
+!media/
+!others/
+!tron/
+
 !.gitignore
 !common.php.sample
 !html_footer.php
