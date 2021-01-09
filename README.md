@@ -1,5 +1,8 @@
 # Introduction
-These source codes are derived from https://www.btcschools.net. Btcschools aims to
+HELLO :sunglasses:, Welcome to btcschools! These source codes are derived from https://www.btcschools.net. 
+
+# Btcschools.net
+Btcschools aims to
 * Reduce programmer's development cost.
 * For ease of programmer to enroll blockchain world.
 * Collect fans, build community and grow together.
