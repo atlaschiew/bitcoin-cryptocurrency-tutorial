@@ -1,5 +1,5 @@
 # Btcschools.net
-HELLO ![me](https://raw.githubusercontent.com/MartinHeinz/MartinHeinz/master/wave.gif =50x50), Welcome to btcschools! These source codes are derived from https://www.btcschools.net. 
+HELLO <img src="https://raw.githubusercontent.com/MartinHeinz/MartinHeinz/master/wave.gif" width="48">, Welcome to btcschools! These source codes are derived from https://www.btcschools.net. 
 
 Btcschools aims to
 * Reduce programmer's development cost.
