@@ -14,6 +14,7 @@ Supported cryptocurrencies
 * Any other bitcoin derived coins
 * Ethereum
 * Tron
+* ... More to come ...
 
 # Gallery
 <img src="https://www.btcschools.net/media/images/github/gallery1.PNG?1" width="225" height="225"> <img src="https://www.btcschools.net/media/images/github/gallery2.PNG?2" width="225" height="225"> <img src="https://www.btcschools.net/media/images/github/gallery3.PNG?3" width="225" height="225"> <img src="https://www.btcschools.net/media/images/github/gallery4.PNG?4" width="225" height="225"> 
