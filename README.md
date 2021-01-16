@@ -16,7 +16,7 @@ Supported cryptocurrencies
 * Tron
 
 # Gallery
-<img src="https://www.btcschools.net/media/images/github/gallery1.PNG" width="250" height="250"> <img src="https://www.btcschools.net/media/images/github/gallery2.PNG" width="250" height="250"> <img src="https://www.btcschools.net/media/images/github/gallery3.PNG" width="250" height="250"> <img src="https://www.btcschools.net/media/images/github/gallery4.PNG" width="250" height="250"> 
+<img src="https://www.btcschools.net/media/images/github/gallery1.PNG?1" width="250" height="250"> <img src="https://www.btcschools.net/media/images/github/gallery2.PNG?2" width="250" height="250"> <img src="https://www.btcschools.net/media/images/github/gallery3.PNG?3" width="250" height="250"> <img src="https://www.btcschools.net/media/images/github/gallery4.PNG?4" width="250" height="250"> 
 
 # Setup
 * To setup one in your hosting. Please rename common.php.sample to common.php and fill in your own details.
