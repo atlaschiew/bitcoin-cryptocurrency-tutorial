@@ -19,6 +19,12 @@ Supported cryptocurrencies
 # Gallery
 <img src="https://www.btcschools.net/media/images/github/gallery1.PNG?1" width="225" height="225"> <img src="https://www.btcschools.net/media/images/github/gallery2.PNG?2" width="225" height="225"> <img src="https://www.btcschools.net/media/images/github/gallery3.PNG?3" width="225" height="225"> <img src="https://www.btcschools.net/media/images/github/gallery4.PNG?4" width="225" height="225"> 
 
+# List Of Repositories
+
+<table>
+  <tr><td>Repository</td><td>About</td><td>People</td><td>Stat</td></tr>
+</table>
+
 # Setup
 * To setup one in your hosting. Please rename common.php.sample to common.php and fill in your own details.
 * Update libraries/ by navigating to libraries/ (directory where the composer.json located) and run the command below
