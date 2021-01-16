@@ -25,6 +25,8 @@ Supported cryptocurrencies
 [![kornrunner_eth_raw_tx](https://github-readme-stats.vercel.app/api/pin/?username=kornrunner&repo=php-ethereum-offline-raw-tx&show_owner=kornrunner)](https://github.com/kornrunner/php-ethereum-offline-raw-tx)
 [![kornrunner_php_keccak](https://github-readme-stats.vercel.app/api/pin/?username=kornrunner&repo=php-keccak&show_owner=kornrunner)](https://github.com/kornrunner/php-keccak)
 [![furqansiddiqui_erc20](https://github-readme-stats.vercel.app/api/pin/?username=furqansiddiqui&repo=erc20-php&show_owner=furqansiddiqui)](https://github.com/furqansiddiqui/erc20-php)
+[![web3p_rlp](https://github-readme-stats.vercel.app/api/pin/?username=web3p&repo=rlp&show_owner=web3p)](https://github.com/web3p/rlp)
+[![web3p_php](https://github-readme-stats.vercel.app/api/pin/?username=web3p&repo=web3.php&show_owner=web3p)](https://github.com/web3p/web3.php)
 
 
 # Setup
