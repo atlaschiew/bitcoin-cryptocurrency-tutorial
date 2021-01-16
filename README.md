@@ -15,6 +15,9 @@ Supported cryptocurrencies
 * Ethereum
 * Tron
 
+# Gallery
+<img src="https://www.btcschools.net/media/images/github/gallery1.PNG" width="250">
+
 # Setup
 * To setup one in your hosting. Please rename common.php.sample to common.php and fill in your own details.
 * Update libraries/ by navigating to libraries/ (directory where the composer.json located) and run the command below
