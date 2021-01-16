@@ -28,6 +28,13 @@ Supported cryptocurrencies
 [![web3p_rlp](https://github-readme-stats.vercel.app/api/pin/?username=web3p&repo=rlp&show_owner=web3p)](https://github.com/web3p/rlp)
 [![web3p_php](https://github-readme-stats.vercel.app/api/pin/?username=web3p&repo=web3.php&show_owner=web3p)](https://github.com/web3p/web3.php)
 
+# Disclaimer
+* We do not store neither private key nor your personal information.
+* Please do not submit private key to any website include btcschools.net, unless you are clear to your motive.
+* For bettery security. You can download the repo and run at your local.
+* To save development cost. Please run your test at testnet prior to mainnet.
+* Throughout all tutorials, form validation is loose, so please enhance it for your own.
+* Pages' content are constantly keep reviewed to avoid mistakes, but we cannot warrant correctness of all contents. Report us <a href="https://github.com/atlaschiew/btcschools/issues">here</a>.
 
 # Setup
 * To setup one in your hosting. Please rename common.php.sample to common.php and fill in your own details.
