@@ -23,6 +23,7 @@ Supported cryptocurrencies
 
 <table>
   <tr><td>Repository</td><td>About</td><td>People</td><td>Stat</td></tr>
+  <tr><td>[![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=Bit-Wasp&repo=bitcoin-php&show_owner=Bit-Wasp)](https://github.com/Bit-Wasp/bitcoin-php)</td></tr>
 </table>
 
 # Setup
