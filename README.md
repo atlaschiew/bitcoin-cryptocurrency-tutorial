@@ -34,7 +34,7 @@ Supported cryptocurrencies
 * For bettery security. You can download the repo and run at your local.
 * To save development cost. Please run your test at testnet prior to mainnet.
 * Throughout all tutorials, form validation is loose, so please enhance it for your own.
-* Pages' content are constantly keep reviewed to avoid mistakes, but we cannot warrant correctness of all contents. Report us <a href="https://github.com/atlaschiew/btcschools/issues">here</a>.
+* Pages' content are constantly keep reviewed to avoid mistakes, but we cannot warrant correctness of all contents. Report issue to us <a href="https://github.com/atlaschiew/btcschools/issues">here</a>.
 
 # Setup
 * To setup one in your hosting. Please rename common.php.sample to common.php and fill in your own details.
