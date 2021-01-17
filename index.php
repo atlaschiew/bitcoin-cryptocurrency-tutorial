@@ -3,14 +3,10 @@ include_once "common.php";
 include_once("html_header.php");
 
 ?>
-<h1 class="mt-3">Decentralized Cryptocurrencies</h1>
+<h1 class="mt-3">Btcschools</h1>
 <hr/>
-Bitcoin or any decentralized cryptocurrencies is built on top of sets of protocols just alike to HTTP. Therefore to interact with it, you are freedomly to pick any programming languages or scriptings.
+Welcome to btcschools! Btcschools is pratical oriented tutorial site come with best PHP & Cryptocurrencies Collections.
 <hr/>
-<h2 class="mt-3">Btcschools</h2>
-<p>
-	Some argue that why are us so similar to w3schools. Well, we have nothing to do with w3schools but we love its way to present the contents. 
-</p>
 <p>
 	Btcschools aims to 
 </p>

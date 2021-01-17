@@ -1,6 +1,6 @@
 <?php 
 include_once "../common.php"; //include this just to derive $_BITCOINCLI_CONFIG[...] variable
-$support_coins = ['btc/main'=>"Bitcoin Mainnet"];
+$supportCoins = ['btc/main'=>"Bitcoin Mainnet"];
 
 $load_blocks = 10;
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -11,16 +11,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			throw new Exception("Please select one of 'Block Generation Way'.");
 		}
 		
-		$display_raw_results = $blocks = [];
+		$displayRawResults = $blocks = [];
 		if (!ctype_digit($_POST['height'])) {
-			$post_fields = [
+			$postFields = [
 				'jsonrpc' => '1.0',
 				'id'=>'curltest',
 				'method'=>'getbestblockhash',
 				'params'=> []
 			];
 		} else {
-			$post_fields = [
+			$postFields = [
 				'jsonrpc' => '1.0',
 				'id'=>'curltest',
 				'method'=>'getblockhash',
@@ -28,30 +28,30 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			];
 		}
 		
-		$bitcoincli_rpc_protocol = "http";
-		$bitcoincli_rpc_host = $_BITCOINCLI_CONFIG['bitcoincli_rpc_host'];
+		$bitcoincliRpcProtocol = "http";
+		$bitcoincliRpcHost = $_BITCOINCLI_CONFIG['bitcoincli_rpc_host'];
 
-		$bitcoincli_rpc_port = "8332";
+		$bitcoincliRpcPort = "8332";
 		
-		$bitcoincli_rpc_user = $_BITCOINCLI_CONFIG['bitcoincli_rpc_user'];
-		$bitcoincli_rpc_pwd = $_BITCOINCLI_CONFIG['bitcoincli_rpc_pwd'];
+		$bitcoincliRpcUser = $_BITCOINCLI_CONFIG['bitcoincli_rpc_user'];
+		$bitcoincliRpcPwd = $_BITCOINCLI_CONFIG['bitcoincli_rpc_pwd'];
 		
 		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_URL, $url = "{$bitcoincli_rpc_protocol}://{$bitcoincli_rpc_host}:{$bitcoincli_rpc_port}");
+		curl_setopt($ch, CURLOPT_URL, $url = "{$bitcoincliRpcProtocol}://{$bitcoincliRpcHost}:{$bitcoincliRpcPort}");
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 		curl_setopt($ch, CURLOPT_POST , 1);
-		curl_setopt($ch, CURLOPT_USERPWD , "{$bitcoincli_rpc_user}:{$bitcoincli_rpc_pwd}");
+		curl_setopt($ch, CURLOPT_USERPWD , "{$bitcoincliRpcUser}:{$bitcoincliRpcPwd}");
 		curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
-		curl_setopt($ch, CURLOPT_POSTFIELDS, $CURLOPT_POSTFIELDS = json_encode($post_fields));
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $CURLOPT_POSTFIELDS = json_encode($postFields));
 
-		$raw_result = curl_exec($ch);
+		$rawResult = curl_exec($ch);
 		
-		$display_raw_results[] = [$CURLOPT_POSTFIELDS, $raw_result];
+		$displayRawResults[] = [$CURLOPT_POSTFIELDS, $rawResult];
 		
 		if (curl_errno($ch)) { 
 			throw new Exception('CURL Error: ' . curl_error($ch). "#" . curl_errno($ch));
-		} else if (!($result = json_decode($raw_result,true))) {
+		} else if (!($result = json_decode($rawResult,true))) {
 			throw new Exception('Invalid JSON format.');
 		} else if (is_array($result['error']) AND $result['error'] !='null') {
 			throw new Exception('Bitcoin CLI Error: ' . $result['error']['message'] . "#" . $result['error']['code']);
@@ -71,24 +71,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			while($load_blocks > 0 AND $block_hash) {
 				
 				$ch = curl_init();
-				curl_setopt($ch, CURLOPT_URL, $url = "{$bitcoincli_rpc_protocol}://{$bitcoincli_rpc_host}:{$bitcoincli_rpc_port}");
+				curl_setopt($ch, CURLOPT_URL, $url = "{$bitcoincliRpcProtocol}://{$bitcoincliRpcHost}:{$bitcoincliRpcPort}");
 				curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 				curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 				curl_setopt($ch, CURLOPT_POST , 1);
-				curl_setopt($ch, CURLOPT_USERPWD , "{$bitcoincli_rpc_user}:{$bitcoincli_rpc_pwd}");
+				curl_setopt($ch, CURLOPT_USERPWD , "{$bitcoincliRpcUser}:{$bitcoincliRpcPwd}");
 				curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
 				curl_setopt($ch, CURLOPT_POSTFIELDS, $CURLOPT_POSTFIELDS = json_encode(['jsonrpc' => '1.0','id'=>'curltest','method'=>'getblock','params'=> [$block_hash,$verbosity ]]));
 				
-				$raw_result = curl_exec($ch);
+				$rawResult = curl_exec($ch);
 				if (curl_errno($ch)) { 
 					throw new Exception('CURL Error: ' . curl_error($ch). "#" . curl_errno($ch));
-				} else if (!($result = json_decode($raw_result,true))) {
+				} else if (!($result = json_decode($rawResult,true))) {
 					throw new Exception('Invalid JSON format.');
 				} else if (is_array($result['error']) AND $result['error'] !='null') {
 					throw new Exception('Bitcoin CLI Error: ' . $result['error']['message'] . "#" . $result['error']['code']);
 				} else {
 					
-					$display_raw_results[] = [$CURLOPT_POSTFIELDS, $raw_result];
+					$displayRawResults[] = [$CURLOPT_POSTFIELDS, $rawResult];
 				
 					$block = $result['result'];
 					$blocks[] = $block;
@@ -121,7 +121,7 @@ if ($errmsg) {
 <?php
 }
 
-if ($total_blocks = @count($display_raw_results) > 0) {
+if ($total_blocks = @count($displayRawResults) > 0) {
 	
 	echo "<center>";
 	?>
@@ -213,12 +213,12 @@ if ($total_blocks = @count($display_raw_results) > 0) {
 				<th style='width:70%;'>Raw Result</th>
 			</tr>
 			<?php 
-			foreach($display_raw_results as $this_result) {
+			foreach($displayRawResults as $thisResult) {
 			?>
 			<tr>
-				<td style='width:30%;'><?php echo htmlentities($this_result[0])?></td>
+				<td style='width:30%;'><?php echo htmlentities($thisResult[0])?></td>
 				<td style='width:70%;'>
-					<textarea class="form-control" readonly rows=4><?php echo htmlentities($this_result[1]);?></textarea>
+					<textarea class="form-control" readonly rows=4><?php echo htmlentities($thisResult[1]);?></textarea>
 				</td>
 			</tr>
 			<?php
@@ -234,7 +234,7 @@ if ($total_blocks = @count($display_raw_results) > 0) {
 		<label for="network">Network:</label>
 		<select id="network" name="network" class="form-control" >
 			<?php
-			foreach($support_coins as $k=>$v) {
+			foreach($supportCoins as $k=>$v) {
 				echo "<option value='{$k}'".($k == $_POST['network'] ? " selected": "").">{$v}</option>";
 			}
 			?>
