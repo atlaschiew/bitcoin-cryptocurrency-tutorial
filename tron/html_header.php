@@ -62,6 +62,7 @@
 			<a href="tron_sign_raw_data.php" class="list-group-item list-group-item-action bg-light">Sign Raw Data</a>
 			<a href="tron_broadcast_tx.php" class="list-group-item list-group-item-action bg-light">Broadcast Raw Tx</a>
 			<a href="tron_get_tx_info.php" class="list-group-item list-group-item-action bg-light">Get Transaction Info</a>
+			<a href="tron_get_balance.php" class="list-group-item list-group-item-action bg-light">Get Balance</a>
 		</div>
 		
 		<div class="list-group-header">Tron Tool</div>
@@ -88,20 +89,6 @@
 			<li class="nav-item">
               <a class="nav-link" href="../tron">Tron</a>
             </li>
-           
-			<?php if(0) {?>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Dropdown
-              </a>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Something else here</a>
-              </div>
-            </li>
-			<?php }?>
           </ul>
         </div>
       </nav>

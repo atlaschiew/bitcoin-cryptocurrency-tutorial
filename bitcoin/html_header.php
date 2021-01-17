@@ -43,6 +43,7 @@
 			<a href="bitcoin_tool_utxo.php" class="list-group-item list-group-item-action bg-light">Bitcoin Get UTXO</a>
 			<a href="bitcoin_tool_txhex.php" class="list-group-item list-group-item-action bg-light">Bitcoin Get Tx Hex</a>
 			<a href="bitcoin_tool_mtp.php" class="list-group-item list-group-item-action bg-light">Bitcoin Median Time Past</a>
+			<a href="bitcoin_tool_unit_converter.php" class="list-group-item list-group-item-action bg-light">Bitcoin Unit Converter</a>
 		</div>
     </div>
     <!-- /#sidebar-wrapper -->

@@ -110,7 +110,9 @@ if ($errmsg) {
         <label for="nonce">Nonce:</label>
         <input class="form-control" type='text' name='nonce' id='nonce' value='<?php echo $_REQUEST['nonce']?>' <?php echo in_array("nonce", $disableFields) ? " readonly" : ""?>>
 		
-		 * Search sender address in <a href='https://blockchair.com/ethereum/'>block explorer</a> then find last transaction and get its nonce. Shortly new nonce = last nonce + 1, otherwise if last nonce not found then new nonce start with 0.
+		<small>
+			Learn more <a href='eth_tx_nonce.php' target='_blank'>here</a>.
+		</small>
     </div>
 	
 	<div class="form-group">

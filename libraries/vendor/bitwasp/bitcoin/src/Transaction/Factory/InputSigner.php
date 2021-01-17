@@ -965,6 +965,7 @@ class InputSigner implements InputSignerInterface
         }
 
         $signScript = $this->fqs->signScript()->getScript();
+		
         if ($checksig->getType() === ScriptType::P2PK) {
             if (!$this->pubKeySerializer->serialize($privateKey->getPublicKey())->equals($checksig->getSolution())) {
                 throw new \RuntimeException('Signing with the wrong private key');

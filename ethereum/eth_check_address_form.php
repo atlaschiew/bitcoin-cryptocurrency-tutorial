@@ -13,13 +13,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		
 		$ch = curl_init();
 		
-		$req = <<<EOF
-{"jsonrpc":"2.0","method":"eth_getCode","params": ["{$_POST['address']}", "latest"],"id":{$_POST['chain']}}
-EOF;
+		$params = [];
+		$params['jsonrpc']= "2.0";
+		$params['method'] = 'eth_getCode';
+		$params['params'] = [$_POST['address'],'latest'];
+		$params['id'] = $_POST['chain'];
 	
 		curl_setopt($ch, CURLOPT_URL,$_POST['url']);
 		curl_setopt($ch, CURLOPT_POST, 1);
-		curl_setopt($ch, CURLOPT_POSTFIELDS,$req);
+		curl_setopt($ch, CURLOPT_POSTFIELDS,$req = json_encode($params));
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($ch, CURLOPT_HTTPHEADER, ["Content-Type: application/json"]);
 
@@ -86,7 +88,7 @@ if ($errmsg) {
 	 <div class="form-group">
         <label for="url">INFURA full URL (with project ID):</label>
         <input class="form-control" type='text' name='url' id='url' value='<?php echo $_POST['url']?>'>
-		e.g https://mainnet.infura.io/v3/11223344556677889900aabbccdd
+		<small>e.g https://mainnet.infura.io/v3/11223344556677889900aabbccdd</small>
     </div>
 	
 	<div class="form-group">

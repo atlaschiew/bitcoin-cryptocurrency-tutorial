@@ -99,7 +99,7 @@ if ($errmsg) {
 	 <div class="form-group">
         <label for="url">INFURA full URL (with project ID):</label>
         <input class="form-control" type='text' name='url' id='url' value='<?php echo $_POST['url']?>'>
-		e.g https://mainnet.infura.io/v3/11223344556677889900aabbccdd
+		<small>e.g https://mainnet.infura.io/v3/11223344556677889900aabbccdd</small>
     </div>
 	
 	<div class="form-group">

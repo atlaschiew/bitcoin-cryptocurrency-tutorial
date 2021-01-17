@@ -36,6 +36,7 @@
 			
 			<a href="eth_abi_data_encoding.php" class="list-group-item list-group-item-action bg-light">Abi Data Encoding</a>
 			<a href="eth_tx.php" class="list-group-item list-group-item-action bg-light">Ethereum Transaction</a>
+			<a href="eth_tx_nonce.php" class="list-group-item list-group-item-action bg-light">Ethereum Tx Nonce</a>
 			<a href="eth_erc20_tx.php" class="list-group-item list-group-item-action bg-light">Ethereum Erc20 Tx</a>
 			<a href="eth_call.php" class="list-group-item list-group-item-action bg-light">Ethereum Eth Call</a>
 			<a href="eth_gas.php" class="list-group-item list-group-item-action bg-light">Ethereum Gas</a>
@@ -44,7 +45,10 @@
 			<a href="eth_stuck_tx.php" class="list-group-item list-group-item-action bg-light">Ethereum Stuck Tx</a>
 		</div>
 
-	  
+		<div class="list-group-header">Ethereum Tools</div>
+		<div class="list-group list-group-flush">
+			<a href="eth_tool_unit_converter.php" class="list-group-item list-group-item-action bg-light">Ethereum Unit Converter</a>
+		</div>
     </div>
     <!-- /#sidebar-wrapper -->
 

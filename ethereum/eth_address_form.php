@@ -59,7 +59,7 @@ if ($errmsg) {
     <div class="form-group">
         <label for="input">Private Key (Hex):</label>
         <input class="form-control" type='text' name='input' id='input' value='<?php echo $_POST['input']?>'>
-        * Put empty if you want system assign you a random private key.
+        <small>Put empty if you want system assign you a random private key.</small>
     </div>
    
     <input type='submit' class="btn btn-success btn-block"/>

@@ -59,13 +59,14 @@ if ($errmsg) {
 	</div>
 	
     <div class="form-group">
-        <label for="to">Contract Address:</label>
-        <input class="form-control" type='text' name='to' id='to' value='<?php echo $_POST['to']?>'>
+        <label for="to">To:</label>
+        <input class="form-control" type='text' name='to' id='to' value='<?php echo $_POST['to']?>' placeholder='Contract Address'>
     </div>
 	
 	<div class="form-group">
         <label for="data">Data (Hex):</label>
         <input class="form-control" type='text' name='data' id='data' value='<?php echo $_POST['data']?>'>
+		<small>You can get this data through our <a href="eth_abi_data_encoding.php">ABI data encoding</a> tool.</small>
     </div>
 	
 		

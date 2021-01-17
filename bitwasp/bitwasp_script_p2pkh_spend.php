@@ -1,4 +1,5 @@
 <?php 
+use BitWasp\Buffertools\Buffer;
 use BitWasp\Bitcoin\Network\NetworkFactory;
 use BitWasp\Bitcoin\Address\AddressCreator;
 use BitWasp\Bitcoin\Address\PayToPubKeyHashAddress;
@@ -10,6 +11,7 @@ use BitWasp\Bitcoin\Transaction\TransactionOutput;
 use BitWasp\Bitcoin\Script\Classifier\OutputClassifier;
 use BitWasp\Bitcoin\Script\ScriptType;
 use BitWasp\Bitcoin\Script\ScriptFactory;
+use BitWasp\Bitcoin\Signature\TransactionSignature;
 
 include_once "../libraries/vendor/autoload.php";
 
@@ -100,22 +102,32 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		}
 		$thisTx = $spendTx->get();
 		$signer = new Signer($thisTx, $ecAdapter);
-		
+		$signInfo = [];
 		foreach($signItems as $nIn=>$signItem) {
+			
 			$privateKey = $privKeyFactory->fromHexCompressed($signItem[0]);
-			
 			$scriptPubKey = ScriptFactory::fromHex($signItem[1]);
-			
 			$txOutput = new TransactionOutput(0, $scriptPubKey );
 			$signer = $signer->sign($nIn, $privateKey, $txOutput);
+			
+			//not important, it's extra information about signature
+			$inputSigner = $signer->input($nIn,$txOutput);
+			$sigHashType = 1;
+			$sigVersion = 0;
+			$dataToSign = $inputSigner->calculateSigHashUnsafe($txOutput->getScript(),$sigHashType, $sigVersion);
+			
+			$sig = new TransactionSignature($ecAdapter, $privateKey->sign($dataToSign), $sigHashType);
+			$signInfo[] = ['dataToSign'=>$dataToSign->getHex(), 'signature'=>$sig->getSignature()->getBuffer()->getHex().Buffer::int($sigHashType, 1)->getHex()];
+			
 		}
+		
 		
 	?>
 		<div class="alert alert-success">
 			<h6 class="mt-3">Final TX Hex</h6>
-			
 			<textarea class="form-control" rows="5" id="comment" readonly><?php echo $signer->get()->getHex();?></textarea>
 		</div>
+		
 	<?php
 	
 	} catch (Exception $e) {
@@ -271,7 +283,7 @@ if ($errmsg) {
 			<?php
 			$selectedNInputs = is_numeric($_POST['no_of_inputs']) ? $_POST['no_of_inputs'] : 0;
 			
-			foreach(range(1,$noOfInputs) as $thisInput) {
+			foreach(range(1,$noOfInputs) as $k=>$thisInput) {
 			?>
 			
 				<div class="form-row" id='row_input_<?php echo $thisInput?>' style="<?php echo ($thisInput > $selectedNInputs) ? "display:none" : "display:;"?>">
@@ -290,7 +302,40 @@ if ($errmsg) {
 						<input class="form-control" title="UTXO ScriptPubKey" placeholder='UTXO ScriptPubKey' type='text' name='utxo_script_<?php echo $thisInput?>' value='<?php echo $_POST["utxo_script_{$thisInput}"]?>' readonly>
 					</div>
 					<div class="form-group  col-sm-4">
-						<input class="form-control" title="Private Key Hex, for signing purpose." placeholder='Private Key Hex' type='text' name='privkey_<?php echo $thisInput?>' value='<?php echo $_POST["privkey_{$thisInput}"]?>'>
+						<?php if (isset($signInfo[$k])) {  ?>
+							<div class="input-group mb-3">
+								<input class="form-control" title="Private Key Hex, for signing purpose." placeholder='Private Key Hex' type='text' name='privkey_<?php echo $thisInput?>' value='<?php echo $_POST["privkey_{$thisInput}"]?>'>
+								<div class="input-group-append">
+									<button type="button" class="btn btn-primary btn-sm" rel="<?php echo implode("|", $signInfo[$k])?>" onclick="
+									var data = $(this).attr('rel').split('|');
+									var dataToSign = data[0];
+									var signature = data[1];
+									
+									$('#my-model').find('.modal-title').html('Signature Info');
+									$('#my-model').find('.modal-body').html('<p>');
+									$('#my-model').find('.modal-body').append('Data To Sign: ');
+									$('#my-model').find('.modal-body').append('<input class=\'form-control\' type=\'text\' value=\''+ dataToSign +'\'>');
+									
+									$('#my-model').find('.modal-body').append('<small>To sign, you may also try this <a href=\'bitwasp_tool_dersign.php\' target=\'_blank\'>tool</a>.</small>');
+									$('#my-model').find('.modal-body').append('</p>');
+									
+									$('#my-model').find('.modal-body').append('<p>');
+									$('#my-model').find('.modal-body').append('Signature: ');
+									$('#my-model').find('.modal-body').append('<input class=\'form-control\' type=\'text\' value=\''+ signature +'\'>');
+									$('#my-model').find('.modal-body').append('</p>');
+									
+									$('#my-model').modal({backdrop: false});
+									" >More</button>
+								</div>
+							</div>
+							
+						<?php
+						} else {
+						?>
+							<input class="form-control" title="Private Key Hex, for signing purpose." placeholder='Private Key Hex' type='text' name='privkey_<?php echo $thisInput?>' value='<?php echo $_POST["privkey_{$thisInput}"]?>'>
+						<?php
+						}
+						?>
 					</div>
 				</div>
 			<?php
@@ -342,5 +387,28 @@ if ($errmsg) {
 	
 	<input type='submit' class="btn btn-success btn-block"/>
 </form>
+
+<!-- The Modal -->
+<div class="modal" id="my-model">
+	<div class="modal-dialog">
+		<div class="modal-content">
+	  
+			<!-- Modal Header -->
+			<div class="modal-header">
+			  <h4 class="modal-title"></h4>
+			  <button type="button" class="close" data-dismiss="modal">×</button>
+			</div>
+			
+			<!-- Modal body -->
+			<div class="modal-body"></div>
+		
+			<!-- Modal footer -->
+			<div class="modal-footer">
+			  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+			</div>
+		
+		</div>
+	</div>
+</div>
 <?php
 include_once("html_iframe_footer.php");

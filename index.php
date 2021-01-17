@@ -9,7 +9,10 @@ Bitcoin or any decentralized cryptocurrencies is built on top of sets of protoco
 <hr/>
 <h2 class="mt-3">Btcschools</h2>
 <p>
-	Some question why we copy w3schools, well we did refer to design of w3schools and the codings are built up 100% by our efforts. Btcschools aim to
+	Some argue that why are us so similar to w3schools. Well, we have nothing to do with w3schools but we love its way to present the contents. 
+</p>
+<p>
+	Btcschools aims to 
 </p>
 <ul>
 	<li>Reduce programmer's development cost.</li>
@@ -39,6 +42,7 @@ However, PHP definitely play a well role as Bitcoin client and that's why we are
 	<li>For bettery security. You can download <a target="_blank" href="https://github.com/atlaschiew/btcschools">source code</a> and run at your local.</li>
 	<li>To save development cost. Please run your test at testnet prior to mainnet.</li>
 	<li>Throughout all tutorials, form validation is loose, so please enhance it for your own.</li>
+	<li>Pages' content are constantly keep reviewed to avoid mistakes, but we cannot warrant correctness of all contents. Report us <a href="https://github.com/atlaschiew/btcschools/issues/new">new issue</a>.</li>
 </ul>
 <?php
 include_once("html_footer.php");

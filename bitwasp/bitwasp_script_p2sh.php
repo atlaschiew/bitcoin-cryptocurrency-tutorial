@@ -106,8 +106,10 @@ include_once("html_header.php");
 		<h4 class="mt-3">Multisig wrapped in P2SH</h4>
 		<div class='row'>
 			<div class="col-sm-12">
-				In this page, we just roughly introduce you how to apply multisig in redeem script and we took <b>2-of-3</b> as an example throughout this section.
-				We will discover more about Bitwasp Multisig and how you can customize both required signature and total signature.
+				This page is alias of <a href="bitwasp_script_multisig.php">Bitwasp MULTISIG</a>.
+				
+				An example below is <b>2-of-3</b> multisig redeem script.
+				
 			</div>
 		</div>
 		
@@ -139,6 +141,26 @@ include_once("html_header.php");
 <?php echo htmlentities(file_get_contents("bitwasp_script_p2sh_multisig.php"));?>
 				</pre> 	
 			</div>		
+		</div>
+	</div>
+	
+	<div id="sample5_info" class="tab-pane fade">
+		
+		<h4 class="mt-3">P2WPKH wrapped in P2SH</h4>
+		<div class='row'>
+			<div class="col-sm-12">
+				This page is alias of <a href="bitwasp_script_p2sh_p2wpkh.php">Bitwasp P2SH.P2WPKH</a>.
+			</div>
+		</div>
+	</div>
+	
+	<div id="sample6_info" class="tab-pane fade">
+		
+		<h4 class="mt-3">P2WSH wrapped in P2SH</h4>
+		<div class='row'>
+			<div class="col-sm-12">
+				This page is alias of <a href="bitwasp_script_p2sh_p2wsh.php">Bitwasp P2SH.P2WSH</a>.
+			</div>
 		</div>
 	</div>
 </div>
