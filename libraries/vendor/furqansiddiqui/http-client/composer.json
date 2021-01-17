@@ -1,0 +1,22 @@
+{
+  "name": "furqansiddiqui/http-client",
+  "type": "library",
+  "description": "Straightforward HTTP client",
+  "keywords": [
+    "http",
+    "http-client"
+  ],
+  "license": "MIT",
+  "require": {
+    "php": ">=7.1.0",
+    "ext-curl": "*",
+    "ext-json": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "HttpClient\\": [
+        "src"
+      ]
+    }
+  }
+}

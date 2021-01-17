@@ -1,19 +1,7 @@
 # Ignore everything:
-*
-
-# Except for these
-!bitcoin/
-!bitwasp/
-!eth_smartcontract/
-!ethereum/
-!libraries/
-!media/
-!others/
-!tron/
-
-!.gitignore
-!common.php.sample
-!html_footer.php
-!html_header.php
-!index.php
-!verificationimage.php
+*error_log
+*common.php
+*.git/
+*.well-known/
+*cgi-bin/
+*.htaccess

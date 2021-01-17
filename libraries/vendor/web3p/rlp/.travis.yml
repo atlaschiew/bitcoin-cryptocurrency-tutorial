@@ -1,0 +1,22 @@
+sudo: required
+
+language: php
+
+php:
+  - 7.1
+
+install:
+  - composer install
+
+notifications:
+  email:
+    recipients:
+      - alk03073135@gmail.com
+    on_success: always
+    on_failure: always
+
+script:
+  - vendor/bin/phpunit --coverage-clover=coverage.xml
+
+after_success:
+    - bash <(curl -s https://codecov.io/bash) -t 777e13ce-d1c7-426c-aafe-19922c59823c

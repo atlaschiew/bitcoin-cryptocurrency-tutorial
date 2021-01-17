@@ -1,0 +1,218 @@
+<?php
+
+namespace Test\Unit;
+
+use RuntimeException;
+use InvalidArgumentException;
+use Test\TestCase;
+
+class PersonalApiTest extends TestCase
+{
+    /**
+     * personal
+     * 
+     * @var Web3\Personal
+     */
+    protected $personal;
+
+    /**
+     * newAccount
+     * 
+     * @var string
+     */
+    protected $newAccount;
+
+    /**
+     * setUp
+     * 
+     * @return void
+     */
+    public function setUp()
+    {
+        parent::setUp();
+
+        $this->personal = $this->web3->personal;
+    }
+
+    /**
+     * testListAccounts
+     * 
+     * @return void
+     */
+    public function testListAccounts()
+    {
+        $personal = $this->personal;
+
+        $personal->listAccounts(function ($err, $accounts) {
+            if ($err !== null) {
+                // infura banned us to use list accounts
+                return $this->assertTrue($err->getCode() === 405);
+            }
+            $this->assertTrue(is_array($accounts));
+        });
+    }
+
+    /**
+     * testNewAccount
+     * 
+     * @return void
+     */
+    public function testNewAccount()
+    {
+        $personal = $this->personal;
+
+        $personal->newAccount('123456', function ($err, $account) {
+            if ($err !== null) {
+                return $this->fail($err->getMessage());
+            }
+            $this->assertTrue(is_string($account));
+        });
+    }
+
+    /**
+     * testUnlockAccount
+     * 
+     * @return void
+     */
+    public function testUnlockAccount()
+    {
+        $personal = $this->personal;
+
+        // create account
+        $personal->newAccount('123456', function ($err, $account) {
+            if ($err !== null) {
+                return $this->fail($err->getMessage());
+            }
+            $this->newAccount = $account;
+            $this->assertTrue(is_string($account));
+        });
+
+        $personal->unlockAccount($this->newAccount, '123456', function ($err, $unlocked) {
+            if ($err !== null) {
+                return $this->fail($err->getMessage());
+            }
+            $this->assertTrue($unlocked);
+        });
+    }
+
+    /**
+     * testUnlockAccountWithDuration
+     * 
+     * @return void
+     */
+    public function testUnlockAccountWithDuration()
+    {
+        $personal = $this->personal;
+
+        // create account
+        $personal->newAccount('123456', function ($err, $account) {
+            if ($err !== null) {
+                return $this->fail($err->getMessage());
+            }
+            $this->newAccount = $account;
+            $this->assertTrue(is_string($account));
+        });
+
+        $personal->unlockAccount($this->newAccount, '123456', 100, function ($err, $unlocked) {
+            if ($err !== null) {
+                return $this->fail($err->getMessage());
+            }
+            $this->assertTrue($unlocked);
+        });
+    }
+
+    /**
+     * testSendTransaction
+     * 
+     * @return void
+     */    
+    public function testSendTransaction()
+    {
+        $personal = $this->personal;
+
+        // create account
+        $personal->newAccount('123456', function ($err, $account) {
+            if ($err !== null) {
+                return $this->fail($err->getMessage());
+            }
+            $this->newAccount = $account;
+            $this->assertTrue(is_string($account));
+        });
+
+        $this->web3->eth->sendTransaction([
+            'from' => $this->coinbase,
+            'to' => $this->newAccount,
+            'value' => '0xfffffffff',
+        ], function ($err, $transaction) {
+            if ($err !== null) {
+                return $this->fail($err->getMessage());
+            }
+            $this->assertTrue(is_string($transaction));
+            $this->assertTrue(mb_strlen($transaction) === 66);
+        });
+
+        $personal->sendTransaction([
+            'from' => $this->newAccount,
+            'to' => $this->coinbase,
+            'value' => '0x01',
+        ], '123456', function ($err, $transaction) {
+            if ($err !== null) {
+                return $this->fail($err->getMessage());
+            }
+            $this->assertTrue(is_string($transaction));
+            $this->assertTrue(mb_strlen($transaction) === 66);
+        });
+    }
+
+    /**
+     * testUnallowedMethod
+     * 
+     * @return void
+     */
+    public function testUnallowedMethod()
+    {
+        $this->expectException(RuntimeException::class);
+
+        $personal = $this->personal;
+
+        $personal->hello(function ($err, $hello) {
+            if ($err !== null) {
+                return $this->fail($err->getMessage());
+            }
+            $this->assertTrue(true);
+        });
+    }
+
+    /**
+     * testWrongParam
+     * 
+     * @return void
+     */
+    public function testWrongParam()
+    {
+        $this->expectException(RuntimeException::class);
+
+        $personal = $this->personal;
+
+        $personal->newAccount($personal, function ($err, $account) {
+            if ($err !== null) {
+                return $this->fail($err->getMessage());
+            }
+            $this->assertTrue(is_string($account));
+        });
+    }
+
+    /**
+     * testWrongCallback
+     * 
+     * @return void
+     */
+    public function testWrongCallback()
+    {
+        $this->expectException(InvalidArgumentException::class);
+
+        $personal = $this->personal;
+
+        $personal->newAccount('123456');
+    }
+}

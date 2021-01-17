@@ -1,0 +1,26 @@
+{
+  "name": "furqansiddiqui/ethereum-rpc",
+  "type": "library",
+  "description": "Ethereum (geth) RPC client",
+  "keywords": [
+    "ethereum",
+    "geth",
+    "ethereum-go",
+    "eth"
+  ],
+  "license": "MIT",
+  "require": {
+    "php": "^7.1.0",
+    "ext-bcmath": "*",
+    "ext-json": "*",
+    "furqansiddiqui/http-client": "^0.4.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "EthereumRPC\\": [
+        "src"
+      ]
+    }
+  },
+  "minimum-stability": "dev"
+}

@@ -1,0 +1,21 @@
+language: php
+
+php:
+  - 7.1
+  - 7.2
+  - nightly
+
+matrix:
+  allow_failures:
+    - php: nightly
+
+install:
+  - if [[ "$TRAVIS_PHP_VERSION" != "nightly" ]]; then phpenv config-rm xdebug.ini; fi
+  - travis_retry composer update --prefer-dist -n
+
+script:
+  - mkdir -p build/logs
+  - phpdbg -qrr vendor/bin/phpunit
+
+after_script:
+  - travis_retry vendor/bin/php-coveralls -v

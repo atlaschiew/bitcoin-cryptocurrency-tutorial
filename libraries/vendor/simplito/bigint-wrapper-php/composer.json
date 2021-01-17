@@ -1,0 +1,17 @@
+{
+    "name": "simplito/bigint-wrapper-php",
+    "description": "Common interface for php_gmp and php_bcmath modules",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Simplito Team",
+            "email": "s.smyczynski@simplito.com",
+            "homepage": "https://simplito.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "BI\\": "lib/"
+        }
+    }
+}

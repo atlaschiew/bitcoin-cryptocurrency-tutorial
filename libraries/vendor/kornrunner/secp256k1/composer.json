@@ -1,0 +1,31 @@
+{
+    "name": "kornrunner/secp256k1",
+    "description": "Pure PHP secp256k1",
+    "keywords": ["secp256k1", "elliptic", "curve", "ecc"],
+    "type": "library",
+    "require": {
+        "php": ">=7.1",
+        "mdanter/ecc": "^0.5"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7",
+        "php-coveralls/php-coveralls": "^2.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "kornrunner\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "kornrunner\\": "test"
+        }
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Boris Momčilović",
+            "email": "boris.momcilovic@gmail.com"
+        }
+    ]
+}
