@@ -1,8 +1,8 @@
 <p align="center">
-    <img src="https://www.btcschools.net/media/images/logo/logo_portrait.png" width="20%" height="20%">
+    <img src="https://www.btcschools.net/media/images/logo/logo_portrait.png" width="40%" height="40%">
 </p>
 
-# Btcschools.net
+# About Us
 Welcome to btcschools! <img src="https://raw.githubusercontent.com/MartinHeinz/MartinHeinz/master/wave.gif" width="20">. Btcschools is pratical oriented tutorial site come with best `PHP & Cryptocurrencies Collections`. All source codes in repository are derived from https://www.btcschools.net. 
 
 Btcschools aims to
