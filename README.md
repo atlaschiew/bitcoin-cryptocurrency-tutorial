@@ -1,9 +1,9 @@
 <p align="center">
-    <img src="https://www.btcschools.net/media/images/logo/logo_portrait.png" width="40%" height="40%">
+    <img src="https://www.btcschools.net/media/images/logo/logo_portrait_400x229.png">
 </p>
 
 # About Us
-Welcome to btcschools! <img src="https://raw.githubusercontent.com/MartinHeinz/MartinHeinz/master/wave.gif" width="20">. Btcschools is pratical oriented tutorial site come with best `PHP & Cryptocurrencies Collections`. All source codes in repository are derived from https://www.btcschools.net. 
+Welcome to btcschools! <img src="https://raw.githubusercontent.com/MartinHeinz/MartinHeinz/master/wave.gif" width="20">. Btcschools is practical oriented tutorial site come with best `PHP & Cryptocurrencies Collections`. All source codes in repository are derived from https://www.btcschools.net. 
 
 Btcschools aims to
 * Reduce programmer's development cost.

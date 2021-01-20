@@ -3,9 +3,12 @@ include_once "common.php";
 include_once("html_header.php");
 
 ?>
-<h1 class="mt-3">Btcschools</h1>
+<br/>
+<p>
+	<img src="https://www.btcschools.net/media/images/logo/logo_landscape_400x49.png">
+</p>
 <hr/>
-Welcome to btcschools! Btcschools is pratical oriented tutorial site come with best PHP & Cryptocurrencies Collections.
+Welcome to btcschools! Btcschools is practical oriented tutorial site come with best PHP & Cryptocurrencies Collections.
 <hr/>
 <p>
 	Btcschools aims to 

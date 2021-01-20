@@ -6,6 +6,7 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 	<meta name="keywords" content="<?php echo $_HTML['meta']['keywords']?>">
+	<meta property="og:image" content="https://www.btcschools.net/media/images/logo/logo_portrait_200x115.png">
 	<title><?php echo $_HTML['title']?></title>
 
 	<!-- Bootstrap core CSS -->
