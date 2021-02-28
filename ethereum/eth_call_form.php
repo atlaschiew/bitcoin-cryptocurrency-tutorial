@@ -1,33 +1,67 @@
 <?php 
 include_once "../libraries/vendor/autoload.php";
-$supportChains = ['1'=>"Ethereum Mainnet", '3'=>"Ethereum Testnet Ropsten"];
+$hosts = ["https://mainnet.infura.io"=>"https://mainnet.infura.io","https://ropsten.infura.io"=>"https://ropsten.infura.io", "https://cloudflare-eth.com"=>"https://cloudflare-eth.com"];
+$blockParams = ['pending'=>'Pending','latest'=>'Latest', 'earliest'=>'Earliest'];
 
 include_once("html_iframe_header.php");
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	try {
 		
-		$params = ["to" => $_POST['to'],"data" => $_POST['data']];
-		$params = json_encode($params);
+		if (!in_array($_POST['host'], array_keys($hosts))) {
+			throw new Exception("Please provide valid host.");
+		}
+		
+		$url = $_POST['host'] . "/" . $_POST['path'];
+
+		$ch = curl_init();
+		$requestId = time();
+		
+		$params = [];
+		$params['jsonrpc']= "2.0";
+		$params['method'] = 'eth_call';
+		$params['params'] = [["to" => $_POST['to'],"data" => $_POST['data']],$_POST['blockparam']];
+		$params['id'] = $requestId;
+		
+		$req = json_encode($params);
+		
+		curl_setopt($ch, CURLOPT_URL,$url);
+		curl_setopt($ch, CURLOPT_POST, 1);
+		curl_setopt($ch, CURLOPT_POSTFIELDS,$req);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch, CURLOPT_HTTPHEADER, ["Content-Type: application/json"]);
+
+		$resp = curl_exec($ch);
+		
+		if ($resp === false) {
+			throw new Exception("curl_exec return false.");
+		}
+		
+		if (strlen($err = @curl_error($ch)) > 0) {
+			$errno = @curl_errno($ch);
+			throw new Exception( "{$err} ({$errno})." );
+		}
+		
+		$result = json_decode($resp,true); 
+		if ($result['id'] != $requestId) {
+			throw new Exception("Invalid request id.");
+		}
+		
+		$result = $result['result'];
+		
+		curl_close ($ch);
 		
 	?>
-	   <div class="alert alert-success">
-			<h6 class="mt-3">Final Params</h6>
-			<textarea class="form-control" rows="5" id="comment" readonly><?php echo $params;?></textarea>
-			<p>
-				<b>JSON-RPC</b>
-				<br/>
-				curl localhost:8545 -X POST --data '{"jsonrpc":"2.0", "method":"eth_call", "params":[<?php echo $params;?>], "id":1}'
+	    <div class="alert alert-success">
 		
-			</p>
-			<p>
-				<b>INFURA.io</b>
-				<br/>
-				
-				curl https://<?php echo ($_POST['chain'] == "1") ? "mainnet" : "ropsten" ?>.infura.io/v3/YOUR-PROJECT-ID \
-				-X POST \
-				-H "Content-Type: application/json" \
-				-d '{"jsonrpc":"2.0","method":"eth_call","params": [<?php echo $params;?>, "latest"],"id":1}'
-			</p>
+			<h6 class="mt-3">Host</h6>
+			<textarea class="form-control" rows="1" readonly><?php echo $url;?></textarea>
+			
+			<h6 class="mt-3">JSON-RPC Request</h6>
+			<textarea class="form-control" rows="5" id="comment" readonly><?php echo $req;?></textarea>
+			
+			<h6 class="mt-3">JSON-RPC Response</h6>
+			<textarea class="form-control" rows="1" id="comment" readonly><?php echo $resp;?></textarea>
+			<small>Result can be parse by <a href="eth_abi.php" target="_blank">Ethereum ABI decoder</a> and turn into human readable form.</small>
 		</div>
 <?php 
 	} catch (Exception $e) {
@@ -47,15 +81,36 @@ if ($errmsg) {
 <form id='this_form' action='?action=submit' method='post'>
 
 	<div class="form-group">
-		<label for="chain">Chain:</label>
-		<select id="chain" name="chain" class="form-control" >
+		<label for="host">Host To Receive RPC:</label>
+		
+		<div class="input-group mb-3">
+			<select id="host" name="host" class="form-control" >
 			<?php
-			foreach($supportChains as $k=>$v) {
-				
-				echo "<option value='{$k}'".($k == $_POST['chain'] ? " selected": "").">{$v}</option>";
+			foreach($hosts as $k=>$v) {
+				echo "<option value='{$k}'".($k == $_POST['host'] ? " selected": "").">{$v}</option>";
 			}
 			?>
-		</select>
+			</select>
+			<div class="input-group-append">
+				<span class="input-group-text">
+					/
+				</span>
+			</div>
+			
+			<input class="form-control" type='text' name='path' id='path' value='<?php echo $_POST['path']?>' placeholder="Put extra path or blank if it does not.">
+			
+		</div>
+	</div>
+	
+	<div class="form-group">
+		<label for="blockparam">Block Parameter:</label>
+		<select id="blockparam" name="blockparam" class="form-control" >
+			<?php
+			foreach($blockParams as $k=>$v) {
+				echo "<option value='{$k}'".($k == $_POST['blockparam'] ? " selected": "").">{$v}</option>";
+			}
+			?>
+		</select> 
 	</div>
 	
     <div class="form-group">
@@ -66,7 +121,7 @@ if ($errmsg) {
 	<div class="form-group">
         <label for="data">Data (Hex):</label>
         <input class="form-control" type='text' name='data' id='data' value='<?php echo $_POST['data']?>'>
-		<small>You can get this data through our <a href="eth_abi_data_encoding.php">ABI data encoding</a> tool.</small>
+		<small>You can get this data through <a href="eth_abi.php" target="_blank">Ethereum ABI encoder</a>.</small>
     </div>
 	
 		

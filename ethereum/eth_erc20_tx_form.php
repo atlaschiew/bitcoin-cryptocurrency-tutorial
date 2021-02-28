@@ -5,21 +5,9 @@ use kornrunner\Keccak;
 
 include_once "../libraries/vendor/autoload.php";
 include_once("html_iframe_header.php");
+include_once("eth_utils.php");
 
 define("GWEI_TO_WEI",'1000000000');
-
-function bcdechex($dec) {
-
-	$last = bcmod($dec, 16);
-	$remain = bcdiv(bcsub($dec, $last), 16);
-
-	if($remain == 0) {
-		return dechex($last);
-	} else {
-		return bcdechex($remain).dechex($last);
-	}
-	
-}
 
 $supportChains = ['1'=>"Ethereum Mainnet", '3'=>"Ethereum Testnet Ropsten"];
 

@@ -8,9 +8,12 @@ include_once("html_header.php");
 <h2 class="mt-3">Tron Create Send TRC10 Tx</h2>
 <hr/>
 	<p>
-	TRC10
+	TRC-10 is a technical token standard supported by the TRON blockchain natively.
 	</p>
 	
+	<p>
+	Transfer of TRC-10 generally consume only bandwidth. Unless, recipient is smart contract and that will consume both bandwidth and energy.
+	</p>
 <hr/>
 
 
@@ -42,17 +45,19 @@ include_once("html_header.php");
 	<div id="form1_tabitem3" class="tab-pane fade">
 <pre style='border-radius:none;'>
 message TransferAssetContract {
-  #
-  bytes asset_name = 1;
+	
+    #token ID
+    bytes asset_name = 1;
   
-  #
-  bytes owner_address = 2;
+    #spender address
+    bytes owner_address = 2;
   
-  #
-  bytes to_address = 3;
+    #recipient address
+    bytes to_address = 3;
   
-  #
-  int64 amount = 4;
+    #token amount
+    int64 amount = 4;
+  
 }
 </pre> 		
 	</div>

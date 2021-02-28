@@ -8,7 +8,7 @@ include_once("html_header.php");
 <h2 class="mt-3">Ethereum Transaction Nonce</h2>
 <hr/>
 	<p>
-		By manual way. One can search sender address in block explorer and get its nonce from last send tx, new nonce = last nonce + 1 or nonce. start new at 0.
+		By manual way. One can search sender address in block explorer and get its nonce from last send tx, new nonce = last nonce + 1 or nonce start new at 0.
 	</p>
 <hr/>
 

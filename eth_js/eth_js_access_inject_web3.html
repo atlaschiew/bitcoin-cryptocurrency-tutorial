@@ -1,0 +1,106 @@
+<html>
+	<head>
+		<title></title>
+		<link href="../media/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+	</head>
+	<body>
+		<div class="container-fluid pt-3">
+			<button id='btn-connect' type='button' class='btn btn-primary'>Connect For More Information</button>
+				
+			<div id='access-info' style='display:none;'>
+				<h5 class="mt-3" id='hashtag3'>Access Information</h5>
+				<table class="table table-bordered">
+					<tr><td style="width:20%;">Web3 Version</td><td id='access-web3ver'></td></tr>
+					<tr><td style="width:20%;">Account(s)</td><td id='access-account'></td></tr>
+					<tr><td>Provider</td><td id='access-provider'></td></tr>
+				</table>
+			</div>
+		</div>
+	</body>
+	<script>
+	
+	function getCurrentProvider() {
+		if (!window.web3) return 'unknown';
+
+		if (window.web3.currentProvider.isMetaMask)
+			return 'metamask';
+
+		if (window.web3.currentProvider.isTrust)
+			return 'trust';
+
+		if (window.web3.currentProvider.isGoWallet)
+			return 'goWallet';
+
+		if (window.web3.currentProvider.isAlphaWallet)
+			return 'alphaWallet';
+
+		if (window.web3.currentProvider.isStatus)
+			return 'status';
+
+		if (window.web3.currentProvider.isToshi)
+			return 'coinbase';
+
+		if (typeof window.__CIPHER__ !== 'undefined')
+			return 'cipher';
+
+		if (window.web3.currentProvider.constructor.name === 'EthereumProvider')
+			return 'mist';
+
+		if (window.web3.currentProvider.constructor.name === 'Web3FrameProvider')
+			return 'parity';
+
+		if (window.web3.currentProvider.host && window.web3.currentProvider.host.indexOf('infura') !== -1)
+			return 'infura';
+
+		if (window.web3.currentProvider.host && window.web3.currentProvider.host.indexOf('localhost') !== -1)
+			return 'localhost';
+
+		return 'unknown';
+	}
+	
+	async function showAccounts(acc) {
+	
+		const accounts = await web3.eth.getAccounts();
+		
+		document.getElementById('access-account').innerHTML = accounts.join(", ");
+		document.getElementById('access-provider').innerHTML = getCurrentProvider();
+		document.getElementById('access-web3ver').innerHTML = window.web3.version;
+		document.getElementById("access-info").style.display = "block";
+	}
+	
+	document.getElementById("btn-connect").addEventListener('click', async () => {
+		//Modern web3 browsers
+		if (window.ethereum) {
+			window.web3 = new Web3(window.ethereum);		
+			try {
+				await window.ethereum.request({ method: 'eth_requestAccounts' }).then(
+					showAccounts
+				);
+			} catch (error) {
+				alert(error);
+			}
+		//Legacy web3 browsers
+		}else if (window.web3) {
+			window.web3 = new Web3(web3.currentProvider);
+			
+			// Acccounts always exposed
+			showAccounts(null);
+		}
+		//Non web3 browsers
+		else {
+			
+			if (window.self !== window.top) { //is in iframe
+				//trust wallet has problem with content in iframe, so here is to load the content in new page.
+				if(confirm("Provider not found. This could be a reason which some web3 browsers are not able to run content in iframe. Press 'OK' to try this page out of iframe.")) {
+					window.open("eth_js_access_inject_web3.html", '_blank');
+				}
+			} else {
+				alert('Your browser is not supported with web3. Please try this in web3 browser or install metamask as browser extension!');
+			}
+			
+		}
+	});
+	</script>
+	<script type="text/javascript" src="../media/vendor/iframeresizer/js/iframeResizer.contentWindow.min.js"></script> 
+</html>

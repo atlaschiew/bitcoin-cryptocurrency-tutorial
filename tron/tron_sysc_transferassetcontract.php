@@ -6,12 +6,10 @@ include_once("html_header.php");
 
 ?>
 <h2 class="mt-3">Tron System Contract . Transfer Asset Contract</h2>
-<hr/>
-	<p>
-	This page is alias of Tron Transaction &gt; <a href="tron_create_trc10_tx.php">Create Send TRC10 Tx page</a>.
-	</p>
-	
-<hr/>
 
+<p>
+This page is alias of Tron Transaction &gt; <a href="tron_create_trc10_tx.php">Create Send TRC10 Tx page</a>.
+</p>
+	
 <?php
 include_once("html_footer.php");

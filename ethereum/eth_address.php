@@ -34,7 +34,7 @@ include_once("html_header.php");
 	</p>
 <hr/>
 
-<h3 class="mt-3" id='hashtag3'>EOA Address Generator</h3>
+<h3 class="mt-3" id='hashtag1'>EOA Address Generator</h3>
 <ul class="nav nav-tabs">
 	<li class="nav-item">
 		<a data-toggle="tab" class="nav-link active" href="#form1_tabitem1">Visual</a>
@@ -52,9 +52,10 @@ include_once("html_header.php");
 	</div>
 </div>
 
-<h3 class="mt-3" id='hashtag3'>Contract Address Generator</h3>
+
+<h3 class="mt-3" id='hashtag2'>Address Validator</h3>
 <p>
-	Contract address will be auto generated (without private key) when contract-type tx publish to ETH network.
+	Address checksum was described in <a href="https://eips.ethereum.org/EIPS/eip-55" target="_blank">EIP-55</a>.
 </p>
 <ul class="nav nav-tabs">
 	<li class="nav-item">
@@ -66,19 +67,16 @@ include_once("html_header.php");
 </ul>
 <div class="tab-content">
 	<div id="form2_tabitem1" class="tab-pane fade show active">
-		<iframe src="eth_contract_address_form.php" width="100%" scrolling="no" frameborder="no"></iframe>
+		<iframe src="eth_address_validator.php" width="100%" scrolling="no" frameborder="no"></iframe>
 	</div>
 	<div id="form2_tabitem2" class="tab-pane fade">
-<pre style='border-radius:none;'><?php echo htmlentities(file_get_contents("eth_contract_address_form.php"));?></pre> 		
+<pre style='border-radius:none;'><?php echo htmlentities(file_get_contents("eth_address_validator.php"));?></pre> 		
 	</div>
 </div>
 
-
-
-<h3 class="mt-3" id='hashtag3'>How To Determine Address Type?</h3>
+<h3 class="mt-3" id='hashtag3'>Contract Address Generator</h3>
 <p>
-	You can call JSON-RPC with getcode method.
-	if the address is representing an EOA you will get 0x as response otherwise you will get the contract's bytecode.
+	Contract address will be auto generated (without private key) when contract-type tx publish to ETH network.
 </p>
 <ul class="nav nav-tabs">
 	<li class="nav-item">
@@ -90,9 +88,33 @@ include_once("html_header.php");
 </ul>
 <div class="tab-content">
 	<div id="form3_tabitem1" class="tab-pane fade show active">
-		<iframe src="eth_check_address_form.php" width="100%" scrolling="no" frameborder="no"></iframe>
+		<iframe src="eth_contract_address_form.php" width="100%" scrolling="no" frameborder="no"></iframe>
 	</div>
 	<div id="form3_tabitem2" class="tab-pane fade">
+<pre style='border-radius:none;'><?php echo htmlentities(file_get_contents("eth_contract_address_form.php"));?></pre> 		
+	</div>
+</div>
+
+
+
+<h3 class="mt-3" id='hashtag4'>How To Determine Address Type?</h3>
+<p>
+	You can call JSON-RPC with getcode method.
+	if the address is representing an EOA you will get 0x as response otherwise you will get the contract's bytecode.
+</p>
+<ul class="nav nav-tabs">
+	<li class="nav-item">
+		<a data-toggle="tab" class="nav-link active" href="#form4_tabitem1">Visual</a>
+	</li>
+	<li class="nav-item">
+		<a data-toggle="tab" class="nav-link" href="#form4_tabitem2">Coding</a>
+	</li>
+</ul>
+<div class="tab-content">
+	<div id="form4_tabitem1" class="tab-pane fade show active">
+		<iframe src="eth_check_address_form.php" width="100%" scrolling="no" frameborder="no"></iframe>
+	</div>
+	<div id="form4_tabitem2" class="tab-pane fade">
 <pre style='border-radius:none;'><?php echo htmlentities(file_get_contents("eth_check_address_form.php"));?></pre> 		
 	</div>
 </div>

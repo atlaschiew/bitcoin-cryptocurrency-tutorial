@@ -31,7 +31,7 @@ include_once("html_header.php");
 	<li>kornrunner/keccak v1.0.3</li>
 </ul>
 
-<h3 class="mt-3">Other Useful PHP Scripts:</h3>
+<h3 class="mt-3">Other Required PHP Scripts:</h3>
 <ul>
 	<li><a href="show_source.php?file=tron_utils.php">tron_utils.php</a></li>
 

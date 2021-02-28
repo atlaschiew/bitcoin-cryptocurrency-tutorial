@@ -28,31 +28,16 @@
     <div class="bg-light " id="sidebar-wrapper">
 		<div class="sidebar-heading"><a style='color:white;text-decoration:none;' href="<?php echo $_SERVER['HTTPS'] ? 'https' : 'http'?>://<?php echo $_SERVER['HTTP_HOST']?>">btcschools.net</a></div>
 	  
-		<div class="list-group-header">Ethereum Menu</div>
+		<div class="list-group-header">Eth Js Menu</div>
+	
 		<div class="list-group list-group-flush">
-			<a href="eth_start_intro.php" class="list-group-item list-group-item-action bg-light">Ethereum Intro</a>
-			<a href="eth_start_install.php" class="list-group-item list-group-item-action bg-light">Installation</a>
-			<a href="eth_address.php" class="list-group-item list-group-item-action bg-light">Ethereum Address</a>
-			
-			<a href="eth_abi.php" class="list-group-item list-group-item-action bg-light">Ethereum Abi</a>
-			<a href="eth_tx.php" class="list-group-item list-group-item-action bg-light">Ethereum Transaction</a>
-			<a href="eth_tx_nonce.php" class="list-group-item list-group-item-action bg-light">Ethereum Tx Nonce</a>
-			<a href="eth_erc20_tx.php" class="list-group-item list-group-item-action bg-light">Ethereum Erc20 Tx</a>
-			<a href="eth_call.php" class="list-group-item list-group-item-action bg-light">Ethereum Eth Call</a>
-			<a href="eth_gas.php" class="list-group-item list-group-item-action bg-light">Ethereum Gas</a>
-			<a href="eth_event_log.php" class="list-group-item list-group-item-action bg-light">Ethereum Event Log</a>
-			
-			<a href="eth_cancel_tx.php" class="list-group-item list-group-item-action bg-light">Ethereum Cancel Tx</a>
-			<a href="eth_stuck_tx.php" class="list-group-item list-group-item-action bg-light">Ethereum Stuck Tx</a>
-			
-			<a href="eth_json_rpc.php" class="list-group-item list-group-item-action bg-light">Ethereum JSON RPC</a>
+			<a href="eth_js_intro.php" class="list-group-item list-group-item-action bg-light">Intro</a>
 		</div>
 		
-		
-		<div class="list-group-header">Ethereum Tools</div>
 		<div class="list-group list-group-flush">
-			<a href="eth_tool_unit_converter.php" class="list-group-item list-group-item-action bg-light">Ethereum Unit Converter</a>
+			<a href="eth_js_inject_web3.php" class="list-group-item list-group-item-action bg-light">Inject Web3</a>
 		</div>
+	
     </div>
     <!-- /#sidebar-wrapper -->
 
@@ -60,7 +45,7 @@
     <div id="page-content-wrapper" >
 
       <nav class="navbar navbar-expand-lg navbar-light border-bottom" style='background-color:#5F5F5F;'>
-        <button class="btn btn-success" id="menu-toggle">Ethereum Menu</button>
+        <button class="btn btn-success" id="menu-toggle">Eth Js Menu</button>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -75,20 +60,6 @@
             <li class="nav-item active">
               <a class="nav-link" href="../eth_smartcontract">Smart Contract</a>
             </li>
-            
-			<?php if(0) {?>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Dropdown
-              </a>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Something else here</a>
-              </div>
-            </li>
-			<?php }?>
           </ul>
         </div>
       </nav>

@@ -14,15 +14,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		function createMerkleProof($txId, $txIds) {
 			
 			$proofs = [];
-			
+		
 			//convert to little endian
 			$txId = Buffer::hex(trim($txId))->flip()->getHex();
+			
 			$txIds = array_map(function ($v) { return Buffer::hex(trim($v))->flip()->getHex(); },$txIds);
 			
 			function createMerkleBranch($targetHash, $hashes, &$proofs) {
 				
 				$newHashes = [];
-	
+				
 				$totalTxIds = @count($hashes);
 				
 				if ($totalTxIds % 2 > 0) {
@@ -54,7 +55,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			}
 			
 			if (count($txIds) > 1) {
-				createMerkleBranch($txIds);
+				
+				createMerkleBranch($txId,$txIds, $proofs);
 			}
 			
 			return $proofs;

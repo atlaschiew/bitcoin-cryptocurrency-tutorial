@@ -69,6 +69,7 @@
 		<div class="list-group list-group-flush">
 			<a href="tron_tool_base58check_hex.php" class="list-group-item list-group-item-action bg-light">Base58check Hex</a>
 			
+			<a href="tron_tool_unit_converter.php" class="list-group-item list-group-item-action bg-light">Tron Unit Converter</a>
 		</div>
     </div>
     <!-- /#sidebar-wrapper -->

@@ -24,7 +24,7 @@ include_once("html_header.php");
 			<li>VALUE is ETH amount you want to send</li>
 			<li>GAS LIMIT varies<br/>
 			1) For normal ETH send to EOA address, gas limit is fixed with 21,000.<br/>
-			2) For ETH send to contract address with simplest form of accept ETH deposit <span style='padding-left:5px;padding-right:5px;background-color:#ccc;'>function() external payable { }</span>, gas limit consume 21,076 <a target="_blank" href="https://ropsten.etherscan.io/tx/0x63fd8ffcd5ef4e9fefbc0a389b9b34762b7e8241fd9a4cbbca4a72069896a290"><img style='width:12px;height:12px;' src='../media/images/external_link.png'/></a>.<br/>
+			2) For ETH send to contract address with simplest form of accept ETH deposit <span class="grey_info">function() external payable { }</span>, gas limit consume 21,076 <a target="_blank" href="https://ropsten.etherscan.io/tx/0x63fd8ffcd5ef4e9fefbc0a389b9b34762b7e8241fd9a4cbbca4a72069896a290"><img style='width:12px;height:12px;' src='../media/images/external_link.png'/></a>.<br/>
 			3) Continue point no. 2. The more complicated the ETH deposit function, the higher the gas will be used. you may use <a href="https://www.btcschools.net/ethereum/eth_gas.php#hashtag_estgas" target="_blank">tool</a> to estimate it.
 			
 			</li>

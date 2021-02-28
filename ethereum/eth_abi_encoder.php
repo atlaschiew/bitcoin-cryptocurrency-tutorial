@@ -107,7 +107,7 @@ class BtcschoolsABI {
 				if(count($block['inputs']) > 0) {
 					
 					foreach($block['inputs'] as $inputIdx=>$input) {
-						
+						$thisEncoded = "";
 						$methodParamsTypes[] = $input['type'];
 						$arg = $args[$inputIdx];
 						

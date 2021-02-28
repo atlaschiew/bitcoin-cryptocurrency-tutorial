@@ -98,24 +98,6 @@ body {
 	color:#fff !important;
 }
 
-.vertical-line-green {
-	border-left: 6px solid #4CAF50;
-	padding:10px;
-	background-color:#DDFFDD;
-	width:100%;
-	margin-top:10px;
-	margin-bottom:10px;
-}
-
-.vertical-line-yellow {
-	border-left: 6px solid #FAEBCC;
-	padding:10px;
-	background-color:#FCF8E3;
-	width:100%;
-	margin-top:10px;
-	margin-bottom:10px;
-}
-
 /* Style the tab */
 .tab {
   overflow: hidden;
@@ -159,4 +141,29 @@ body {
 /* override bs4 tooltip*/
 .tooltip-inner {
      max-width:1000px !important;
+}
+
+/* btcschools */
+.grey_info {
+	padding-left:5px;padding-right:5px;background-color:#e6e6e6;
+	border-radius: 5px;
+}
+
+
+.vertical-line-green {
+	border-left: 6px solid #4CAF50;
+	padding:10px;
+	background-color:#DDFFDD;
+	width:100%;
+	margin-top:10px;
+	margin-bottom:10px;
+}
+
+.vertical-line-yellow {
+	border-left: 6px solid #FAEBCC;
+	padding:10px;
+	background-color:#FCF8E3;
+	width:100%;
+	margin-top:10px;
+	margin-bottom:10px;
 }

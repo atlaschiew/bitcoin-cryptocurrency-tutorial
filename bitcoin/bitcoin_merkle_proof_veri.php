@@ -44,32 +44,21 @@ if ($errmsg) {
 }
 
 if ($merkleRoot) {
-?>
-	<div class="table-responsive">
-		<table border=0 class='table'>
-			<tr>
-				<td>Merkle Root</td>
-				<?php 
-				if ($merkleRoot == $_POST['root']) { 
-				?>
-				<td style='color:green'>
-					<?php echo $merkleRoot;?> <b>Matched!</b>
-				</td>
-				<?php
-				} else {
-				?>
-				<td style='color:red'>
-					<?php echo $merkleRoot;?> <b>Not Matched!</b>
-				</td>
-				<?php
-				}
-				?>
-			</tr>
-			
-		</table>
-	</div>
 
-<?php
+	if ($merkleRoot == $_POST['root']) { 
+	?>
+	<div class="alert alert-success">
+		<?php echo $merkleRoot?> <b>Matched!</b>
+	</div>
+	<?php
+	} else {
+	?>
+	<div class="alert alert-danger">
+		<?php echo $merkleRoot?> <b>Not Matched!</b>
+	</div>
+	<?php
+	}
+				
 }
 ?>
 <form action='' method='post'>

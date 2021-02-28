@@ -29,5 +29,12 @@ include_once("html_header.php");
 	<li>kornrunner/ethereum-offline-raw-tx v0.2.3</li>
 	<li>furqansiddiqui/erc20-php v0.1.4</li>
 </ul>
+
+
+<h3 class="mt-3">Other Required PHP Scripts:</h3>
+<ul>
+	<li><a href="show_source.php?file=eth_utils.php">eth_utils.php</a></li>
+
+</ul>
 <?php
 include_once("html_footer.php");

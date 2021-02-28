@@ -1,31 +1,23 @@
 <?php 
 
 include_once "../libraries/vendor/autoload.php";
-$supportChains = ['1'=>"Ethereum Mainnet", '3'=>"Ethereum Testnet Ropsten"];
+include_once("eth_utils.php");
 
 define("GWEI_TO_WEI",'1000000000');
 define("ETH_TO_WEI",'1000000000000000000');
 
-function bcdechex($dec) {
+$hosts = ["https://mainnet.infura.io"=>"https://mainnet.infura.io","https://ropsten.infura.io"=>"https://ropsten.infura.io", "https://cloudflare-eth.com"=>"https://cloudflare-eth.com"];
 
-	$last = bcmod($dec, 16);
-	$remain = bcdiv(bcsub($dec, $last), 16);
-
-	if($remain == 0) {
-		return dechex($last);
-	} else {
-		return bcdechex($remain).dechex($last);
-	}
-	
-}
 
 include_once("html_iframe_header.php");
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	try {
 		
-		if (!preg_match('/^https\:\/\/([a-z]+)\.infura\.io/', $_POST['url'])) {
-			throw new Exception("Please provide valid INFURA full URL with project ID.");
+		if (!in_array($_POST['host'], array_keys($hosts))) {
+			throw new Exception("Please provide valid host.");
 		}
+		
+		$url = $_POST['host'] . "/" . $_POST['path'];
 		
 		$gasPrice = "0x".bcdechex(bcmul($_POST['gas_price'],GWEI_TO_WEI, 18));
 		$gasLimit = "0x".bcdechex($_POST['gas_limit']);
@@ -35,13 +27,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$value = "0x".bcdechex(bcmul($_POST['value'],ETH_TO_WEI, 18));
 		
 		$ch = curl_init();
+		$requestId = time();
 		
-		$req = <<<EOF
-{"jsonrpc":"2.0","method":"eth_estimateGas","params": [{"from": "{$from}","to": "{$to}","gas": "{$gasLimit}","gasPrice": "{$gasPrice}","value": "{$value}","data": "{$data}"}],"id":{$_POST['chain']}}
-EOF;
-		curl_setopt($ch, CURLOPT_URL,$_POST['url']);
+		$params = [];
+		$params['jsonrpc']= "2.0";
+		$params['method'] = 'eth_estimateGas';
+		$params['params'] = [["from"=>$from, "to"=>$to, "gas"=>$gasLimit, "gasPrice"=>$gasPrice,"value"=>$value, "data"=>$data]];
+		$params['id'] = $requestId;
+		
+		curl_setopt($ch, CURLOPT_URL,$url);
 		curl_setopt($ch, CURLOPT_POST, 1);
-		curl_setopt($ch, CURLOPT_POSTFIELDS,$req);
+		curl_setopt($ch, CURLOPT_POSTFIELDS,$req = json_encode($params));
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($ch, CURLOPT_HTTPHEADER, ["Content-Type: application/json"]);
 
@@ -56,16 +52,32 @@ EOF;
 			throw new Exception( "{$err} ({$errno})" );
 		}
 		
+		$result = json_decode($resp,true); 
+		if ($result['id'] != $requestId) {
+			throw new Exception("Invalid request id.");
+		}
+		$result = $result['result'];
+		
 		curl_close ($ch);
 		
 		?>
 		<div class="alert alert-success">
-		
-			<h6 class="mt-3">Requset</h6>
-			<textarea class="form-control" rows="5" id="comment" readonly><?php echo $req;?></textarea>
-			<h6 class="mt-3">Response</h6>
-			<textarea class="form-control" rows="1" id="comment" readonly><?php echo $resp;?></textarea>
-			Gas limit = <?php $resp_json = json_decode($resp,true); echo hexdec($resp_json['result']);?>
+			<h6 class="mt-3">Host</h6>
+			<textarea class="form-control" rows="1" readonly><?php echo $url;?></textarea>
+			
+			<h6 class="mt-3">JSON-RPC Request</h6>
+			<textarea class="form-control" rows="5" readonly><?php echo $req;?></textarea>
+			
+			<h6 class="mt-3">JSON-RPC Response</h6>
+			<textarea class="form-control" rows="1" readonly><?php echo $resp;?></textarea>
+			
+			<small>
+				NOTE: Even if a transaction fails due to non-gas issues, it consider a failure as insufficient gas. Then it will return 0 with an error message in the end.
+			</small>
+			
+			<h6 class="mt-3">Result</h6>
+			Gas limit is <?php echo hexdec($result);?>.
+			
 		</div>
 		<?php
 	} catch (Exception $e) {
@@ -83,24 +95,27 @@ if ($errmsg) {
 
 ?>
 <form id='this_form' action='?action=submit' method='post'>
-
 	<div class="form-group">
-		<label for="chain">Chain:</label>
-		<select id="chain" name="chain" class="form-control" >
+		<label for="host">Host To Receive RPC:</label>
+		
+		<div class="input-group mb-3">
+			<select id="host" name="host" class="form-control" >
 			<?php
-			foreach($supportChains as $k=>$v) {
-				
-				echo "<option value='{$k}'".($k == $_POST['chain'] ? " selected": "").">{$v}</option>";
+			foreach($hosts as $k=>$v) {
+				echo "<option value='{$k}'".($k == $_POST['host'] ? " selected": "").">{$v}</option>";
 			}
 			?>
-		</select>
+			</select>
+			<div class="input-group-append">
+				<span class="input-group-text">
+					/
+				</span>
+			</div>
+			
+			<input class="form-control" type='text' name='path' id='path' value='<?php echo $_POST['path']?>' placeholder="Put extra path or blank if it does not.">
+			
+		</div>
 	</div>
-	
-	 <div class="form-group">
-        <label for="url">INFURA full URL (with project ID):</label>
-        <input class="form-control" type='text' name='url' id='url' value='<?php echo $_POST['url']?>'>
-		<small>e.g https://mainnet.infura.io/v3/11223344556677889900aabbccdd</small>
-    </div>
 	
 	<div class="form-group">
         <label for="from">From Address:</label>
@@ -125,7 +140,7 @@ if ($errmsg) {
 	
 	 <div class="form-group">
         <label for="gas_limit">Gas Limit:</label>
-        <input class="form-control" type='text' name='gas_limit' id='gas_limit' value='<?php echo $_POST['gas_limit']?>'>
+        <input class="form-control" type='text' name='gas_limit' id='gas_limit' value='<?php echo $_POST['gas_limit'] ?? "60000"?>'>
     </div>
 	
 	<div class="form-group">

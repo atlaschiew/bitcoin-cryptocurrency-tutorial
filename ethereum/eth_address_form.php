@@ -6,6 +6,26 @@ use BitWasp\Bitcoin\Crypto\Random\Random;
 include_once "../libraries/vendor/autoload.php";
 include_once("html_iframe_header.php");
 
+function toChecksumAddress($address) 
+{
+	
+	$address = strtolower(str_replace('0x', '', $address));
+	$hash = Keccak::hash(strtolower($address), 256);
+	$checksumAddress = '0x';
+	
+	for($i=0;$i<strlen($address);$i++) {
+		
+		if (intval($hash{$i}, 16) > 7) {
+			$checksumAddress .= strtoupper($address{$i});
+		} else {
+			$checksumAddress .= $address{$i};
+		}
+	}
+	
+	return $checksumAddress;
+	
+}
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     try {
        
@@ -30,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$hash = Keccak::hash(hex2bin($madeUpEthAddress), 256);
 		// Ethereum address has 20 bytes length. (40 hex characters long)
 		// We only need the last 20 bytes as Ethereum address
-		$ethAddress = '0x' . substr($hash, -40);
+		$ethAddress = toChecksumAddress('0x' . substr($hash, -40));
 		
     ?>
         <div class="table-responsive">
