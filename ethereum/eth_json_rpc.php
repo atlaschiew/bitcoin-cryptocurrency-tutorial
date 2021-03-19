@@ -30,7 +30,7 @@ include_once("html_header.php");
 </ul>
 <div class="tab-content">
 	<div id="form1_tabitem1" class="tab-pane fade show active">
-		<iframe src="eth_json_rpc_form.php" width="100%" scrolling="no" frameborder="no"></iframe>
+		<iframe src="eth_json_rpc_form.php?method=<?php echo $_GET['method']?>&params=<?php echo urlencode($_GET['params'])?>" width="100%" scrolling="no" frameborder="no"></iframe>
 	</div>
 	<div id="form1_tabitem2" class="tab-pane fade">
 <pre style='border-radius:none;'><?php echo htmlentities(file_get_contents("eth_json_rpc_form.php"));?></pre> 		

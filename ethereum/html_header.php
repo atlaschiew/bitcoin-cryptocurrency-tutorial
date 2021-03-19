@@ -48,10 +48,18 @@
 			<a href="eth_json_rpc.php" class="list-group-item list-group-item-action bg-light">Ethereum JSON RPC</a>
 		</div>
 		
+		<div class="list-group-header">Ethereum Advance</div>
+		<div class="list-group list-group-flush">
+			<a href="eth_merkle_patricia_trie.php" class="list-group-item list-group-item-action bg-light">Merkle Patricia Trie</a>
+		
+			<a href="eth_bloom_filter.php" class="list-group-item list-group-item-action bg-light">Bloom Filter</a>
+		</div>
 		
 		<div class="list-group-header">Ethereum Tools</div>
 		<div class="list-group list-group-flush">
+			<a href="eth_rlp.php" class="list-group-item list-group-item-action bg-light">Ethereum RLP</a>
 			<a href="eth_tool_unit_converter.php" class="list-group-item list-group-item-action bg-light">Ethereum Unit Converter</a>
+			<a href="eth_tool_keccak256.php" class="list-group-item list-group-item-action bg-light">Ethereum Keccak 256</a>
 		</div>
     </div>
     <!-- /#sidebar-wrapper -->
@@ -75,20 +83,7 @@
             <li class="nav-item active">
               <a class="nav-link" href="../eth_smartcontract">Smart Contract</a>
             </li>
-            
-			<?php if(0) {?>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Dropdown
-              </a>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Something else here</a>
-              </div>
-            </li>
-			<?php }?>
+           
           </ul>
         </div>
       </nav>

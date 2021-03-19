@@ -7,7 +7,7 @@ include_once("html_header.php");
 ?>
 <h2 class="mt-3">Ethereum Cancel Transaction</h2>
 <hr/>
-	<p>The trick to “cancel” your pending transaction is by replacing the transaction with another <b>0 ETH</b> transaction with a <b>higher gas fee</b> sending to yourself with the <b>same nonce</b> as the pending transaction.</p>
+	<p>The trick to “cancel” your pending transaction is by replacing the transaction with another <b>0 ETH</b> transaction but <b>higher gas fee</b> sending to yourself with the <b>same nonce</b> as the pending transaction.</p>
 	<p>
 		<b>Warning!</b> You must use same nonce, otherwise your new push tx will consider as new tx in ethereum network.
 	</p>
@@ -24,7 +24,7 @@ include_once("html_header.php");
 	To cancel ERC20 type transaction, you need to set <b>higher gas fee</b> and regenerate data (hex) with <b>0 token amount</b>.
 </p>
 <p>
-	<b>Tips!</b> You can also cancel by sending normal ETH transaction (gas limit 21000), provided total gas cost = gas limit * gas price is higher than the previous tx.
+	<b>Tips!</b> You can also cancel by sending normal ETH transaction (gas limit 21000), provided total gas fee = gas limit * gas price is higher than the previous tx.
 </p>
 
 <?php

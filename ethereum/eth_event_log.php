@@ -64,7 +64,7 @@ In <span class='grey_info'>Event Log Decoder</span> section, we have demonstrate
 </p>
 
 <div class="table-responsive">
-	<table class="table table-bordered">
+	<table class="table table-sm table-bordered">
 		<tr><th style='width:30%;'>Topics Array</th><th>Description</th></tr>
 		<tr><td>[]</td><td>Anything</td></tr>
 		<tr><td>[ A ]</td><td rowspan=2>topic[0] = A</td></tr>
@@ -89,7 +89,7 @@ In <span class='grey_info'>Event Log Decoder</span> section, we have demonstrate
 </p>
 
 <div class="table-responsive">
-	<table class="table table-bordered">
+	<table class="table table-sm table-bordered">
 		<tr><th style='width:30%;'>Method</th><th>Description</th></tr>
 		<tr><td>eth_newFilter</td><td>Take same parameter as  <span class='grey_info'>eth_getLogs</span>, but return a filter ID.</td></tr>
 		<tr><td>eth_newBlockFilter</td><td>Return filter ID, and filter effects on new block.</td></tr>
@@ -100,6 +100,11 @@ In <span class='grey_info'>Event Log Decoder</span> section, we have demonstrate
 
 	</table>
 </div>
+
+<h3 class="mt-3" id='hashtag2'>Bloom Filter</h3>
+<p>
+	This section is alias of <a href="eth_bloom_filter.php">Bloom Filter</a> page.
+</p>
 
 <?php
 include_once("html_footer.php");

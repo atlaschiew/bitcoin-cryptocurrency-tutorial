@@ -33,8 +33,7 @@
 	  
 		<div class="list-group-header">Bitcoin</div>
 		<div class="list-group list-group-flush">
-			<a href="/bitcoin" class="list-group-item list-group-item-action bg-light">Learn Bitcoin</a>
-			<a href="/bitwasp" class="list-group-item list-group-item-action bg-light">Learn Bitwasp, includes</a>
+			<a href="/bitcoin" class="list-group-item list-group-item-action bg-light">Learn Bitcoin, includes</a>
 			<a href="#" class="list-group-item list-group-item-action bg-light disabled">&nbsp;&nbsp;<img src='media/images/git_fork.png' style="width:16px;height:16px;"/> Litecoin</a>
 			<a href="#" class="list-group-item list-group-item-action bg-light disabled">&nbsp;&nbsp;<img src='media/images/git_fork.png' style="width:16px;height:16px;"/> Dash</a>
 			<a href="#" class="list-group-item list-group-item-action bg-light disabled">&nbsp;&nbsp;<img src='media/images/git_fork.png' style="width:16px;height:16px;"/> Doge</a>
@@ -83,9 +82,11 @@
               <a class="nav-link" href="/bitcoin">Bitcoin</a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="/bitwasp">Bitwasp</a>
+              <a class="nav-link" href="/ethereum">Ethereum</a>
             </li>
-			
+			<li class="nav-item active">
+              <a class="nav-link" href="/tron">Tron</a>
+            </li>
           </ul>
         </div>
       </nav>

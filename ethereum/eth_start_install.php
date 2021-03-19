@@ -34,7 +34,7 @@ include_once("html_header.php");
 <h3 class="mt-3">Other Required PHP Scripts:</h3>
 <ul>
 	<li><a href="show_source.php?file=eth_utils.php">eth_utils.php</a></li>
-
+	<li><a href="show_source.php?file=../libraries/bcbitwise.php">bcbitwise.php</a></li>
 </ul>
 <?php
 include_once("html_footer.php");

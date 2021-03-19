@@ -25,9 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		
     ?>
 	<div class="alert alert-success">
-		<p>
-			TRX balance is <b><?php echo $balance?> TRX</b>.
-		</p>
+		TRX balance is <b><?php echo $balance?> TRX</b>.
 	</div>
 <?php 
     } catch (Exception $e) {

@@ -8,6 +8,16 @@ include_once("html_iframe_header.php");
 
 $apis = ['web3_clientVersion','web3_sha3','net_version','net_peerCount','net_listening','eth_protocolVersion','eth_syncing','eth_coinbase','eth_mining','eth_hashrate','eth_gasPrice','eth_accounts','eth_blockNumber','eth_chainId','eth_getBalance','eth_getStorageAt','eth_getTransactionCount','eth_getBlockTransactionCountByHash','eth_getBlockTransactionCountByNumber','eth_getUncleCountByBlockHash','eth_getUncleCountByBlockNumber','eth_getCode','eth_sign','eth_sendTransaction','eth_sendRawTransaction','eth_call','eth_estimateGas','eth_getBlockByHash','eth_getBlockByNumber','eth_getTransactionByHash','eth_getTransactionByBlockHashAndIndex','eth_getTransactionByBlockNumberAndIndex','eth_getTransactionReceipt','eth_pendingTransactions','eth_getUncleByBlockHashAndIndex','eth_getUncleByBlockNumberAndIndex','eth_getCompilers','eth_compileLLL','eth_compileSolidity','eth_compileSerpent','eth_newFilter','eth_newBlockFilter','eth_newPendingTransactionFilter','eth_uninstallFilter','eth_getFilterChanges','eth_getFilterLogs','eth_getLogs','eth_getWork','eth_submitWork','eth_submitHashrate','eth_getProof'];
 
+unset($_REQUEST);
+$_REQUEST = array("method"=>"","params"=>"");
+foreach($_REQUEST as $k=>$v) {
+	if (isset($_POST[$k])) {
+		$_REQUEST[$k] = $_POST[$k];
+	} else {
+		$_REQUEST[$k] = $_GET[$k];
+	}
+}
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	try {
 		
@@ -20,6 +30,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$ch = curl_init();
 		$requestId = time();
 		$paramsParams = json_decode($_POST['params'], true);
+		if (json_last_error() != JSON_ERROR_NONE) {
+			throw new Exception("`Params` is not a proper JSON string.");
+		}
 		
 		$params = [];
 		$params['jsonrpc']= $_POST['jsonver'];
@@ -110,7 +123,7 @@ if ($errmsg) {
 	<div class="form-group">
 	<label for="jsonver">Method:</label>
 		<div class="input-group">
-			<input class="form-control" type='text' name='method' id='method' value='<?php echo $_POST['method']?>'>
+			<input class="form-control" type='text' name='method' id='method' value='<?php echo $_REQUEST['method']?>'>
 			<div class="input-group-append">
 				<button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Select</button>
 				<ul class="dropdown-menu w-100 shadow p-0" id="navbarDropdownMega">
@@ -149,51 +162,46 @@ if ($errmsg) {
 	
 	<div class="form-group">
         <label for="params">Params:</label>
-		<textarea class="form-control" rows="10" name='params' id='params'><?php echo $_POST['params']?></textarea>
-		<ol>
-			<li>
-				<small>
-				Must be JSON encoded string or you can generate it from <a href="https://www.functions-online.com/json_encode.html" target="_blank">here</a> or <a href="http://php.fnlist.com/php/json_encode" target="_blank">here</a>.
-				</small>
-			</li>
-			
-			<li>
-				<small>
-				<a href="https://eth.wiki/json-rpc/api" target="_blank">Refer to</a> <span class='grey_info'>Parameters</span> part under your selected method about required value and string pattern.
-				</small>
-			</li>
-			
-			<li>
-				<small>
-				String pattern.
-				<div class="table-responsive">
-					<table class="table table-bordered">
-						<tr><th>Params</th><th>Description</th></tr>
-						
-						<tr>
-							<td>[]</td>
-							<td>Empty params object.</td>
-						</tr>
-						
-						<tr>
-							<td>["0x5cf1bdA8757b9c501190B0FcbC6B4ab8a4Bd04a5"]</td>
-							<td>Params object with 1 address item.</td>
-						</tr>
-						
-						<tr>
-							<td>["0x5cf1bdA8757b9c501190B0FcbC6B4ab8a4Bd04a5","latest"]</td>
-							<td>Params object with 2 items.</td>
-						</tr>
-						
-						<tr>
-							<td>[{"from":"0x5cf1bdA8757b9c501190B0FcbC6B4ab8a4Bd04a5","to":"0xd46e8dd67c5d32be8058bb8eb970870f07244567"}]</td>
-							<td>Params object with 1 object item.</td>
-						</tr>
-					</table>
-					</small>
-				</div>
-			</li>
-		</ol>
+		<textarea class="form-control" rows="10" name='params' id='params' placeholder='Please refer to sample of value below'><?php echo $_REQUEST['params']?></textarea>
+		<small>
+			<ol style="padding-left: 0; list-style: inside decimal;">
+				<li>
+					Must be JSON-ARRAY encoded string, start with '[' and end with ']'. You can generate it from <a href="https://www.functions-online.com/json_encode.html" target="_blank">here</a> or <a href="http://php.fnlist.com/php/json_encode" target="_blank">here</a>.
+				</li>
+				
+				<li>
+					<a href="https://eth.wiki/json-rpc/api" target="_blank">Refer to</a> <span class='grey_info'>Parameters</span> part under your selected method about required value.
+				</li>
+				
+				<li>
+					Sample of `Params` value.
+					<div class="table-responsive">
+						<table class="table table-sm table-bordered">
+							<tr><th>Params</th><th>Description</th></tr>
+							<tr>
+								<td>[]</td>
+								<td>Empty params array.</td>
+							</tr>
+							
+							<tr>
+								<td>["0x5cf1bdA8757b9c501190B0FcbC6B4ab8a4Bd04a5"]</td>
+								<td>Params array with 1 address item.</td>
+							</tr>
+							
+							<tr>
+								<td>["0x5cf1bdA8757b9c501190B0FcbC6B4ab8a4Bd04a5","latest"]</td>
+								<td>Params array with 1 address item & 1 block param.</td>
+							</tr>
+							
+							<tr>
+								<td>[{"from":"0x5cf1bdA8757b9c501190B0FcbC6B4ab8a4Bd04a5","to":"0xd46e8dd67c5d32be8058bb8eb970870f07244567"}]</td>
+								<td>Params array with 1 object item.</td>
+							</tr>
+						</table>
+					</div>
+				</li>
+			</ol>
+		</small>
     </div>
 	
 	

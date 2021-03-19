@@ -105,7 +105,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	<div class="form-group">
 		<label for="txids">Tx Ids (Follow TX order in block):</label>
 		<textarea rows=10 class="form-control" name='txids' id='txids'><?php echo $_POST['txids']?></textarea>
-		Each tx id must key in by press "Enter" and place as new line. For example, you can copy all tx ids from <a href="https://api.blockcypher.com/v1/btc/main/blocks/0000000000013b8ab2cd513b0261a14096412195a72a0c4827d229dcc7e0f7af" target="_blank"><img style='width:12px;height:12px;' src='../media/images/external_link.png'/></a>.
+		Press enter key to place new tx id in new line. For example, you can copy all tx ids from <a href="https://api.blockcypher.com/v1/btc/main/blocks/0000000000013b8ab2cd513b0261a14096412195a72a0c4827d229dcc7e0f7af" target="_blank"><img style='width:12px;height:12px;' src='../media/images/external_link.png'/></a>.
 	</div>
 
 	<input type='submit' class="btn btn-success btn-block"/>

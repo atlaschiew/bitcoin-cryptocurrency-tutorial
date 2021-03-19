@@ -55,9 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		
     ?>
 	<div class="alert alert-success">
-		<p>
 			TRC20 balance is <b><?php echo $balance?> <?php echo $symbol?></b>.
-		</p>
 	</div>
 <?php 
     } catch (Exception $e) {

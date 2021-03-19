@@ -29,9 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		
     ?>
 	<div class="alert alert-success">
-		<p>
-			List of TRC10 balance loaded.
-		</p>
+		List of TRC10 balance loaded.
 	</div>
 	
 		<table class='table table-bordered table-sm' >

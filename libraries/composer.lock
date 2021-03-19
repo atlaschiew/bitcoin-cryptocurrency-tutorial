@@ -40,12 +40,16 @@
             "authors": [
                 {
                     "name": "Thomas Kerin",
-                    "role": "Author",
-                    "homepage": "https://thomaskerin.io"
+                    "homepage": "https://thomaskerin.io",
+                    "role": "Author"
                 }
             ],
             "description": "Pure (no dependencies) implementation of bech32",
             "homepage": "https://github.com/bit-wasp/bech32",
+            "support": {
+                "issues": "https://github.com/Bit-Wasp/bech32/issues",
+                "source": "https://github.com/Bit-Wasp/bech32/tree/more-tests"
+            },
             "time": "2018-02-05T22:23:47+00:00"
         },
         {
@@ -105,6 +109,10 @@
             ],
             "description": "PHP Bitcoin library with functions for transactions, signatures, serialization, Random/Deterministic ECDSA keys, blocks, RPC bindings",
             "homepage": "https://github.com/bit-wasp/bitcoin-php",
+            "support": {
+                "issues": "https://github.com/Bit-Wasp/bitcoin-php/issues",
+                "source": "https://github.com/Bit-Wasp/bitcoin-php/tree/master"
+            },
             "time": "2019-04-30T00:51:40+00:00"
         },
         {
@@ -149,6 +157,10 @@
                 }
             ],
             "description": "Toolbox for working with binary and hex data. Similar to NodeJS Buffer.",
+            "support": {
+                "issues": "https://github.com/Bit-Wasp/buffertools-php/issues",
+                "source": "https://github.com/Bit-Wasp/buffertools-php/tree/v0.5.7"
+            },
             "time": "2020-01-17T21:31:49+00:00"
         },
         {
@@ -210,6 +222,11 @@
                 "validation",
                 "versioning"
             ],
+            "support": {
+                "irc": "irc://irc.freenode.org/composer",
+                "issues": "https://github.com/composer/semver/issues",
+                "source": "https://github.com/composer/semver/tree/1.7.2"
+            },
             "funding": [
                 {
                     "url": "https://packagist.com",
@@ -295,6 +312,10 @@
                 "x509",
                 "x690"
             ],
+            "support": {
+                "issues": "https://github.com/fgrosse/PHPASN1/issues",
+                "source": "https://github.com/fgrosse/PHPASN1/tree/v2.2.0"
+            },
             "time": "2020-10-11T16:28:18+00:00"
         },
         {
@@ -338,6 +359,10 @@
                 "token",
                 "tokens"
             ],
+            "support": {
+                "issues": "https://github.com/furqansiddiqui/erc20-php/issues",
+                "source": "https://github.com/furqansiddiqui/erc20-php/tree/master"
+            },
             "time": "2020-04-02T15:18:50+00:00"
         },
         {
@@ -379,6 +404,10 @@
                 "ethereum-go",
                 "geth"
             ],
+            "support": {
+                "issues": "https://github.com/furqansiddiqui/ethereum-rpc/issues",
+                "source": "https://github.com/furqansiddiqui/ethereum-rpc/tree/0.1.5"
+            },
             "time": "2020-04-02T15:12:20+00:00"
         },
         {
@@ -417,6 +446,10 @@
                 "http",
                 "http-client"
             ],
+            "support": {
+                "issues": "https://github.com/furqansiddiqui/http-client/issues",
+                "source": "https://github.com/furqansiddiqui/http-client/tree/master"
+            },
             "time": "2019-12-22T22:46:32+00:00"
         },
         {
@@ -458,6 +491,10 @@
             "keywords": [
                 "proto"
             ],
+            "support": {
+                "issues": "https://github.com/protocolbuffers/protobuf-php/issues",
+                "source": "https://github.com/protocolbuffers/protobuf-php/tree/v4.0.0RC2"
+            },
             "time": "2020-07-21T05:56:10+00:00"
         },
         {
@@ -525,20 +562,24 @@
                 "rest",
                 "web service"
             ],
+            "support": {
+                "issues": "https://github.com/guzzle/guzzle/issues",
+                "source": "https://github.com/guzzle/guzzle/tree/6.5"
+            },
             "time": "2020-06-16T21:01:06+00:00"
         },
         {
             "name": "guzzlehttp/promises",
-            "version": "1.4.0",
+            "version": "1.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/promises.git",
-                "reference": "60d379c243457e073cff02bc323a2a86cb355631"
+                "reference": "8e7d04f1f6450fef59366c399cfad4b9383aa30d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/promises/zipball/60d379c243457e073cff02bc323a2a86cb355631",
-                "reference": "60d379c243457e073cff02bc323a2a86cb355631",
+                "url": "https://api.github.com/repos/guzzle/promises/zipball/8e7d04f1f6450fef59366c399cfad4b9383aa30d",
+                "reference": "8e7d04f1f6450fef59366c399cfad4b9383aa30d",
                 "shasum": ""
             },
             "require": {
@@ -576,7 +617,11 @@
             "keywords": [
                 "promise"
             ],
-            "time": "2020-09-30T07:37:28+00:00"
+            "support": {
+                "issues": "https://github.com/guzzle/promises/issues",
+                "source": "https://github.com/guzzle/promises/tree/1.4.1"
+            },
+            "time": "2021-03-07T09:25:29+00:00"
         },
         {
             "name": "guzzlehttp/psr7",
@@ -647,6 +692,10 @@
                 "uri",
                 "url"
             ],
+            "support": {
+                "issues": "https://github.com/guzzle/psr7/issues",
+                "source": "https://github.com/guzzle/psr7/tree/1.7.0"
+            },
             "time": "2020-09-30T07:37:11+00:00"
         },
         {
@@ -698,6 +747,10 @@
                 "tron-php",
                 "tron-rest-api"
             ],
+            "support": {
+                "issues": "https://github.com/iexbase/tron-api/issues",
+                "source": "https://github.com/iexbase/tron-api/tree/v3.0"
+            },
             "time": "2020-09-23T14:15:08+00:00"
         },
         {
@@ -748,6 +801,10 @@
                 "transaction",
                 "tx"
             ],
+            "support": {
+                "issues": "https://github.com/kornrunner/php-ethereum-offline-raw-tx/issues",
+                "source": "https://github.com/kornrunner/php-ethereum-offline-raw-tx/tree/master"
+            },
             "time": "2019-01-16T17:08:53+00:00"
         },
         {
@@ -794,6 +851,10 @@
                 "sha-3",
                 "sha3-256"
             ],
+            "support": {
+                "issues": "https://github.com/kornrunner/php-keccak/issues",
+                "source": "https://github.com/kornrunner/php-keccak/tree/master"
+            },
             "time": "2018-07-30T22:16:23+00:00"
         },
         {
@@ -841,6 +902,10 @@
                 "elliptic",
                 "secp256k1"
             ],
+            "support": {
+                "issues": "https://github.com/kornrunner/php-secp256k1/issues",
+                "source": "https://github.com/kornrunner/php-secp256k1/tree/master"
+            },
             "time": "2019-01-16T17:01:51+00:00"
         },
         {
@@ -888,6 +953,10 @@
                 "hashing",
                 "murmur"
             ],
+            "support": {
+                "issues": "https://github.com/lastguest/murmurhash-php/issues",
+                "source": "https://github.com/lastguest/murmurhash-php/tree/master"
+            },
             "time": "2017-10-10T15:16:12+00:00"
         },
         {
@@ -927,19 +996,19 @@
             "authors": [
                 {
                     "name": "Matyas Danter",
-                    "role": "Author",
-                    "homepage": "http://matejdanter.com/"
+                    "homepage": "http://matejdanter.com/",
+                    "role": "Author"
                 },
                 {
                     "name": "Thibaud Fabre",
-                    "role": "Maintainer",
                     "email": "thibaud@aztech.io",
-                    "homepage": "http://aztech.io"
+                    "homepage": "http://aztech.io",
+                    "role": "Maintainer"
                 },
                 {
                     "name": "Thomas Kerin",
-                    "role": "Maintainer",
-                    "email": "afk11@users.noreply.github.com"
+                    "email": "afk11@users.noreply.github.com",
+                    "role": "Maintainer"
                 }
             ],
             "description": "PHP Elliptic Curve Cryptography library",
@@ -960,20 +1029,24 @@
                 "secp256k1",
                 "secp256r1"
             ],
+            "support": {
+                "issues": "https://github.com/phpecc/phpecc/issues",
+                "source": "https://github.com/phpecc/phpecc/tree/master"
+            },
             "time": "2018-12-03T18:17:01+00:00"
         },
         {
             "name": "phpseclib/phpseclib",
-            "version": "2.0.29",
+            "version": "2.0.30",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpseclib/phpseclib.git",
-                "reference": "497856a8d997f640b4a516062f84228a772a48a8"
+                "reference": "136b9ca7eebef78be14abf90d65c5e57b6bc5d36"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/497856a8d997f640b4a516062f84228a772a48a8",
-                "reference": "497856a8d997f640b4a516062f84228a772a48a8",
+                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/136b9ca7eebef78be14abf90d65c5e57b6bc5d36",
+                "reference": "136b9ca7eebef78be14abf90d65c5e57b6bc5d36",
                 "shasum": ""
             },
             "require": {
@@ -981,7 +1054,7 @@
             },
             "require-dev": {
                 "phing/phing": "~2.7",
-                "phpunit/phpunit": "^4.8.35|^5.7|^6.0",
+                "phpunit/phpunit": "^4.8.35|^5.7|^6.0|^9.4",
                 "squizlabs/php_codesniffer": "~2.0"
             },
             "suggest": {
@@ -1051,6 +1124,10 @@
                 "x.509",
                 "x509"
             ],
+            "support": {
+                "issues": "https://github.com/phpseclib/phpseclib/issues",
+                "source": "https://github.com/phpseclib/phpseclib/tree/2.0.30"
+            },
             "funding": [
                 {
                     "url": "https://github.com/terrafrost",
@@ -1065,7 +1142,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-09-08T04:24:43+00:00"
+            "time": "2020-12-17T05:42:04+00:00"
         },
         {
             "name": "pleonasm/merkle-tree",
@@ -1108,6 +1185,10 @@
                 }
             ],
             "description": "An implementation of a Merkle Tree in PHP",
+            "support": {
+                "issues": "https://github.com/pleonasm/merkle-tree/issues",
+                "source": "https://github.com/pleonasm/merkle-tree/tree/master"
+            },
             "time": "2013-05-22T20:46:20+00:00"
         },
         {
@@ -1158,6 +1239,9 @@
                 "request",
                 "response"
             ],
+            "support": {
+                "source": "https://github.com/php-fig/http-message/tree/master"
+            },
             "time": "2016-08-06T14:39:51+00:00"
         },
         {
@@ -1198,6 +1282,10 @@
                 }
             ],
             "description": "A polyfill for getallheaders.",
+            "support": {
+                "issues": "https://github.com/ralouphie/getallheaders/issues",
+                "source": "https://github.com/ralouphie/getallheaders/tree/develop"
+            },
             "time": "2019-03-08T08:55:37+00:00"
         },
         {
@@ -1240,6 +1328,10 @@
                 }
             ],
             "description": "Ethereum web3 interface.",
+            "support": {
+                "issues": "https://github.com/sc0Vu/web3.php/issues",
+                "source": "https://github.com/sc0Vu/web3.php/tree/master"
+            },
             "time": "2018-06-24T14:45:20+00:00"
         },
         {
@@ -1274,6 +1366,10 @@
                 }
             ],
             "description": "Common interface for php_gmp and php_bcmath modules",
+            "support": {
+                "issues": "https://github.com/simplito/bigint-wrapper-php/issues",
+                "source": "https://github.com/simplito/bigint-wrapper-php/tree/1.0.0"
+            },
             "time": "2018-02-27T12:38:08+00:00"
         },
         {
@@ -1314,20 +1410,24 @@
                 }
             ],
             "description": "Big number implementation compatible with bn.js",
+            "support": {
+                "issues": "https://github.com/simplito/bn-php/issues",
+                "source": "https://github.com/simplito/bn-php/tree/1.1.2"
+            },
             "time": "2018-04-12T11:07:43+00:00"
         },
         {
             "name": "simplito/elliptic-php",
-            "version": "1.0.6",
+            "version": "1.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/simplito/elliptic-php.git",
-                "reference": "15652609aa55968d56685c2a9120535ccdc00fd9"
+                "reference": "a2612c8289270bd00086d1c070efc3fca9d7abce"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/simplito/elliptic-php/zipball/15652609aa55968d56685c2a9120535ccdc00fd9",
-                "reference": "15652609aa55968d56685c2a9120535ccdc00fd9",
+                "url": "https://api.github.com/repos/simplito/elliptic-php/zipball/a2612c8289270bd00086d1c070efc3fca9d7abce",
+                "reference": "a2612c8289270bd00086d1c070efc3fca9d7abce",
                 "shasum": ""
             },
             "require": {
@@ -1374,20 +1474,24 @@
                 "nistp521",
                 "secp256k1"
             ],
-            "time": "2019-11-14T13:43:07+00:00"
+            "support": {
+                "issues": "https://github.com/simplito/elliptic-php/issues",
+                "source": "https://github.com/simplito/elliptic-php/tree/1.0.7"
+            },
+            "time": "2021-01-12T11:40:37+00:00"
         },
         {
             "name": "symfony/polyfill-intl-idn",
-            "version": "v1.20.0",
+            "version": "v1.22.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-intl-idn.git",
-                "reference": "3b75acd829741c768bc8b1f84eb33265e7cc5117"
+                "reference": "2d63434d922daf7da8dd863e7907e67ee3031483"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-intl-idn/zipball/3b75acd829741c768bc8b1f84eb33265e7cc5117",
-                "reference": "3b75acd829741c768bc8b1f84eb33265e7cc5117",
+                "url": "https://api.github.com/repos/symfony/polyfill-intl-idn/zipball/2d63434d922daf7da8dd863e7907e67ee3031483",
+                "reference": "2d63434d922daf7da8dd863e7907e67ee3031483",
                 "shasum": ""
             },
             "require": {
@@ -1401,7 +1505,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "1.20-dev"
+                    "dev-main": "1.22-dev"
                 },
                 "thanks": {
                     "name": "symfony/polyfill",
@@ -1444,6 +1548,9 @@
                 "portable",
                 "shim"
             ],
+            "support": {
+                "source": "https://github.com/symfony/polyfill-intl-idn/tree/v1.22.1"
+            },
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
@@ -1458,20 +1565,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-10-23T14:02:19+00:00"
+            "time": "2021-01-22T09:19:47+00:00"
         },
         {
             "name": "symfony/polyfill-intl-normalizer",
-            "version": "v1.20.0",
+            "version": "v1.22.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-intl-normalizer.git",
-                "reference": "727d1096295d807c309fb01a851577302394c897"
+                "reference": "43a0283138253ed1d48d352ab6d0bdb3f809f248"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-intl-normalizer/zipball/727d1096295d807c309fb01a851577302394c897",
-                "reference": "727d1096295d807c309fb01a851577302394c897",
+                "url": "https://api.github.com/repos/symfony/polyfill-intl-normalizer/zipball/43a0283138253ed1d48d352ab6d0bdb3f809f248",
+                "reference": "43a0283138253ed1d48d352ab6d0bdb3f809f248",
                 "shasum": ""
             },
             "require": {
@@ -1483,7 +1590,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "1.20-dev"
+                    "dev-main": "1.22-dev"
                 },
                 "thanks": {
                     "name": "symfony/polyfill",
@@ -1525,6 +1632,9 @@
                 "portable",
                 "shim"
             ],
+            "support": {
+                "source": "https://github.com/symfony/polyfill-intl-normalizer/tree/v1.22.1"
+            },
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
@@ -1539,20 +1649,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-10-23T14:02:19+00:00"
+            "time": "2021-01-22T09:19:47+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.20.0",
+            "version": "v1.22.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "39d483bdf39be819deabf04ec872eb0b2410b531"
+                "reference": "5232de97ee3b75b0360528dae24e73db49566ab1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/39d483bdf39be819deabf04ec872eb0b2410b531",
-                "reference": "39d483bdf39be819deabf04ec872eb0b2410b531",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/5232de97ee3b75b0360528dae24e73db49566ab1",
+                "reference": "5232de97ee3b75b0360528dae24e73db49566ab1",
                 "shasum": ""
             },
             "require": {
@@ -1564,7 +1674,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "1.20-dev"
+                    "dev-main": "1.22-dev"
                 },
                 "thanks": {
                     "name": "symfony/polyfill",
@@ -1602,6 +1712,9 @@
                 "portable",
                 "shim"
             ],
+            "support": {
+                "source": "https://github.com/symfony/polyfill-mbstring/tree/v1.22.1"
+            },
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
@@ -1616,20 +1729,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-10-23T14:02:19+00:00"
+            "time": "2021-01-22T09:19:47+00:00"
         },
         {
             "name": "symfony/polyfill-php72",
-            "version": "v1.20.0",
+            "version": "v1.22.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php72.git",
-                "reference": "cede45fcdfabdd6043b3592e83678e42ec69e930"
+                "reference": "cc6e6f9b39fe8075b3dabfbaf5b5f645ae1340c9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php72/zipball/cede45fcdfabdd6043b3592e83678e42ec69e930",
-                "reference": "cede45fcdfabdd6043b3592e83678e42ec69e930",
+                "url": "https://api.github.com/repos/symfony/polyfill-php72/zipball/cc6e6f9b39fe8075b3dabfbaf5b5f645ae1340c9",
+                "reference": "cc6e6f9b39fe8075b3dabfbaf5b5f645ae1340c9",
                 "shasum": ""
             },
             "require": {
@@ -1638,7 +1751,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "1.20-dev"
+                    "dev-main": "1.22-dev"
                 },
                 "thanks": {
                     "name": "symfony/polyfill",
@@ -1675,6 +1788,9 @@
                 "portable",
                 "shim"
             ],
+            "support": {
+                "source": "https://github.com/symfony/polyfill-php72/tree/v1.22.1"
+            },
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
@@ -1689,7 +1805,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-10-23T14:02:19+00:00"
+            "time": "2021-01-07T16:49:33+00:00"
         },
         {
             "name": "web3p/rlp",
@@ -1725,6 +1841,10 @@
                 }
             ],
             "description": "Recursive Length Prefix Encoding in PHP.",
+            "support": {
+                "issues": "https://github.com/web3p/rlp/issues",
+                "source": "https://github.com/web3p/rlp/tree/master"
+            },
             "time": "2018-06-10T09:55:27+00:00"
         }
     ],
@@ -1738,5 +1858,5 @@
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
-    "plugin-api-version": "1.1.0"
+    "plugin-api-version": "2.0.0"
 }

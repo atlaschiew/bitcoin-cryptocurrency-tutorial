@@ -23,7 +23,11 @@ include_once("html_header.php");
 	<hr/>
 	We keep you updated with more fun stuffs!
 	<ul>
-		<li><i>2021-02-24</i> Ethereum ABI decoder added <a target="_blank" href="https://www.btcschools.net/ethereum/eth_abi.php"><img style='width:12px;height:12px;' src='../media/images/external_link.png'/></a></li>
+		<li><i>2021-03-18</i> Ethereum Merkle Patricia Trie <a target="_blank" href="https://www.btcschools.net/ethereum/eth_merkle_patricia_trie.php"><img style='width:12px;height:12px;' src='../media/images/external_link.png'/></a></li>
+		<li><i>2021-03-15</i> Ethereum RLP Encoder/Decoder <a target="_blank" href="https://www.btcschools.net/ethereum/eth_rlp.php"><img style='width:12px;height:12px;' src='../media/images/external_link.png'/></a></li>
+		<li><i>2021-03-05</i> Ethereum keccak256 tool added <a target="_blank" href="https://www.btcschools.net/ethereum/eth_tool_keccak256.php"><img style='width:12px;height:12px;' src='../media/images/external_link.png'/></a></li>
+		<li><i>2021-03-01</i> Ethereum bloom filter page added <a target="_blank" href="https://www.btcschools.net/ethereum/eth_bloom_filter.php"><img style='width:12px;height:12px;' src='../media/images/external_link.png'/></a></li>
+		<li><i>2021-02-28</i> Ethereum ABI decoder added <a target="_blank" href="https://www.btcschools.net/ethereum/eth_abi.php"><img style='width:12px;height:12px;' src='../media/images/external_link.png'/></a></li>
 		<li><i>2021-02-24</i> Ethereum event log page added <a target="_blank" href="https://www.btcschools.net/ethereum/eth_event_log.php"><img style='width:12px;height:12px;' src='../media/images/external_link.png'/></a></li>
 		<li><i>2021-02-15</i> Ethereum address validator added <a target="_blank" href="https://www.btcschools.net/ethereum/eth_address.php#hashtag2"><img style='width:12px;height:12px;' src='../media/images/external_link.png'/></a></li>
 		<li><i>2021-01-28</i> Build bitcoin from scratch with PHP & Mysql <a target="_blank" href="https://github.com/atlaschiew/build-bitcoin-php-mysql"><img style='width:12px;height:12px;' src='../media/images/external_link.png'/></a></li>
