@@ -8,7 +8,7 @@ include_once("html_header.php");
 <h2 class="mt-3">Tron Get Account Resources</h2>
 <hr/>
 	<p>
-		Query the resource information of an account (bandwidth & energy).
+		Query the resource information of an account (bandwidth & energy). If result return empty array, most likely an account still haven't be activated.
 	</p>
 	
 <hr/>

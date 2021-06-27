@@ -1,0 +1,30 @@
+{{ template "html_iframe_header.html" .}}
+
+{{if .error}}
+	<div class="alert alert-danger">
+        <strong>Error!</strong> {{ .error }}
+    </div>
+{{end}}
+
+{{if .checkSum }}
+	{{if eq .checkSum "valid"}}
+		<div class="alert alert-success">
+			<strong>Success!</strong> Checksum validation was passed.
+		</div>
+	{{else if eq .checkSum "invalid"}}
+		<div class="alert alert-info">
+			<strong>Notice!</strong> Address pattern valid but checksum cannot be verified.
+		</div>
+	{{end}}
+{{end}}
+ 
+<form action='' method='post'>
+    <div class="form-group">
+        <label for="address">Address:</label>
+        <input class="form-control" type='text' name='address' id='address' value='{{ .address }}'>
+    </div>
+   
+    <input type='submit' class="btn btn-success btn-block"/>
+</form>
+
+{{ template "html_iframe_footer.html" .}}

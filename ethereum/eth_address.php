@@ -35,20 +35,70 @@ include_once("html_header.php");
 <hr/>
 
 <h3 class="mt-3" id='hashtag1'>EOA Address Generator</h3>
-<ul class="nav nav-tabs">
-	<li class="nav-item">
-		<a data-toggle="tab" class="nav-link active" href="#form1_tabitem1">Visual</a>
-	</li>
-	<li class="nav-item">
-		<a data-toggle="tab" class="nav-link" href="#form1_tabitem2">Coding</a>
-	</li>
-</ul>
-<div class="tab-content">
-	<div id="form1_tabitem1" class="tab-pane fade show active">
-		<iframe src="eth_address_form.php" width="100%" scrolling="no" frameborder="no"></iframe>
+<div class="row">
+	<div class="vertical-tabs-left">
+		<ul class="nav nav-tabs left-tabs sideways-tabs">
+			<li class="nav-item">
+				<a class="nav-link active" href="#form1_php" data-toggle="tab">PHP</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="#form1_go" data-toggle="tab">Go</a>
+			</li>
+		</ul>
 	</div>
-	<div id="form1_tabitem2" class="tab-pane fade">
-<pre style='border-radius:none;'><?php echo htmlentities(file_get_contents("eth_address_form.php"));?></pre> 		
+
+	<div class="vertical-tabs-right" >
+
+		<div class="">
+			<div class="tab-content" >
+				<article class="tab-pane  active" id="form1_php" >
+					<section >
+						<ul class="nav nav-tabs">
+							<li class="nav-item">
+								<a data-toggle="tab" class="nav-link active" href="#form1_tabitem1_php">Visual</a>
+							</li>
+							<li class="nav-item">
+								<a data-toggle="tab" class="nav-link" href="#form1_tabitem2_php">Coding</a>
+							</li>
+						</ul>
+						<div class="tab-content">
+							<div id="form1_tabitem1_php" class="tab-pane fade show active">
+								<iframe src="eth_address_form.php" width="100%" scrolling="no" frameborder="no"></iframe>
+							</div>
+							<div id="form1_tabitem2_php" class="tab-pane fade">
+						<pre style='border-radius:none;'><?php echo htmlentities(file_get_contents("eth_address_form.php"));?></pre> 		
+							</div>
+						</div>
+					</section>
+				</article>
+				<article class="tab-pane " id="form1_go">
+					<section>
+						<ul class="nav nav-tabs">
+							<li class="nav-item">
+								<a data-toggle="tab" class="nav-link active" href="#form1_tabitem1_go">Visual</a>
+							</li>
+							<li class="nav-item">
+								<a data-toggle="tab" class="nav-link" href="#form1_tabitem2_go">Coding</a>
+							</li>
+						</ul>
+						<div class="tab-content">
+							<div id="form1_tabitem1_go" class="tab-pane fade show active">
+								<iframe src="https://www.btcschools.net:2053/ethereum/eth_address_form.go" width="100%" scrolling="no" frameborder="no"></iframe>
+							</div>
+							<div id="form1_tabitem2_go" class="tab-pane fade">
+								
+								<h5>go/eth_address_form.go</h5><hr/>
+								<pre style='border-radius:none;'><?php echo htmlentities(file_get_contents("go/eth_address_form.go"));?></pre> 		
+								
+								<hr/><h5>go/templates/eth_address_form.html</h5><hr/>
+								<pre style='border-radius:none;'><?php echo htmlentities(file_get_contents("go/templates/eth_address_form.html"));?></pre> 		
+								
+							</div>
+						</div>
+					</section>
+				</article>
+			</div>
+		</div>
 	</div>
 </div>
 
@@ -57,20 +107,71 @@ include_once("html_header.php");
 <p>
 	Address checksum was described in <a href="https://eips.ethereum.org/EIPS/eip-55" target="_blank">EIP-55</a>.
 </p>
-<ul class="nav nav-tabs">
-	<li class="nav-item">
-		<a data-toggle="tab" class="nav-link active" href="#form2_tabitem1">Visual</a>
-	</li>
-	<li class="nav-item">
-		<a data-toggle="tab" class="nav-link" href="#form2_tabitem2">Coding</a>
-	</li>
-</ul>
-<div class="tab-content">
-	<div id="form2_tabitem1" class="tab-pane fade show active">
-		<iframe src="eth_address_validator.php" width="100%" scrolling="no" frameborder="no"></iframe>
+
+<div class="row">
+	<div class="vertical-tabs-left">
+		<ul class="nav nav-tabs left-tabs sideways-tabs">
+			<li class="nav-item">
+				<a class="nav-link active" href="#form2_php" data-toggle="tab">PHP</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="#form2_go" data-toggle="tab">Go</a>
+			</li>
+		</ul>
 	</div>
-	<div id="form2_tabitem2" class="tab-pane fade">
-<pre style='border-radius:none;'><?php echo htmlentities(file_get_contents("eth_address_validator.php"));?></pre> 		
+
+	<div class="vertical-tabs-right" >
+
+		<div class="">
+			<div class="tab-content" >
+				<article class="tab-pane  active" id="form2_php" >
+					<section >
+						<ul class="nav nav-tabs">
+							<li class="nav-item">
+								<a data-toggle="tab" class="nav-link active" href="#form2_tabitem1_php">Visual</a>
+							</li>
+							<li class="nav-item">
+								<a data-toggle="tab" class="nav-link" href="#form2_tabitem2_php">Coding</a>
+							</li>
+						</ul>
+						<div class="tab-content">
+							<div id="form2_tabitem1_php" class="tab-pane fade show active">
+								<iframe src="eth_address_validator.php" width="100%" scrolling="no" frameborder="no"></iframe>
+							</div>
+							<div id="form2_tabitem2_php" class="tab-pane fade">
+						<pre style='border-radius:none;'><?php echo htmlentities(file_get_contents("eth_address_validator.php"));?></pre> 		
+							</div>
+						</div>
+					</section>
+				</article>
+				<article class="tab-pane " id="form2_go">
+					<section>
+						<ul class="nav nav-tabs">
+							<li class="nav-item">
+								<a data-toggle="tab" class="nav-link active" href="#form2_tabitem1_go">Visual</a>
+							</li>
+							<li class="nav-item">
+								<a data-toggle="tab" class="nav-link" href="#form2_tabitem2_go">Coding</a>
+							</li>
+						</ul>
+						<div class="tab-content">
+							<div id="form2_tabitem1_go" class="tab-pane fade show active">
+								<iframe src="https://www.btcschools.net:2053/ethereum/eth_address_validator.go" width="100%" scrolling="no" frameborder="no"></iframe>
+							</div>
+							<div id="form2_tabitem2_go" class="tab-pane fade">
+								
+								<h5>go/eth_address_validator.go</h5><hr/>
+								<pre style='border-radius:none;'><?php echo htmlentities(file_get_contents("go/eth_address_validator.go"));?></pre> 		
+								
+								<hr/><h5>go/templates/eth_address_validator.html</h5><hr/>
+								<pre style='border-radius:none;'><?php echo htmlentities(file_get_contents("go/templates/eth_address_validator.html"));?></pre> 		
+								
+							</div>
+						</div>
+					</section>
+				</article>
+			</div>
+		</div>
 	</div>
 </div>
 
@@ -78,24 +179,74 @@ include_once("html_header.php");
 <p>
 	Contract address will be auto generated (without private key) when contract-type tx publish to ETH network.
 </p>
-<ul class="nav nav-tabs">
-	<li class="nav-item">
-		<a data-toggle="tab" class="nav-link active" href="#form3_tabitem1">Visual</a>
-	</li>
-	<li class="nav-item">
-		<a data-toggle="tab" class="nav-link" href="#form3_tabitem2">Coding</a>
-	</li>
-</ul>
-<div class="tab-content">
-	<div id="form3_tabitem1" class="tab-pane fade show active">
-		<iframe src="eth_contract_address_form.php" width="100%" scrolling="no" frameborder="no"></iframe>
+
+
+<div class="row">
+	<div class="vertical-tabs-left">
+		<ul class="nav nav-tabs left-tabs sideways-tabs">
+			<li class="nav-item">
+				<a class="nav-link active" href="#form3_php" data-toggle="tab">PHP</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="#form3_go" data-toggle="tab">Go</a>
+			</li>
+		</ul>
 	</div>
-	<div id="form3_tabitem2" class="tab-pane fade">
-<pre style='border-radius:none;'><?php echo htmlentities(file_get_contents("eth_contract_address_form.php"));?></pre> 		
+
+	<div class="vertical-tabs-right" >
+
+		<div class="">
+			<div class="tab-content" >
+				<article class="tab-pane  active" id="form3_php" >
+					<section >
+						<ul class="nav nav-tabs">
+							<li class="nav-item">
+								<a data-toggle="tab" class="nav-link active" href="#form3_tabitem1_php">Visual</a>
+							</li>
+							<li class="nav-item">
+								<a data-toggle="tab" class="nav-link" href="#form3_tabitem2_php">Coding</a>
+							</li>
+						</ul>
+						<div class="tab-content">
+							<div id="form3_tabitem1_php" class="tab-pane fade show active">
+								<iframe src="eth_contract_address_form.php" width="100%" scrolling="no" frameborder="no"></iframe>
+							</div>
+							<div id="form3_tabitem2_php" class="tab-pane fade">
+						<pre style='border-radius:none;'><?php echo htmlentities(file_get_contents("eth_contract_address_form.php"));?></pre> 		
+							</div>
+						</div>
+					</section>
+				</article>
+				<article class="tab-pane " id="form3_go">
+					<section>
+						<ul class="nav nav-tabs">
+							<li class="nav-item">
+								<a data-toggle="tab" class="nav-link active" href="#form3_tabitem1_go">Visual</a>
+							</li>
+							<li class="nav-item">
+								<a data-toggle="tab" class="nav-link" href="#form3_tabitem2_go">Coding</a>
+							</li>
+						</ul>
+						<div class="tab-content">
+							<div id="form3_tabitem1_go" class="tab-pane fade show active">
+								<iframe src="https://www.btcschools.net:2053/ethereum/eth_contract_address_form.go" width="100%" scrolling="no" frameborder="no"></iframe>
+							</div>
+							<div id="form3_tabitem2_go" class="tab-pane fade">
+								
+								<h5>go/eth_contract_address_form.go</h5><hr/>
+								<pre style='border-radius:none;'><?php echo htmlentities(file_get_contents("go/eth_contract_address_form.go"));?></pre> 		
+								
+								<hr/><h5>go/templates/eth_contract_address_form.html</h5><hr/>
+								<pre style='border-radius:none;'><?php echo htmlentities(file_get_contents("go/templates/eth_contract_address_form.html"));?></pre> 		
+								
+							</div>
+						</div>
+					</section>
+				</article>
+			</div>
+		</div>
 	</div>
 </div>
-
-
 
 <h3 class="mt-3" id='hashtag4'>How To Determine Address Type?</h3>
 <p>

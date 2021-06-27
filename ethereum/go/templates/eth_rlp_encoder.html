@@ -1,0 +1,33 @@
+{{ template "html_iframe_header.html" .}}
+
+{{if .error}}
+	<div class="alert alert-danger">
+        <strong>Error!</strong> {{ .error }}
+    </div>
+{{else if .rlpHex}}
+	<div class="alert alert-success">
+		{{.rlpHex}}
+	</div>
+{{end}}
+
+<form action='' method='post'>
+	<div class="form-group">
+		<label for="string">Data To Encode:</label>
+		<textarea class="form-control" type='text' name='string' id='string' rows=10>{{.string}}</textarea>
+		<small>
+			<ol style="padding-left: 0; list-style: inside decimal;">
+				<li>
+					To encode array, JSON-ARRAY serialized string must be applied and start with '[' and end with ']'.
+				</li>
+				
+				<li>
+					Numeric number will be casted to integer or float.
+				</li>
+			</ol>
+		</small>
+	</div>
+
+	<input type='submit' class="btn btn-success btn-block"/>
+</form>
+
+{{ template "html_iframe_footer.html" .}}

@@ -117,7 +117,7 @@ if ($errmsg) {
 	
 	<div class="form-group">
         <label for="jsonver">Json RPC version:</label>
-        <input class="form-control" type='text' name='jsonver' id='jsonver' value='<?php echo $_POST['jsonver']?$_POST['jsonver']: "2.0"?>'>
+        <input class="form-control" type='text' name='jsonver' id='jsonver' value='<?php echo $_POST['jsonver']?$_POST['jsonver']: ""?>'>
     </div>
 
 	<div class="form-group">
@@ -204,8 +204,6 @@ if ($errmsg) {
 		</small>
     </div>
 	
-	
-		
     <input type='submit' class="btn btn-success btn-block"/>
 </form>
 <?php

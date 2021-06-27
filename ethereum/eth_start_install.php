@@ -31,10 +31,34 @@ include_once("html_header.php");
 </ul>
 
 
-<h3 class="mt-3">Other Required PHP Scripts:</h3>
-<ul>
-	<li><a href="show_source.php?file=eth_utils.php">eth_utils.php</a></li>
-	<li><a href="show_source.php?file=../libraries/bcbitwise.php">bcbitwise.php</a></li>
+<h3 class="mt-3">Other Required Scripts:</h3>
+
+<ul class="nav nav-tabs">
+	<li class="nav-item">
+		<a data-toggle="tab" class="nav-link active" href="#form1_tabitem1">PHP</a>
+	</li>
+	<li class="nav-item">
+		<a data-toggle="tab" class="nav-link" href="#form1_tabitem2">Go</a>
+	</li>
 </ul>
+<div class="tab-content">
+	<div id="form1_tabitem1" class="tab-pane fade show active">
+		<p>
+			<ul>
+				<li><a href="show_source.php?file=eth_utils.php">eth_utils.php</a></li>
+				<li><a href="show_source.php?file=../libraries/bcbitwise.php">bcbitwise.php</a></li>
+			</ul>
+		</p>
+	</div>
+	<div id="form1_tabitem2" class="tab-pane fade">
+		<p>
+			<ul>
+				<li><a href="show_source.php?file=go/main.go">go/main.go</a></li>
+				<li><a href="show_source.php?file=go/eth_utils.go">go/eth_utils.go</a></li>
+			</ul>
+		</p>
+	</div>
+</div>
+
 <?php
 include_once("html_footer.php");

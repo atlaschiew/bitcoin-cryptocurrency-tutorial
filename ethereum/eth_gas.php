@@ -14,8 +14,8 @@ Blocks also have total gas limits to prevent runaway computation/keep the networ
 
 <h5 class="mt-3">Gas Limit</h5>
 			
-<p>Normal transfer eth to <a href="eth_address.php">EOA address</a> always require 21,000 gas limit, but gas limit interact with contract might be higher. Therefore, you can use <a href="#hashtag_estgas">tool</a> below to estimate it.</p>
-		
+<p>Normal transfer eth to <a href="eth_address.php">EOA address</a> always require 21,000 gas limit (intrinsic gas), but gas limit interact with contract might be higher. Therefore, you can use <a href="#hashtag_estgas">tool</a> below to estimate it.</p>
+	
 <p>ETH wastage can be happen when gas limit is too low thus cause the transaction fail.</p>
 
 <div class='vertical-line-yellow'>
@@ -29,7 +29,14 @@ Blocks also have total gas limits to prevent runaway computation/keep the networ
 	
 	<br/><br/>
 	<b>Q:</b> How to calculate refunded gas in the Tx?<br/>
-	<b>A:</b> Take <a href='https://etherscan.io/tx/0x3aadf68c900ead2682b212708c638efa841477eb36719aa25aea40a2192970a1' target="_blank">0x3aadf68c900ead2682b212708c638efa841477eb36719aa25aea40a2192970a1</a> (<a target="_blank" href="https://etherscan.io/vmtrace?txhash=0x3aadf68c900ead2682b212708c638efa841477eb36719aa25aea40a2192970a1">vmtrace</a>) as an example. Refunded gas = (Gas limit - Last executed gas) - Gas used = (60,000 - 18,791) - 26,209 = 15,000.
+	<b>A:</b> In this example <a href='https://etherscan.io/tx/0x3aadf68c900ead2682b212708c638efa841477eb36719aa25aea40a2192970a1' target="_blank"><img style='width:12px;height:12px;' src='../media/images/external_link.png'/></a> (<a target="_blank" href="https://etherscan.io/vmtrace?txhash=0x3aadf68c900ead2682b212708c638efa841477eb36719aa25aea40a2192970a1">vmtrace</a>). Refunded gas = (Gas limit - Last executed gas) - Gas used = (60,000 - 18,791) - 26,209 = 15,000. Please also note that vm trace always start with gas after less intrinsic gas.
+	
+	<br/><br/>
+	<b>Q:</b> How to calculate intrinsic gas?<br/>
+	<b>A:</b> Always start with 21,000 gas as initial intrinsic gas. However Tx with payload (data in data field) will subject to more intrinsic gas where payload data with 0 byte cost extra 4 gas while non 0 byte cost extra 16 gas.<br/>
+	
+	In this example <a href="https://ropsten.etherscan.io/tx/0x78b28e1ebfc27e0cf5060c9084af74e265c09663ec9b75f74cbc934d392ebb86" target="_blank"><img style='width:12px;height:12px;' src='../media/images/external_link.png'/></a>. There are one 0 byte and six non 0 bytes, therefore intrinsic gas would be 21000 + (1 * 4) + (6 * 16) = 21,100.
+	
 </div>
 
 <h5 class="mt-3">Gas Used</h5>			

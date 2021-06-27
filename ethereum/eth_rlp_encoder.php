@@ -60,8 +60,6 @@ if ($result) {
 }
 ?>
 <form action='' method='post'>
-
-
 	<div class="form-group">
 		<label for="string">Data To Encode:</label>
 		<textarea class="form-control" type='text' name='string' id='string' rows=10><?php echo $_POST['string']?></textarea>

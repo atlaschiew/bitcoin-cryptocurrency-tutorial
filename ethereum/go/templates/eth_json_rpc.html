@@ -1,0 +1,112 @@
+{{ template "html_iframe_header.html" .}}
+
+{{if .error}}
+	<div class="alert alert-danger">
+        <strong>Error!</strong> {{ .error }}
+    </div>
+{{else if .url}}
+
+	<div class="alert alert-success">
+		<h6 class="mt-3">Host</h6>
+		<textarea class="form-control" rows="1" readonly>{{.url}}</textarea>
+		
+		<h6 class="mt-3">JSON-RPC Request</h6>
+		<textarea class="form-control" rows="5" id="comment" readonly>{{.req}}</textarea>
+		
+		<h6 class="mt-3">JSON-RPC Response</h6>
+		<textarea class="form-control" rows="1" id="comment" readonly>{{.resp}}</textarea>
+		
+	</div>
+{{end}}
+
+<form id='this_form' action='?action=submit' method='post'>
+
+	<div class="form-group">
+		<label for="host">Host To Receive RPC:</label>
+		
+		<div class="input-group mb-3">
+			<select id="host" name="host" class="form-control" >
+			
+			{{ $host := .host }}
+				
+			{{if not $host}}
+				{{$host = ""}}
+			{{end}}
+			
+			{{ range $key, $value := .hosts }}
+				<option value='{{$key}}'
+				{{if eq $host $key}}
+					selected
+				{{end}}
+				>{{$value}}</option>
+			{{end}}
+			</select>
+			<div class="input-group-append">
+				<span class="input-group-text">
+					/
+				</span>
+			</div>
+			
+			<input class="form-control" type='text' name='path' id='path' value='{{.path}}' placeholder="Put extra path or blank if it does not.">
+			
+		</div>
+	</div>
+
+	<div class="form-group">
+        <label for="jsonver">Json RPC version:</label>
+        <input class="form-control" type='text' name='jsonver' id='jsonver' value='{{if .jsonver}}{{.jsonver}}{{else}}2.0{{end}}'>
+    </div>
+	
+	<div class="form-group">
+        <label for="method">Method:</label>
+        <input class="form-control" type='text' name='method' id='method' value='{{.method}}'>
+    </div>
+
+	<div class="form-group">
+        <label for="params">Params:</label>
+		<textarea class="form-control" rows="10" name='params' id='params' placeholder='Please refer to sample of value below'>{{.params}}</textarea>
+		<small>
+			<ol style="padding-left: 0; list-style: inside decimal;">
+				<li>
+					Must be JSON-ARRAY encoded string, start with '[' and end with ']'.
+				</li>
+				
+				<li>
+					<a href="https://eth.wiki/json-rpc/api" target="_blank">Refer to</a> <span class='grey_info'>Parameters</span> part under your selected method about required value.
+				</li>
+				
+				<li>
+					Sample of `Params` value.
+					<div class="table-responsive">
+						<table class="table table-sm table-bordered">
+							<tr><th>Params</th><th>Description</th></tr>
+							<tr>
+								<td>[]</td>
+								<td>Empty params array.</td>
+							</tr>
+							
+							<tr>
+								<td>["0x5cf1bdA8757b9c501190B0FcbC6B4ab8a4Bd04a5"]</td>
+								<td>Params array with 1 address item.</td>
+							</tr>
+							
+							<tr>
+								<td>["0x5cf1bdA8757b9c501190B0FcbC6B4ab8a4Bd04a5","latest"]</td>
+								<td>Params array with 1 address item & 1 block param.</td>
+							</tr>
+							
+							<tr>
+								<td>[{"from":"0x5cf1bdA8757b9c501190B0FcbC6B4ab8a4Bd04a5","to":"0xd46e8dd67c5d32be8058bb8eb970870f07244567"}]</td>
+								<td>Params array with 1 object item.</td>
+							</tr>
+						</table>
+					</div>
+				</li>
+			</ol>
+		</small>
+    </div>
+		
+    <input type='submit' class="btn btn-success btn-block"/>
+</form>
+
+{{ template "html_iframe_footer.html" .}}

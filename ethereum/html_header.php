@@ -16,7 +16,7 @@
 	<!-- Bootstrap core JavaScript -->
 	<script src="../media/vendor/jquery/jquery.min.js"></script>
 	<script src="../media/vendor/iframeresizer/js/iframeResizer.min.js"></script>
-	
+	<link href="../media/css/b4vtabs.min.css?<?php echo time()?>" rel="stylesheet">
 	
 </head>
 

@@ -9,7 +9,7 @@ include_once("eth_utils.php");
 define("GWEI_TO_WEI",'1000000000');
 define("ETH_TO_WEI",'1000000000000000000');
 
-$supportChains = ['1'=>"Ethereum Mainnet", '3'=>"Ethereum Testnet Ropsten"];
+$supportChains = ['1'=>"Ethereum Mainnet", '3'=>"Ethereum Testnet Ropsten", '56'=>"BSC Mainnet", "97"=>"BSC Testnet"];
 
 unset($_REQUEST);
 $_REQUEST = array("chain"=>"","nonce"=>"","gas_price"=>"","gas_limit"=>"","to"=>"","data"=>"","value"=>"","privkey"=>"");

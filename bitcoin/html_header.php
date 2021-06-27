@@ -68,7 +68,9 @@
 			<a href="bitcoin_tool_wif.php" class="list-group-item list-group-item-action bg-light">Bitcoin WIF</a>
 			<a href="bitcoin_tool_verify_script.php" class="list-group-item list-group-item-action bg-light">Bitcoin Verify Script</a>
 			<a href="bitcoin_tool_little_endian.php" class="list-group-item list-group-item-action bg-light">Bitcoin Little-Endian</a>
-			<a href="bitcoin_tool_dersign.php" class="list-group-item list-group-item-action bg-light">Bitcoin DER Signature</a>
+			<a href="bitcoin_tool_ecdsa.php" class="list-group-item list-group-item-action bg-light">Bitcoin ECDSA Signature</a>
+			
+			<a href="bitcoin_tool_ecrecover.php" class="list-group-item list-group-item-action bg-light">Bitcoin EC Recover</a>
 			
 		</div>
 	  
@@ -108,10 +110,6 @@
             <li class="nav-item">
               <a class="nav-link" href="../bitcoin">Bitcoin</a>
             </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="../bitwasp">Bitwasp</a>
-            </li>
-			
           </ul>
         </div>
       </nav>

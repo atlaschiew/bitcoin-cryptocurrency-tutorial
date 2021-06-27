@@ -126,6 +126,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			$raw->setTimestamp($currentTimeMillis);
 			$raw->setExpiration( $blockTs + (10 * 60 * 60 * 1000) );#expiration set 10 hours from last confirmed block
 			$txId = hash("sha256", $raw->serializeToString());
+			$rawData = str2hex($raw->serializeToString());
 			
 			$tx = new \Protocol\Transaction();
 			$tx->setRawData($raw);
@@ -138,6 +139,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		   
 				<h6 class="mt-3">Raw Tx (Hex)</h6>
 				<textarea class="form-control" rows="5" id="comment" readonly><?php echo str2hex($tx->serializeToString());?></textarea>
+				
+				<h6 class="mt-3">Raw Data (Hex)</h6>
+				<textarea class="form-control" rows="5" id="comment" readonly><?php echo $rawData;?></textarea>
+				<small>To sign manually, you may access to <a href="tron_sign_raw_data.php">Tron Sign Raw Data</a> page.</small>
 				
 				<h6 class="mt-3">Contract Serialized Hex</h6>
 				<textarea class="form-control" rows="5" id="comment" readonly><?php echo str2hex($contract->serializeToString());?></textarea>
@@ -186,14 +191,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			
 			$newTx = new \Protocol\Transaction();
 			$parsedRaw =  new \Protocol\Transaction\Raw();
-			$parsedRaw->mergeFromString(hex2str($mutatedTx['raw_data_hex']));
-			
+			$parsedRaw->mergeFromString(hex2str($rawData = $mutatedTx['raw_data_hex']));
+
 			$newTx->setRawData($parsedRaw);
 			$signature = Support\Secp::sign($mutatedTx['txID'], $_POST['privkey']);
 			$newTx->setSignature([hex2str( $signature )]);
-			
-			
-			
+
 			?>
 			<div class="alert alert-success">
 		   
@@ -202,6 +205,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				
 				<h6 class="mt-3">Raw Tx (Hex)</h6>
 				<textarea class="form-control" rows="5" id="comment" readonly><?php echo str2hex($newTx->serializeToString());?></textarea>
+				
+				<h6 class="mt-3">Raw Data (Hex)</h6>
+				<textarea class="form-control" rows="5" id="comment" readonly><?php echo $rawData;?></textarea>
+				<small>To sign manually, you may access to <a href="tron_sign_raw_data.php">Tron Sign Raw Data</a> page.</small>
 
 				<h6 class="mt-3">TX Hash</h6>
 				<input class="form-control" readonly value="<?php echo $mutatedTx['txID']?>"/>

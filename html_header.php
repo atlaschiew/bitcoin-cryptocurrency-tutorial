@@ -33,12 +33,14 @@
 	  
 		<div class="list-group-header">Bitcoin</div>
 		<div class="list-group list-group-flush">
-			<a href="/bitcoin" class="list-group-item list-group-item-action bg-light">Learn Bitcoin, includes</a>
-			<a href="#" class="list-group-item list-group-item-action bg-light disabled">&nbsp;&nbsp;<img src='media/images/git_fork.png' style="width:16px;height:16px;"/> Litecoin</a>
-			<a href="#" class="list-group-item list-group-item-action bg-light disabled">&nbsp;&nbsp;<img src='media/images/git_fork.png' style="width:16px;height:16px;"/> Dash</a>
-			<a href="#" class="list-group-item list-group-item-action bg-light disabled">&nbsp;&nbsp;<img src='media/images/git_fork.png' style="width:16px;height:16px;"/> Doge</a>
+			<a href="/bitcoin" class="list-group-item list-group-item-action bg-light">Learn Bitcoin</a>
 			
-			<a href="#" class="list-group-item list-group-item-action bg-light disabled">&nbsp;&nbsp;<img src='media/images/git_fork.png' style="width:16px;height:16px;"/> Zcash</a>
+			<a href="#" class="list-group-item list-group-item-action bg-light disabled">&nbsp;&nbsp;includes</a>
+			<a href="#" class="list-group-item list-group-item-action bg-light disabled">&nbsp;&nbsp;&nbsp;&nbsp;<img src='media/images/git_fork.png' style="width:16px;height:16px;"/> Litecoin</a>
+			<a href="#" class="list-group-item list-group-item-action bg-light disabled">&nbsp;&nbsp;&nbsp;&nbsp;<img src='media/images/git_fork.png' style="width:16px;height:16px;"/> Dash</a>
+			<a href="#" class="list-group-item list-group-item-action bg-light disabled">&nbsp;&nbsp;&nbsp;&nbsp;<img src='media/images/git_fork.png' style="width:16px;height:16px;"/> Doge</a>
+			
+			<a href="#" class="list-group-item list-group-item-action bg-light disabled">&nbsp;&nbsp;&nbsp;&nbsp;<img src='media/images/git_fork.png' style="width:16px;height:16px;"/> Zcash</a>
 			
 		</div>
 		
@@ -48,6 +50,13 @@
 			<a href="/ethereum" class="list-group-item list-group-item-action bg-light">Learn Ethereum</a>
 			<a href="/eth_js" class="list-group-item list-group-item-action bg-light">Learn Eth Js</a>
 			<a href="/eth_smartcontract" class="list-group-item list-group-item-action bg-light">Learn Smart Contract</a>
+		</div>
+		
+		<div class="list-group-header">Binance</div>
+		<div class="list-group list-group-flush">
+			
+			<a href="/bsc" class="list-group-item list-group-item-action bg-light"> Binance Smart Chain</a>
+			
 		</div>
 		
 		<div class="list-group-header">Tron</div>

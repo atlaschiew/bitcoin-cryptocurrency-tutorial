@@ -45,7 +45,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         } 
        
 		$publicKey = $privateKey->getPublicKey();
-		$madeUpEthAddress = substr($publicKey->getHex(), 2);
+		$publicKey = substr($publicKey->getHex(), 2);
+		$madeUpEthAddress = $publicKey;
 		
 		$hash = Keccak::hash(hex2bin($madeUpEthAddress), 256);
 		// Ethereum address has 20 bytes length. (40 hex characters long)
@@ -57,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <table border=0 class='table'>
                 <tr style='background-color:#f0f0f0'><td>Address</td><td><?php echo $ethAddress?></td></tr>
                 <tr><td>Private Key Hex</td><td><?php echo $privateKey->getHex()?></td></tr>               
-                <tr style='background-color:#f0f0f0'><td>Public Key Hex</td><td><?php echo $publicKey->getHex()?></td></tr>
+                <tr style='background-color:#f0f0f0'><td>Public Key Hex</td><td><?php echo $publicKey?></td></tr>
             </table>
         </div>
 <?php 

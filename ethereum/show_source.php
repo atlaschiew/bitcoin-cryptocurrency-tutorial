@@ -4,7 +4,7 @@ $_HTML['meta']['keywords'] = "Tron, PHP";
 include_once "../common.php";
 include_once("html_header.php");
 
-if (!in_array($_GET['file'], ['eth_mpt.php','eth_utils.php','../libraries/bcbitwise.php'])) {
+if (!in_array($_GET['file'], ['eth_mpt.php','eth_utils.php','../libraries/bcbitwise.php','go/main.go','go/eth_utils.go'])) {
 	die("Illegal Access");
 }
 

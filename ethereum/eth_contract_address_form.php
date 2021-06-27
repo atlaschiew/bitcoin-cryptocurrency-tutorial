@@ -16,11 +16,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$ethAddress = '0x' . substr($hash, -40);
 		
     ?>
-        <div class="table-responsive">
-            <table border=0 class='table'>
-                <tr style='background-color:#f0f0f0'><td>Address</td><td><?php echo $ethAddress?></td></tr>
-            </table>
-        </div>
+       
+		<div class="alert alert-success">
+			<strong>Success!</strong> <?php echo $ethAddress?>
+		</div>
 <?php 
     } catch (Exception $e) {
         $errmsg .= "Problem found. " . $e->getMessage();

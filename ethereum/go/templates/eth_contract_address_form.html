@@ -1,0 +1,28 @@
+{{ template "html_iframe_header.html" .}}
+
+
+{{if .error}}
+	<div class="alert alert-danger">
+        <strong>Error!</strong> {{ .error }}
+    </div>
+{{else if .ethAddress}}
+	<div class="alert alert-success">
+		<strong>Success!</strong> {{.ethAddress}}
+	</div>
+{{end}}
+
+<form action='' method='post'>
+    <div class="form-group">
+        <label for="address">Sender Address:</label>
+        <input class="form-control" type='text' name='address' id='address' value='{{.address}}'>
+    </div>
+	
+	<div class="form-group">
+        <label for="nonce">Nonce:</label>
+        <input class="form-control" type='text' name='nonce' id='nonce' value='{{.nonce}}'>
+    </div>
+   
+    <input type='submit' class="btn btn-success btn-block"/>
+</form>
+
+{{ template "html_iframe_footer.html" .}}

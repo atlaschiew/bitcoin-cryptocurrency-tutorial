@@ -18,7 +18,7 @@ include_once("html_header.php");
 		<li>The more the recipient, the cheaper the cost per ETH transfer as in compare to normal send which consume 21,000 gas.</li>
 		
 		<li>
-			If send one ETH transfer only , then apparently gas cost is expensive than normal send ETH.
+			If transfer ETH to 1 recipient only , then apparently gas cost is expensive than normal send ETH.
 		</li>
 	</ul>
 </p>

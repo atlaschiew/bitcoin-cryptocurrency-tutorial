@@ -1,6 +1,12 @@
-pragma solidity ^0.4.17;
+pragma solidity ^0.5.0;
 
-contract MultiSendEth {
+
+import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v2.4.0/contracts/math/SafeMath.sol";
+
+contract MultiSendEth  {
+    
+    using SafeMath for uint256;
+   
     address public owner;
     
     modifier onlyOwner(){
@@ -22,8 +28,8 @@ contract MultiSendEth {
         return owner;
     }
     
-    //getbalance
-    function getBalance() public view returns (uint256) {
+    //get eth balance
+    function getEthBalance() public view returns (uint256) {
         return address(this).balance;
     }
     
@@ -31,46 +37,72 @@ contract MultiSendEth {
     function withdraw() public onlyOwner{
         msg.sender.transfer(address(this).balance);
     }
-
-    function multiSendArrayAmount(address[] addresses, uint256[] amounts) public payable {
-        require(addresses.length > 0);
-        require(addresses.length == amounts.length);
-
-        uint256 length = addresses.length;
-        uint256 currentSum = 0;
-        for (uint256 i = 0; i < length; i++) {
-            uint256 amount = amounts[i];
-            require(amount > 0);
-            currentSum += amount;
-            require(currentSum <= msg.value);
-           
-            addresses[i].transfer(amount);
-        }
-        require(currentSum == msg.value);
-    }
     
-    function multiSendFixedAmount(address[] addresses, uint256 amount) public payable {
+    //batch send fixed eth amount from sender
+    function multiSendFixedEth(address payable[] memory recipients, uint256 amount) public payable {
         
-        require(addresses.length > 0);
+        require(recipients.length > 0);
         require(amount > 0);
-        require(addresses.length * amount == msg.value);
+        require(recipients.length * amount == msg.value);
         
-        uint256 length = addresses.length;
+        uint256 length = recipients.length;
         
         for(uint256 i=0;i<length;i++) {
-            addresses[i].transfer(amount);
+            recipients[i].transfer(amount);
         }
     }   
     
-    function multiSendFixedAmountFromContract(address[] addresses, uint256 amount) public onlyOwner {
+    //batch send different eth amount from sender
+    function multiSendDiffEth(address payable[] memory recipients, uint256[] memory amounts) public payable {
+        require(recipients.length > 0);
+        require(recipients.length == amounts.length);
         
-        require(addresses.length > 0);
+        uint256 length = recipients.length;
+        uint256 currentSum = 0;
+        
+        for (uint256 i = 0; i < length; i++) {
+            uint256 amount = amounts[i];
+            require(amount > 0);
+            currentSum = currentSum.add(amount);
+            require(currentSum <= msg.value);
+           
+            recipients[i].transfer(amount);
+        }
+        
+    }
+    
+	
+    //batch send fixed eth amount from contract
+    function multiSendFixedEthFromContract(address payable[] memory recipients, uint256 amount) public onlyOwner {
+        
+        require(recipients.length > 0);
         require(amount > 0);
+        require(recipients.length * amount <= address(this).balance);
         
-        uint256 length = addresses.length;
-        
+        uint256 length = recipients.length;
+		
         for(uint256 i=0;i<length;i++) {
-            addresses[i].transfer(amount);
+            recipients[i].transfer(amount);
+        }
+    }    
+    
+    //batch send different eth amount from contract
+    function multiSendDiffEthFromContract(address payable[] memory recipients, uint256[] memory amounts) public onlyOwner {
+        
+        require(recipients.length > 0);
+        require(recipients.length == amounts.length);
+        
+        uint256 length = recipients.length;
+        uint256 currentSum = 0;
+        uint256 currentEthBalance = address(this).balance;
+        
+        for (uint256 i = 0; i < length; i++) {
+            uint256 amount = amounts[i];
+            require(amount > 0);
+            currentSum = currentSum.add(amount);
+            require(currentSum <= currentEthBalance);
+           
+            recipients[i].transfer(amount);
         }
     }    
 }
